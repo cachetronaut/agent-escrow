@@ -17,7 +17,7 @@ These tests do not exercise the Rust contract, Wasm ABI, NEAR storage accounting
 - Sandbox tests of callback access, promise success/failure, storage reservation and gas, including maximum-size tasks and independent escrow balances.
 - Testnet deployment and transaction hashes for all lifecycle paths.
 - Browser layout and keyboard interaction verification.
-- Official hackathon terms and submission schema.
+- Re-read the official live hackathon terms immediately before submitting; initial rules and schema verification completed on 2026-11-03, see submission.md.
 - Owner approvals in owner-gates.md.
 
 ## Latest local evidence
@@ -34,3 +34,7 @@ These tests do not exercise the Rust contract, Wasm ABI, NEAR storage accounting
 Final local suite run: **22 tests passed, 0 failed, 0 skipped** using `node --test tests/*.test.mjs`. A full-suite attempt initially timed out starting the server under local load; the startup allowance was increased from 5 to 30 seconds and the complete suite then passed. The server still binds loopback only and is stopped by the test.
 
 `rustfmt --edition 2021 --check contract/src/lib.rs` passed after formatting. This confirms Rust parsing/formatting only; no macro expansion, type checking, linking, or Wasm execution occurred.
+
+## Rules verification update
+
+Read the live https://nearhackathon.com/HACKATHON.md on 2026-11-03. Confirmed submission dates, testnet eligibility, optional integrations, track IDs, repository and X-demo requirements, the exact API field set, and response/retry rules. The web reader could not handle the Markdown content type; a read-only HTTPS fetch retrieved the source. No submission endpoint was called. Owner confirmed tracks agents and business in one entry. Testnet account IDs are still pending. Account setup blocks deployment, not dependency inspection or local contract verification.
