@@ -16,3 +16,6 @@ opt-level = "z"
 lto = true
 panic = "abort"
 overflow-checks = true
+
+[lints.rust]
+unexpected_cfgs = { level = "warn", check-cfg = ['cfg(policy_test)'] }

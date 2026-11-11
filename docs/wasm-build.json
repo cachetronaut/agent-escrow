@@ -1,0 +1,257 @@
+{
+  "artifact": "contract/target/wasm32-unknown-unknown/release/agent_escrow.wasm",
+  "bytes": 216747,
+  "sha256": "527d5ba554624e32e7dfbc7becf77a71088b4856c205537ed827b1c249f7faec",
+  "imports": [
+    {
+      "module": "env",
+      "name": "value_return",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "attached_deposit",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "current_account_id",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_results_count",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "predecessor_account_id",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "prepaid_gas",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "block_timestamp",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "read_register",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_and",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "register_len",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "storage_read",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "storage_usage",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "storage_write",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_return",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "storage_has_key",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_then",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_create",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_result",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_stake",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_transfer",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_delete_key",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_function_call",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_create_account",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_delete_account",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_deploy_contract",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "log_utf8",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_use_global_contract",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_function_call_weight",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_deploy_global_contract",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_add_key_with_full_access",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_use_global_contract_by_account_id",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_add_key_with_function_call",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "promise_batch_action_deploy_global_contract_by_account_id",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "input",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "used_gas",
+      "kind": "function"
+    },
+    {
+      "module": "env",
+      "name": "panic_utf8",
+      "kind": "function"
+    }
+  ],
+  "exports": [
+    {
+      "name": "memory",
+      "kind": "memory"
+    },
+    {
+      "name": "bid",
+      "kind": "function"
+    },
+    {
+      "name": "contract_source_metadata",
+      "kind": "function"
+    },
+    {
+      "name": "deliver",
+      "kind": "function"
+    },
+    {
+      "name": "escrow",
+      "kind": "function"
+    },
+    {
+      "name": "get_task",
+      "kind": "function"
+    },
+    {
+      "name": "max_bids",
+      "kind": "function"
+    },
+    {
+      "name": "new",
+      "kind": "function"
+    },
+    {
+      "name": "on_paid",
+      "kind": "function"
+    },
+    {
+      "name": "pay",
+      "kind": "function"
+    },
+    {
+      "name": "post",
+      "kind": "function"
+    },
+    {
+      "name": "refund",
+      "kind": "function"
+    },
+    {
+      "name": "release",
+      "kind": "function"
+    },
+    {
+      "name": "storage_fee",
+      "kind": "function"
+    },
+    {
+      "name": "task_count",
+      "kind": "function"
+    },
+    {
+      "name": "__data_end",
+      "kind": "global"
+    },
+    {
+      "name": "__heap_base",
+      "kind": "global"
+    }
+  ]
+}

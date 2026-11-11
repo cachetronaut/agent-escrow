@@ -1,0 +1,5 @@
+AgentEscrow: post a task, accept a worker bid, escrow test NEAR, and release payment after verifier approval.
+
+Built at NEAR HACKATHON
+https://github.com/cachetronaut/agent-escrow
+@NEARProtocol #NEARHackathon

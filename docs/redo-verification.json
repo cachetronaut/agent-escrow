@@ -1,0 +1,289 @@
+{
+  "date": "2026-11-11",
+  "owner": "Cachetronaut",
+  "source_commit": "b16bf01",
+  "source_dirty": true,
+  "network": "testnet",
+  "rpc_chain_verified": true,
+  "tests": {
+    "javascript": {
+      "passed": 28,
+      "failed": 0,
+      "skipped": 0
+    },
+    "rust_policy": {
+      "passed": 5,
+      "failed": 0,
+      "ignored": 0
+    },
+    "near_runtime": {
+      "run": false,
+      "reason": "Sandbox execution not cleared; see dependency-review.md"
+    }
+  },
+  "accounts": {
+    "contract": null,
+    "client": null,
+    "worker": null,
+    "verifier": null
+  },
+  "deployment_transaction": null,
+  "lifecycle_transactions": [],
+  "credentials_persisted": false,
+  "compile": {
+    "result": "passed",
+    "compiler": "rustc 1.95.0 (59807616e 2026-04-14)",
+    "artifact": "contract/target/wasm32-unknown-unknown/release/agent_escrow.wasm",
+    "bytes": 203802,
+    "sha256": "9d0b87209e5244652d8fd4f4523ce2c62a5944336ecc1aa248b2e2c23f1ca27a",
+    "imports": [
+      {
+        "module": "env",
+        "name": "value_return",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "attached_deposit",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "current_account_id",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_results_count",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "predecessor_account_id",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "prepaid_gas",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "block_timestamp",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "read_register",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_and",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "register_len",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "storage_read",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "storage_usage",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "storage_write",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_return",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "storage_has_key",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_then",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_create",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_result",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_stake",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_transfer",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_delete_key",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_function_call",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_create_account",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_delete_account",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_deploy_contract",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "log_utf8",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_use_global_contract",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_function_call_weight",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_deploy_global_contract",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_add_key_with_full_access",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_use_global_contract_by_account_id",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_add_key_with_function_call",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "promise_batch_action_deploy_global_contract_by_account_id",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "input",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "used_gas",
+        "kind": "function"
+      },
+      {
+        "module": "env",
+        "name": "panic_utf8",
+        "kind": "function"
+      }
+    ],
+    "exports": [
+      {
+        "name": "memory",
+        "kind": "memory"
+      },
+      {
+        "name": "approve",
+        "kind": "function"
+      },
+      {
+        "name": "contract_source_metadata",
+        "kind": "function"
+      },
+      {
+        "name": "create_task",
+        "kind": "function"
+      },
+      {
+        "name": "deliver",
+        "kind": "function"
+      },
+      {
+        "name": "expire",
+        "kind": "function"
+      },
+      {
+        "name": "get_task",
+        "kind": "function"
+      },
+      {
+        "name": "new",
+        "kind": "function"
+      },
+      {
+        "name": "on_paid",
+        "kind": "function"
+      },
+      {
+        "name": "pay",
+        "kind": "function"
+      },
+      {
+        "name": "storage_fee",
+        "kind": "function"
+      },
+      {
+        "name": "task_count",
+        "kind": "function"
+      },
+      {
+        "name": "__data_end",
+        "kind": "global"
+      },
+      {
+        "name": "__heap_base",
+        "kind": "global"
+      }
+    ],
+    "warnings": [
+      "deprecated near_sdk::env::promise_result"
+    ]
+  },
+  "blockers": [
+    "near-cli is absent; its executable and dependencies are not inspected, so execution is prohibited by the user safety rule. No agreement to use the prepared first-party signer instead was received.",
+    "The contract implements create_task with funding, deliver, and approve/release; no bidding API or separate escrow-funding stage exists.",
+    "NEAR runtime/sandbox tests remain unrun: the sandbox binary is not cleared and init persists private signing material to files contrary to repository rules."
+  ],
+  "superseded_by": "followup-verification.json"
+}

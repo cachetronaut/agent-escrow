@@ -1,61 +1,105 @@
 # AgentEscrow
 
-A client agent posts immutable task terms and a budget. A worker delivers an evidence digest. A named verifier approves payment. Unapproved work becomes refundable at its deadline.
+A client posts immutable task terms and a budget ceiling. Workers bid. The client selects and funds an existing bid. The selected worker delivers an evidence digest. A named verifier releases payment. Unapproved funded work can be refunded at its deadline.
 
-Built by **Cachetronaut** for the NEAR Agent Economy track. MIT licensed. Private during development. No CI workflows.
+Built by **Cachetronaut**. MIT licensed. Private during development. Testnet only. No CI workflows.
 
-## Current status
+## Verified testnet deployment, 2026-11-11
 
-**Prototype, not submission-ready.** The interactive demo and deterministic agent loop run offline. The Rust smart contract targets NEAR testnet but has not been compiled, deployed, or exercised on chain. Model tests do not validate the Rust contract. Native test NEAR is implemented in source; stablecoins and Intents are not integrated. No mainnet funds or signing path exists in the supplied tooling.
+The Rust contract compiled, deployed, and completed **post → bid → escrow → deliver → release** on NEAR testnet. Task `0` is **Paid**. Release increased the worker balance by exactly **0.04 test NEAR**, matching the selected bid rather than the 0.05 test NEAR budget ceiling. Final receipts and the deployed code hash were checked through the public testnet RPC.
+
+| Role | Testnet account ID |
+| --- | --- |
+| contract | `ae-261111-ce0de7-contract.testnet` |
+| client | `ae-261111-ce0de7-client.testnet` |
+| worker | `ae-261111-ce0de7-worker.testnet` |
+| verifier | `ae-261111-ce0de7-verifier.testnet` |
+
+Contract account: `ae-261111-ce0de7-contract.testnet`.
+
+Deployment transaction: [`8TVSKFvCvpC14MCCM2gNo9gnCFnH9GyboGy6z3kmryqR`](https://testnet.nearblocks.io/txns/8TVSKFvCvpC14MCCM2gNo9gnCFnH9GyboGy6z3kmryqR).
+
+| Step | Explorer transaction | Result |
+| --- | --- | --- |
+| deploy | [`8TVSKFvCvpC14MCCM2gNo9gnCFnH9GyboGy6z3kmryqR`](https://testnet.nearblocks.io/txns/8TVSKFvCvpC14MCCM2gNo9gnCFnH9GyboGy6z3kmryqR) | success |
+| post | [`5RSBrsw91ZR56DdapHAphvNAeziM552JdWzosEZMt3YW`](https://testnet.nearblocks.io/txns/5RSBrsw91ZR56DdapHAphvNAeziM552JdWzosEZMt3YW) | success |
+| bid | [`EErSVTApkdp7R65CaVvugb6vEH6dbayBPcbyqgQSdkRU`](https://testnet.nearblocks.io/txns/EErSVTApkdp7R65CaVvugb6vEH6dbayBPcbyqgQSdkRU) | success |
+| escrow | [`AK3KPixMTGevSPuGjYniLUgpVn8od7JKZGfbSdMkuCqB`](https://testnet.nearblocks.io/txns/AK3KPixMTGevSPuGjYniLUgpVn8od7JKZGfbSdMkuCqB) | success |
+| deliver | [`GnMYCdzFBE6PwFugjFbfLPQgGRmfwWhMZh3EsjqK5XRX`](https://testnet.nearblocks.io/txns/GnMYCdzFBE6PwFugjFbfLPQgGRmfwWhMZh3EsjqK5XRX) | success |
+| release | [`CzpXUMRsBjSA9mqxyWWa9ypZeCtoABB7BXK7YuEE5fgd`](https://testnet.nearblocks.io/txns/CzpXUMRsBjSA9mqxyWWa9ypZeCtoABB7BXK7YuEE5fgd) | success |
+
+Each account was created through near-cli and the free testnet faucet, which supplied 10 test NEAR per account. No mainnet account, funds, signature, transfer, or Intents execution was used. The repository remains private. No submission, X post, or CI run occurred. Review-package commits are private; publication remains owner-gated.
+
+## Build and test evidence
+
+- Release Wasm build: **passed**, Rust 1.95.0, near-sdk 5.28.0, locked dependencies, offline build. **Zero compiler warnings.**
+- Artifact: `contract/target/wasm32-unknown-unknown/release/agent_escrow.wasm`, **216,747 bytes**.
+- SHA-256: `527d5ba554624e32e7dfbc7becf77a71088b4856c205537ed827b1c249f7faec`.
+- Complete Node suite: **55 passed, 0 failed, 0 skipped**, comprising 28 existing/updated tests, 8 new bidding tests, and 19 actual Wasm integration tests.
+- Direct production Rust policy suite: **12 passed, 0 failed, 0 ignored**.
+- Combined local result: **67 passed, 0 failed, 0 skipped**.
+
+The Wasm tests execute the real compiled ABI and SDK serialization/storage calls with a first-party in-memory host. They cover bidding, exact funding, deadlines, role checks, release, refunds, callback privacy, failed-transfer retry, duplicate-settlement prevention, maximum-sized storage, and independent tasks. They require no node initialization, network, keys, or credential files. They are not nearcore gas, consensus, or networking tests. Public testnet receipts separately prove the successful release lifecycle and actual payout. Refund and failed-transfer paths were tested locally, not exercised on public testnet in this run.
+
+Evidence: [build and test summary](docs/followup-verification.json), [Wasm imports/exports](docs/wasm-build.json), [Rust policy results](docs/policy-tests.json), [testnet receipts](docs/testnet-lifecycle.json), and [independent read-only verification](docs/testnet-independent-check.json).
+
+## Contract API
+
+All account roles must be distinct named `.testnet` accounts, including distinction from the contract. Account suffix validation is a guardrail; tooling also verifies RPC `chain_id: testnet` before signing.
+
+| Method | Authorized caller and effect | Deposit |
+| --- | --- | --- |
+| `post(verifier,title,criteria,budget,deadline_ns)` | Client publishes immutable terms; returns decimal-string task ID | Exactly 0.1 test NEAR storage fee |
+| `bid(task_id,amount)` | Eligible worker adds one immutable positive bid at or below budget ceiling; maximum eight bids | Zero |
+| `escrow(task_id,worker)` | Original client selects an existing bid and funds it exactly once | Exactly selected bid amount |
+| `deliver(task_id,evidence_sha256)` | Selected worker records one lowercase SHA-256 digest | Zero |
+| `release(task_id)` | Named verifier approves delivered work and starts payment | Zero |
+| `refund(task_id)` | Anyone cancels an expired unfunded post or refunds funded unapproved work to original client | Zero |
+| `pay(task_id)` | Anyone retries the original beneficiary claim after transfer failure | Zero |
+
+IDs, timestamps, and amounts use JSON decimal strings. Deadline timestamps are nanoseconds and must fall within 30 days after posting. Posting, bidding, funding, delivery and release require time strictly before the deadline. Refund requires time at or after it. The retained 0.1 test NEAR fee reserves storage for eight bids and later evidence; it is excluded from payouts and refunds.
+
+Release fixes the worker claim. A private receipt callback records success or preserves that claim on transfer failure. Pending and terminal states reject duplicate payment. A missing callback can leave a task pending; no unsafe manual override exists. The contract exposes no admin withdrawal or upgrade method. Account full-access keys can still replace code, so this deployment is not claimed immutable.
+
+The state layout changed from the undeployed prototype. Legacy `create_task`, `approve`, and `expire` contract exports were removed. Use a fresh account for this layout. See [bidding semantics](docs/bidding-design.md).
 
 ## Run locally
 
-No npm dependencies, install step, external fonts, or CDN assets. Inspect `package.json`, `scripts/`, `demo/`, and `tests/` before running. These commands execute only first-party JavaScript using the existing Node runtime, version 22 or later.
+The application has no npm dependencies, install step, external fonts, or CDN assets. Use Node 22 or later. Inspect the first-party scripts and exact dependency sources before execution. The recorded build review applies only to the pinned graph; changing dependencies requires another review.
 
 ```sh
+# Only after completing the source-review gate described below:
+AGENT_ESCROW_BUILD_REVIEWED=yes node scripts/build-contract.mjs
+node scripts/test-policy.mjs
 node --test tests/*.test.mjs
 node scripts/agents.mjs
 node scripts/agents.mjs --refund --fail-transfer
 node scripts/serve.mjs
 ```
 
-Open `http://127.0.0.1:4173` for the interactive simulation. It resets on reload. The browser uses fixed testnet role names and simulated receipt callbacks. The approve button is a human verifier attestation. The CLI demo uses a deterministic JSON verifier for its predefined task; no LLM or autonomous on-chain signer is connected.
+The Wasm artifact must exist before the full Node suite runs. The build runner pins the installed compiler, rejects unexpected Cargo configuration, checks 107 dependency fingerprints, strips inherited environment inputs, and builds offline under OS network/write restrictions. See [dependency review](docs/dependency-review.md).
 
-## Contract behavior
+Open `http://127.0.0.1:4173` for the offline interactive demo. Its creation adapter automatically posts, bids, and escrows; the deterministic CLI demo records all stages separately. Both use local models and simulated receipt callbacks. The displayed verifier approval is a human attestation. No LLM or autonomous on-chain agent is claimed. The CLI verifier accepts only its predefined JSON task. Stablecoins and Intents are not integrated.
 
-`contract/src/lib.rs` contains the NEAR adapter. `create_task` attaches the budget plus a retained 0.1 test NEAR storage fee. The fee is not part of the budget and is not refunded. The task stores the client, worker, verifier, title, acceptance criteria, deadline in nanoseconds, budget in yoctoNEAR, and evidence SHA-256. IDs, timestamps, and amounts use JSON decimal strings.
+## near-cli and credentials
 
-Only the worker can deliver, once, before the deadline. Only the verifier can approve a delivered task before the deadline. All roles must be distinct named `.testnet` accounts. Anyone can call `expire` at or after the deadline for open or delivered work. There is no automatic timer; a keeper must submit that call.
+The owner approved installing near-cli after inspection. Official **near-cli-rs 0.31.1** was inspected as a pinned portable package and installed into the user-local bin directory without running a downloaded installer or changing shell profiles. Package hashes, source scope, command shapes and side-effect controls are in [CLI inspection](docs/near-cli-inspection.md).
 
-Approval fixes the worker's entitlement. A private receipt callback records transfer success. Failure restores the same claim for permissionless retry with `pay`. Pending and terminal states cannot be paid twice. Refunds always target the original client. A missing or out-of-gas callback can leave a task pending; this needs sandbox testing before deployment. No unsafe manual override is provided.
+The CLI requires a positional private-key argument. The controller constructs that argv only in memory from process environment variables and captures all CLI output. Its OS profile denies filesystem writes except the null device. The CLI's unconditional reconstructed-command log is a verified symlink to the null device. No signing key, seed, credential file, or raw CLI output is saved to this repository or reports. The first-party transaction signer is not used for testnet transactions.
 
-Account suffix checks are guardrails, not cryptographic proof of a network. Deployment tooling must explicitly select testnet and verify the RPC chain ID. The supplied planner only emits unsigned plans with a fixed testnet RPC; it cannot deploy or broadcast.
+While running, the controller retains signing credentials only in its environment. Credentials are ephemeral and disappear when that process ends; there is no credential-file backup. Do not run ordinary plaintext-key CLI commands outside the inspected wrapper, because the CLI normally logs reconstructed commands.
 
-## Unsigned testnet call plans
+To reproduce with new accounts, inspect the sources, set `NEAR_CLI_BIN` to the fingerprint-verified executable path, set `AGENT_ESCROW_EVIDENCE_FILE` to a new `docs/run-name.json` path, and run `node scripts/testnet-lifecycle.mjs --run`. This creates four new faucet accounts and refuses to overwrite an existing evidence file. It does not recover this run's ephemeral credentials. Unknown transaction outcomes block resends until read-only reconciliation. Do not add a wallet, mainnet network, or payout account.
 
-Use environment variables for account configuration. Never put keys in arguments, files, commits, or chat. The planner does not read keys.
-
-```sh
-NEAR_NETWORK=testnet ESCROW_CONTRACT_ID=escrow.testnet NEAR_SIGNER_ID=client.testnet \
-  node scripts/plan.mjs create_task \
-  '{"worker":"worker.testnet","verifier":"verifier.testnet","title":"Research brief","criteria":"Return verified JSON","budget":"1000000000000000000000000","deadline_ns":"1800003600000000000"}'
-```
-
-The timestamp above is illustrative; supply a future timestamp within 30 days at execution. Review the printed signer, receiver, method, args, gas, and deposit before using a separately inspected testnet signer. No deployment command is safe to run until the dependency gate below is resolved.
-
-## Build and deployment gate
-
-`contract/Cargo.toml` pins near-sdk 5.28.0, and Cargo.lock records the resolved dependency graph, but its sources and build-time execution are not yet reviewed. Do not run Cargo builds, installs, sandbox downloads, or third-party CLI binaries until the exact resolved sources, proc macros, build scripts, and invoked binaries have been inspected. Package-manager wrappers are additional controls, not a replacement for that review.
-
-After that review, compile to NEAR-compatible Wasm with a pinned inspected toolchain, add direct Rust and sandbox receipt tests, deploy only to testnet, and record transaction hashes for create, deliver, approval/release, expiry/refund, and retry. Check the RPC `status` response has `chain_id: testnet` before any signing. The owner handles account setup and sign-in confirmations.
-
-See [architecture](docs/architecture.md), [verification](docs/verification.md), and [owner gates](docs/owner-gates.md).
-
-## Read-only testnet RPC
+## Read-only testnet verification
 
 ```sh
 node scripts/read-task.mjs
-node scripts/read-task.mjs escrow.testnet 0
+node scripts/read-task.mjs ae-261111-ce0de7-contract.testnet 0
 ```
 
-The first command checks the fixed public RPC reports `chain_id: testnet`; the second reads an existing deployed task. Neither signs or broadcasts. The sample account is a placeholder. Local mocked-RPC tests cover refusing another chain, HTTP/RPC errors, and malformed view bytes.
+These commands verify the fixed public RPC reports testnet and read task state. They never sign or broadcast. No deployment or lifecycle blocker remains. nearcore sandbox/gas coverage, refund/failure testnet transactions, and durable account custody are outside the evidence produced here. Publication, hackathon submission and X posting remain owner-controlled and unauthorized.
+
+## Owner review package
+
+See [demo narration and commands](demo/script.md) and [X post draft](x-post-draft.txt). The contact-bearing `submission-payload-draft.json` is saved locally and ignored by Git to preserve the no-personal-information rule. It is an incomplete review draft, with demo URL and mainnet payout address left TBD. No consent or submission request ID has been asserted.

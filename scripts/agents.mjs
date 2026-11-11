@@ -10,8 +10,12 @@ export function runDemo({ refund = false, failTransfer = false } = {}) {
     budget: '1000000000000000000000000', deadline_ns: String(now + 3600n * 10n ** 9n) };
   const trace = [];
   const record = (actor, action, result) => trace.push({ actor, action, result });
-  const id = escrow.create(request, BigInt(request.budget) + FEE, now);
-  record(request.client, 'create_task', escrow.get(id));
+  const id = escrow.post(request, FEE, now);
+  record(request.client, 'post', escrow.get(id));
+  escrow.bid(id,request.worker,request.budget,now);
+  record(request.worker,'bid',escrow.get(id));
+  escrow.escrow(id,request.client,request.worker,BigInt(request.budget),now);
+  record(request.client,'escrow',escrow.get(id));
   if (!refund) {
     // A deterministic worker and named verifier implement the declared JSON contract.
     const artifact = { summary: 'NEAR receipts settle asynchronously. Escrow needs a private callback and retryable payouts.', source: 'https://docs.near.org/' };
@@ -23,9 +27,9 @@ export function runDemo({ refund = false, failTransfer = false } = {}) {
       artifact.source === criteria.source && artifact.summary.length <= criteria.max_summary_chars &&
       createHash('sha256').update(bytes).digest('hex') === escrow.get(id).evidence_sha256;
     if (!valid) throw Error('Verifier rejected artifact');
-    record(request.verifier, 'approve', escrow.approve(id, request.verifier, now + 2n));
+    record(request.verifier, 'release', escrow.release(id, request.verifier, now + 2n));
   } else {
-    record('keeper.testnet', 'expire', escrow.expire(id, BigInt(request.deadline_ns)));
+    record('keeper.testnet', 'refund', escrow.refund(id, BigInt(request.deadline_ns)));
   }
   if (failTransfer) {
     escrow.callback(id, false); record('receipt', 'transfer_failed', escrow.get(id));

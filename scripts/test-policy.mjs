@@ -1,0 +1,21 @@
+// Direct tests of production Rust policy. No SDK or other registry dependency.
+import { spawnSync } from 'node:child_process';
+import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { resolve } from 'node:path';
+const cargoRoot = process.env.CARGO_HOME || `${process.env.HOME}/.cargo`;
+const env = {};
+for (const key of ['PATH', 'HOME', 'RUSTUP_HOME', 'TMPDIR']) if (process.env[key]) env[key] = process.env[key];
+const compiler = `${cargoRoot}/bin/rustc`;
+const version = spawnSync(compiler, ['+stable', '--version'], { env, encoding: 'utf8' });
+if (version.stdout.trim() !== 'rustc 1.95.0 (59807616e 2026-04-14)') throw Error('Compiler identity changed');
+await mkdir('contract/target', { recursive: true });
+const binary = resolve('contract/target/policy-tests');
+const compile = spawnSync(compiler, ['+stable', '--edition=2021', '--cfg', 'policy_test', '--test', '--remap-path-prefix', `${process.env.HOME}=host`, 'contract/src/policy.rs', '-o', binary], { env, stdio: 'inherit' });
+if (compile.status !== 0) process.exit(compile.status || 1);
+const result = spawnSync(binary, [], { env, encoding: 'utf8' });
+process.stdout.write(result.stdout || '');
+process.stderr.write(result.stderr || '');
+if (result.status !== 0) process.exit(result.status || 1);
+const source = await readFile('contract/src/policy.rs');
+await writeFile('docs/policy-tests.json', JSON.stringify({ mode: 'direct-production-rust-policy', compiler: version.stdout.trim(), source_sha256: createHash('sha256').update(source).digest('hex'), result: result.stdout.trim(), covers: ['post roles and immutable terms', 'bid roles amounts duplicates and eight-bid bound', 'existing-bid selection and exact escrow deposit', 'delivery and release authorization', 'deadline boundaries and refund eligibility', 'callback transition success/failure', 'terminal callback rejection', 'payout gas threshold'], does_not_cover: ['NEAR storage', 'ABI wrappers', 'receipt execution', 'callback privacy', 'NEAR gas measurement', 'testnet transactions'] }, null, 2) + '\n');

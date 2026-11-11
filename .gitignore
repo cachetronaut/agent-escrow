@@ -7,3 +7,5 @@ contract/target/
 *.pem
 *.key
 credentials/
+# Contact-bearing owner-review draft stays local.
+/submission-payload-draft.json

@@ -26,7 +26,7 @@ $('task-form').addEventListener('submit', e => { e.preventDefault(); act(() => {
   id = model.create({ client: 'client.testnet', worker: 'worker.testnet', verifier: 'verifier.testnet', title: $('title').value,
     criteria: $('criteria').value, budget, deadline_ns: String(now + BigInt(minutes) * 60n * 10n ** 9n) }, BigInt(budget) + FEE, now);
   $('order').textContent = `${$('title').value} · ${raw} test NEAR locked`;
-  log('Client posted terms and escrowed the budget in this local model.');
+  log('Local demo automatically posted, bid, and escrowed. Use the CLI demo to inspect each stage.');
 }); });
 $('deliver').onclick = () => act(async () => {
   const activeModel = model, activeId = id, activeGeneration = generation, deliveryTime = now + 1n;

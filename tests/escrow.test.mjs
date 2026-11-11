@@ -51,13 +51,13 @@ test('account validation denies mainnet, implicit, suffix tricks and malformed n
   assert.equal(account('sub.worker.testnet'), 'sub.worker.testnet');
 });
 test('read result cannot mutate escrow', () => { const { e, id } = setup(); e.get(id).status = 'Paid'; assert.equal(e.get(id).status, 'Open'); });
-test('unsigned plans fail closed to testnet and expose exact budget plus fee', () => {
+test('unsigned plans fail closed to testnet and expose separate post storage fee', () => {
   const env = { NEAR_NETWORK: 'testnet', ESCROW_CONTRACT_ID: 'escrow.testnet', NEAR_SIGNER_ID: 'client.testnet' };
   const { client, ...args } = input();
-  const p = plan('create_task', args, env, now);
-  assert.equal(p.actions[0].deposit, String(100n + FEE)); assert.equal(p.signed, false); assert.equal(p.broadcast, false);
-  assert.throws(() => plan('create_task', args, { ...env, NEAR_NETWORK: 'mainnet' }));
-  assert.throws(() => plan('create_task', args, { ...env, ESCROW_CONTRACT_ID: 'escrow.near' }));
+  const p = plan('post', args, env, now);
+  assert.equal(p.actions[0].deposit, String(FEE)); assert.equal(p.signed, false); assert.equal(p.broadcast, false);
+  assert.throws(() => plan('post', args, { ...env, NEAR_NETWORK: 'mainnet' }));
+  assert.throws(() => plan('post', args, { ...env, ESCROW_CONTRACT_ID: 'escrow.near' }));
   assert.throws(() => plan('on_paid', { task_id: '0' }, env));
   assert.throws(() => plan('pay', { task_id: 0 }, env));
 });
@@ -89,8 +89,8 @@ test('planner enforces u64 deadline and the exact 30-day creation window', () =>
   const env = { NEAR_NETWORK: 'testnet', ESCROW_CONTRACT_ID: 'escrow.testnet', NEAR_SIGNER_ID: 'client.testnet' };
   const { client, ...args } = input();
   const end = now + 30n * 86400n * 10n ** 9n;
-  for (const d of [1n, now, end + 1n, 1n << 64n]) assert.throws(() => plan('create_task', { ...args, deadline_ns: String(d) }, env, now), /deadline/);
-  for (const d of [now + 1n, end]) assert.equal(plan('create_task', { ...args, deadline_ns: String(d) }, env, now).signed, false);
+  for (const d of [1n, now, end + 1n, 1n << 64n]) assert.throws(() => plan('post', { ...args, deadline_ns: String(d) }, env, now), /deadline/);
+  for (const d of [now + 1n, end]) assert.equal(plan('post', { ...args, deadline_ns: String(d) }, env, now).signed, false);
 });
 test('non-string evidence is rejected without changing task or producing a plan', () => {
   const env = { NEAR_NETWORK: 'testnet', ESCROW_CONTRACT_ID: 'escrow.testnet', NEAR_SIGNER_ID: 'worker.testnet' };

@@ -1,0 +1,1659 @@
+{
+  "target": "wasm32-unknown-unknown",
+  "packages": [
+    {
+      "name": "Inflector",
+      "version": "0.11.4",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "06496de2fe398fa58347db3587268b2c2f895f3199616d7d2e608f6b4b039aef",
+        "files": 30
+      }
+    },
+    {
+      "name": "agent-escrow",
+      "version": "0.1.0",
+      "features": [],
+      "targets": []
+    },
+    {
+      "name": "autocfg",
+      "version": "1.5.1",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "5386580a25814c6c427254de2ab59a4f91bfa591803e7432f601774f9642c476",
+        "files": 24
+      }
+    },
+    {
+      "name": "base64",
+      "version": "0.22.1",
+      "features": [
+        "alloc",
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "870409d821d1f522a7296f3ef183cdc0dc87a82b4e37355faf0171664a691988",
+        "files": 39
+      }
+    },
+    {
+      "name": "base64",
+      "version": "0.23.1",
+      "features": [
+        "alloc"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "18ae0e31f870671b05f13f2d7b913aa2ce5b354cd1796366fa584211c2846cbc",
+        "files": 40
+      }
+    },
+    {
+      "name": "bitflags",
+      "version": "1.3.2",
+      "features": [
+        "default"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "8646545d67a5271b744a6c2077035bf8ab7c74919db9893aed6a7308318044d9",
+        "files": 39
+      }
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.10.4",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2f01881e8006fdbe37b8c8d4c52522d054d6012f2630ac5a327470d5e072874d",
+        "files": 11
+      }
+    },
+    {
+      "name": "block-buffer",
+      "version": "0.12.1",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "aa2732492977ac37604cae6fe36095b19df49b1cb21e90d079a8b231495cf6a3",
+        "files": 13
+      }
+    },
+    {
+      "name": "borsh",
+      "version": "1.8.1",
+      "features": [
+        "borsh-derive",
+        "default",
+        "derive",
+        "std"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "fb26597288cc65f933cbf21eaf11703f853a18a9c38769f12dfc056a8d488f0a",
+        "files": 96
+      }
+    },
+    {
+      "name": "borsh-derive",
+      "version": "1.8.1",
+      "features": [
+        "default"
+      ],
+      "targets": [
+        {
+          "name": "borsh_derive",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "1cba7d9344fe254de3e2f20e8a46e3d96a5443577cc89894d26a1929be2ebe5f",
+        "files": 32
+      }
+    },
+    {
+      "name": "bs58",
+      "version": "0.5.1",
+      "features": [
+        "alloc",
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "98514d174da2a166620c119c7bfec696bf8d725044bdc06c032c7da4898f4daf",
+        "files": 25
+      }
+    },
+    {
+      "name": "bytes",
+      "version": "1.12.1",
+      "features": [
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "c2acbb393ebfefb81d1c247aef9efbf58c97de7d7e976a64c1312f2ead9c37b1",
+        "files": 41
+      }
+    },
+    {
+      "name": "cfg-if",
+      "version": "0.1.10",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f74bf107c81806772ea7d344efccb39c270a17ce07e3faabbcfabfc66c749cca",
+        "files": 11
+      }
+    },
+    {
+      "name": "cfg-if",
+      "version": "1.0.5",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "92eb45cef4174d5f938b7021b74434b66c29720dfe5bb76924e5e9eadce29138",
+        "files": 15
+      }
+    },
+    {
+      "name": "cfg_aliases",
+      "version": "0.2.2",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "8effb83050ee48241465c0c060b9f9cd41b30b27921187d4992b3d49f4187dcd",
+        "files": 11
+      }
+    },
+    {
+      "name": "cfg_eval",
+      "version": "0.1.2",
+      "features": [
+        "default"
+      ],
+      "targets": [
+        {
+          "name": "cfg_eval",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "c5dfb14a72b833eaa99d80ac37070f00bd0205daa59350a48549fec10302d301",
+        "files": 18
+      }
+    },
+    {
+      "name": "chrono",
+      "version": "0.4.45",
+      "features": [
+        "alloc",
+        "clock",
+        "iana-time-zone",
+        "now",
+        "serde",
+        "std",
+        "winapi",
+        "windows-link"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2d0656212c86291d009384b9c6d72121205f33347fb487a6675b83b0419ca4a6",
+        "files": 52
+      }
+    },
+    {
+      "name": "const-oid",
+      "version": "0.10.2",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "9438789ff13474d4d4cfa6dbe514e9d14afe9540fba9e363458974427e6eab75",
+        "files": 23
+      }
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.1.7",
+      "features": [
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "6237773e3c4bfe5f89643315c46b8b785a7c74c8680fe33ba3201f3ef6fc9937",
+        "files": 10
+      }
+    },
+    {
+      "name": "crypto-common",
+      "version": "0.2.2",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "ba34f9ba6aff02693c1f3562f0c69ca3af79519e3e5bcc5e8de2a76136c81134",
+        "files": 12
+      }
+    },
+    {
+      "name": "darling",
+      "version": "0.20.11",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "5e715a0cda8a80a3e477404aef2b3c587ff9ae52219a208830e0c66405d9e86c",
+        "files": 77
+      }
+    },
+    {
+      "name": "darling",
+      "version": "0.24.1",
+      "features": [
+        "default",
+        "suggestions"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "9ccee471290f962d82e27ffa93991f4348864a49eebc89b262bfa9cb2effa889",
+        "files": 109
+      }
+    },
+    {
+      "name": "darling_core",
+      "version": "0.20.11",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "91bed6d8ff2187cd1dff29f2d115e4e572750e507bb80049f8325d56bdd20de8",
+        "files": 74
+      }
+    },
+    {
+      "name": "darling_core",
+      "version": "0.24.1",
+      "features": [
+        "strsim",
+        "suggestions"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "ad413a13b97d48d2ffd32a34a571d9741207a8a76854439437d83a7628093f15",
+        "files": 85
+      }
+    },
+    {
+      "name": "darling_macro",
+      "version": "0.20.11",
+      "features": [],
+      "targets": [
+        {
+          "name": "darling_macro",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "1f4590da6dada8548dedab60a70d7fa2f0e10e6a2891f4911039af8e935f7b20",
+        "files": 7
+      }
+    },
+    {
+      "name": "darling_macro",
+      "version": "0.24.1",
+      "features": [],
+      "targets": [
+        {
+          "name": "darling_macro",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "4f9bf69cb11df99992e014e6e00b4cc528a8f025bdb3ce037bb36334f9e3423b",
+        "files": 7
+      }
+    },
+    {
+      "name": "defmt",
+      "version": "1.2.0",
+      "features": [
+        "alloc"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "04854d2d3315aacc581005afa9aec218fc426148cc62121a2315a9883f1b7ec3",
+        "files": 77
+      }
+    },
+    {
+      "name": "defmt-macros",
+      "version": "1.2.0",
+      "features": [],
+      "targets": [
+        {
+          "name": "defmt_macros",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        },
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2234166119b2b6fb9a0032d783a64976c8272e25682ab230a848bd6806d3b80a",
+        "files": 45
+      }
+    },
+    {
+      "name": "defmt-parser",
+      "version": "1.1.0",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f71506c632ebeb91372d05458039e3d0b66ceb14c83d1d27472dceb1749aa957",
+        "files": 12
+      }
+    },
+    {
+      "name": "deranged",
+      "version": "0.5.9",
+      "features": [
+        "default",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "4650122bba9e7fdf4cab051b5cdccee5b86cccd21b4495da18234e0a04a61548",
+        "files": 11
+      }
+    },
+    {
+      "name": "digest",
+      "version": "0.10.7",
+      "features": [
+        "alloc",
+        "block-buffer",
+        "core-api",
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "00e396e12e8e04b36f1181b7af37bfa18b2f28f22f9d758860acde705651c750",
+        "files": 22
+      }
+    },
+    {
+      "name": "digest",
+      "version": "0.11.3",
+      "features": [
+        "alloc",
+        "block-api",
+        "default",
+        "oid"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2303252a37e58d25cb228ad059184fd6a5cb49e148c0d701d50c1bcbaa5d36bb",
+        "files": 27
+      }
+    },
+    {
+      "name": "dyn-clone",
+      "version": "1.0.20",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "3f6b5cf4f0d2b1d1c320238a11838b6475f61e5887b4c8f71ac555a90531d1e0",
+        "files": 19
+      }
+    },
+    {
+      "name": "equivalent",
+      "version": "1.0.3",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "05a62725afa3927937c54027f3c19713597f831308cbb14e627863c8f29d6656",
+        "files": 11
+      }
+    },
+    {
+      "name": "fnv",
+      "version": "1.0.7",
+      "features": [
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "c197673059356b30de247a89215aff21dad350363bb0209bb3ca0a58fcf0b3b8",
+        "files": 10
+      }
+    },
+    {
+      "name": "foldhash",
+      "version": "0.2.0",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "7577cf9cee3bcbca4147413502bf392ccfb9c4908460f9b5914743f933ddb8f9",
+        "files": 13
+      }
+    },
+    {
+      "name": "generic-array",
+      "version": "0.14.7",
+      "features": [
+        "more_lengths"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "ee8858090e7e963c70d3979287eed72d1c6077b9c80478c8729e81b481765450",
+        "files": 17
+      }
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.12.3",
+      "features": [
+        "raw"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "13e1bafe423037f5312b3b3c803d9d4b8d17d6719d2c516f1ffcd52eb2d1f882",
+        "files": 34
+      }
+    },
+    {
+      "name": "hashbrown",
+      "version": "0.17.1",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2d8dba14e8cb78c86ef9f27ef7e9d35d08e8f18dda0a3e0e1f4aaf5d0171004d",
+        "files": 51
+      }
+    },
+    {
+      "name": "heck",
+      "version": "0.5.0",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "36005593f3fed60c528259c3dc4f364f83df77763f4eb32c86ee1c31caa45032",
+        "files": 17
+      }
+    },
+    {
+      "name": "hex",
+      "version": "0.4.3",
+      "features": [
+        "alloc",
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "426c63d3a3eab3b2a41b5b7b09f002aa191804d69d1432c3e41338c980290a3e",
+        "files": 17
+      }
+    },
+    {
+      "name": "hybrid-array",
+      "version": "0.4.15",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2c4d3ff36c07379b8fc36e5196d54c6169633920a0ca26dea10149fcd8663fbe",
+        "files": 25
+      }
+    },
+    {
+      "name": "ident_case",
+      "version": "1.0.1",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "73f7ccf48e3dc56adeb3fb8497cfb7f52e3aecfffd4f46c306bb21797c6eca7e",
+        "files": 10
+      }
+    },
+    {
+      "name": "indexmap",
+      "version": "1.9.3",
+      "features": [
+        "serde",
+        "serde-1",
+        "std"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "4835a4a0333bd06bbe4a895b3f3a41d1d3950f208ed807575d73867ab18d292b",
+        "files": 34
+      }
+    },
+    {
+      "name": "indexmap",
+      "version": "2.14.2",
+      "features": [
+        "default",
+        "serde",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "3aa15be903f4126f94afc546931b5414c2d7f88a16f98d436d47e64029246e4b",
+        "files": 44
+      }
+    },
+    {
+      "name": "itoa",
+      "version": "1.0.18",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "4ae6a817b7005f3c8fffc98e66f8ca213b102fb38c5270f9484ed00aeb26cae2",
+        "files": 15
+      }
+    },
+    {
+      "name": "jiff",
+      "version": "0.2.39",
+      "features": [
+        "alloc",
+        "std",
+        "tz-system",
+        "tzdb-bundle-platform",
+        "tzdb-concatenated",
+        "tzdb-zoneinfo"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "d24b84155df83fca1aab4ed558d6e939260b7784b01ca66a2390da5fd1d4e8c8",
+        "files": 110
+      }
+    },
+    {
+      "name": "jiff-core",
+      "version": "0.1.2",
+      "features": [
+        "alloc",
+        "default",
+        "std",
+        "tz-fat"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "a777e15e8f4db1a2720c1a0e76f7754fb4366764dfc4e765eb015e8975f50d69",
+        "files": 29
+      }
+    },
+    {
+      "name": "jiff-tzdb",
+      "version": "0.1.9",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "80cb82377932aedd737344d01a857ea914e34788fc6282d9f32b183d83b510e1",
+        "files": 12
+      }
+    },
+    {
+      "name": "jiff-tzdb-platform",
+      "version": "0.1.3",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "db5c3fb103ecdbb1bec0dad8bfd258b85e67fd5044a457848b819fae548598af",
+        "files": 10
+      }
+    },
+    {
+      "name": "keccak",
+      "version": "0.1.6",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "839040413ce77b83fc9237eb330d99b2a80f87549339288ec9b0c0392084320e",
+        "files": 13
+      }
+    },
+    {
+      "name": "keccak",
+      "version": "0.2.2",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "36a291e2ef57e3189d4b2691f9136513fd805fbc9eb3ca6d3439bbb6dab2d392",
+        "files": 19
+      }
+    },
+    {
+      "name": "log",
+      "version": "0.4.35",
+      "features": [
+        "alloc",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "c20d9899c9ceeb1b07ab61efe540265a5d1a2cfdbbd3547a0f20ec0757de9460",
+        "files": 26
+      }
+    },
+    {
+      "name": "memchr",
+      "version": "2.8.3",
+      "features": [
+        "alloc",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "02684f87f4940ace43574850185648751918d6a7293c2bdf68fc1dcb800b3071",
+        "files": 60
+      }
+    },
+    {
+      "name": "memory_units",
+      "version": "0.4.0",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "a38c6ae5fdb6b454d1de4192686454206a77dfa82c81bfbbdf7800c03a878513",
+        "files": 9
+      }
+    },
+    {
+      "name": "near-account-id",
+      "version": "2.6.0",
+      "features": [
+        "borsh",
+        "internal_unstable",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "20a75fec4f9121a688aa52d4902ab0d5d270dd788a7c93ff4cf24a9526908e73",
+        "files": 24
+      }
+    },
+    {
+      "name": "near-crypto-hash",
+      "version": "0.1.0",
+      "features": [
+        "borsh",
+        "default",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "c2b5f5846cb69b709191a756e08707f426910f590032e9bedfddabbedbf0afea",
+        "files": 7
+      }
+    },
+    {
+      "name": "near-crypto-hash",
+      "version": "0.2.0",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "cbcf185092870877becfb8cd67007b2631d3782dbc91a1ce9e1a38c72c3013db",
+        "files": 6
+      }
+    },
+    {
+      "name": "near-gas",
+      "version": "0.3.7",
+      "features": [
+        "borsh",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "71b52410c26d7ecb0b14fbda61d0d896acda0e904adf9c701cf30d981c0db8cf",
+        "files": 23
+      }
+    },
+    {
+      "name": "near-global-contracts",
+      "version": "0.1.1",
+      "features": [
+        "borsh",
+        "default",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "ff02a4bab5fb24fde8142f9ab2fd9c4ebbb27e74c0a51bf6292398642acf7a46",
+        "files": 9
+      }
+    },
+    {
+      "name": "near-sdk",
+      "version": "5.28.0",
+      "features": [
+        "default",
+        "legacy",
+        "wee_alloc"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "251712a6102694d38c5f705e4fab2d4e0810f7fa9590ae8e76a76421bf1b4920",
+        "files": 138
+      }
+    },
+    {
+      "name": "near-sdk-core",
+      "version": "4.1.3",
+      "features": [
+        "borsh",
+        "default",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "6e7f99e3ae298dbf7f985142dfc4ada76b0e83fd28af4d5b67d68f5276e484e7",
+        "files": 17
+      }
+    },
+    {
+      "name": "near-sdk-env",
+      "version": "0.1.8",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "da0ea756451716eb32d07ef7e12df4287de6c7265273a3f998d17c721c112cd6",
+        "files": 9
+      }
+    },
+    {
+      "name": "near-sdk-macros",
+      "version": "5.28.3",
+      "features": [],
+      "targets": [
+        {
+          "name": "near_sdk_macros",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        },
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "5b305134f9dd1529a3f9fc02dfa957579e09c96cc0c466985d677326412732e9",
+        "files": 80
+      }
+    },
+    {
+      "name": "near-sys",
+      "version": "0.2.14",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "b555a50466e2c27ba2bf3133de8f23fead7b10c07505580e1de752390a691cdb",
+        "files": 7
+      }
+    },
+    {
+      "name": "near-token",
+      "version": "0.3.6",
+      "features": [
+        "borsh",
+        "serde"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f837eb3ff5402e9460f9dd6ace7f0cdf33ec6fa04a2900cdf38aa8d5723d1edd",
+        "files": 24
+      }
+    },
+    {
+      "name": "num-conv",
+      "version": "0.2.2",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "8c9a9244437b5ad7612aa2df7756ac96eb241d7b76d8cbccb6fd9a3c6b12df27",
+        "files": 9
+      }
+    },
+    {
+      "name": "num-traits",
+      "version": "0.2.19",
+      "features": [],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "bed63e645ab3e60faf0387d125c95d0b8896fb746a210051d2177f763f19e798",
+        "files": 30
+      }
+    },
+    {
+      "name": "once_cell",
+      "version": "1.21.4",
+      "features": [
+        "alloc",
+        "default",
+        "race",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "3f41535e35c8fb325381ece70fbc63e479e29cd9816d1354ab8cce09bd6a8d4b",
+        "files": 30
+      }
+    },
+    {
+      "name": "powerfmt",
+      "version": "0.2.1",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f5bc87062419313f9c253b2e7e9f642698e04c21c5aae80277f995f119865608",
+        "files": 13
+      }
+    },
+    {
+      "name": "proc-macro-crate",
+      "version": "3.5.0",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f682aa11e8b288d2e5b48a2eecfde2469ef4a72751bb8dc6b0cc629bbf175139",
+        "files": 15
+      }
+    },
+    {
+      "name": "proc-macro2",
+      "version": "1.0.107",
+      "features": [
+        "default",
+        "proc-macro"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f949e20adddbd3cabe9a5f2e29a1bacd8527042b8fa87fe4217f175a7d22effa",
+        "files": 34
+      }
+    },
+    {
+      "name": "quote",
+      "version": "1.0.47",
+      "features": [
+        "default",
+        "proc-macro"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "cb11c378237004e5205d481cf2d2ccf2cf245406246d65025e2f070d9965ea23",
+        "files": 36
+      }
+    },
+    {
+      "name": "ref-cast",
+      "version": "1.0.27",
+      "features": [],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "924828864a3191fc7db76381fa94e94ad4a8ed1703c03928adc64426a45b41b7",
+        "files": 44
+      }
+    },
+    {
+      "name": "ref-cast-impl",
+      "version": "1.0.27",
+      "features": [],
+      "targets": [
+        {
+          "name": "ref_cast_impl",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "dfa244aa4ebe319cc3e9b0dcb920f6567327ed0d869087dc4c81e1a800209b09",
+        "files": 8
+      }
+    },
+    {
+      "name": "ripemd",
+      "version": "0.1.3",
+      "features": [
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "335b11c9e8a32c271befeabcc9136f87e0289cc6c2c94aa47b96c4183cf79571",
+        "files": 19
+      }
+    },
+    {
+      "name": "rustversion",
+      "version": "1.0.23",
+      "features": [],
+      "targets": [
+        {
+          "name": "rustversion",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        },
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build/build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "63484d0573d8fbecfc60cc89e6d0285fe58f9d18d8f0edbefa82afef592ac7f1",
+        "files": 40
+      }
+    },
+    {
+      "name": "schemars",
+      "version": "0.9.0",
+      "features": [
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "fd1fe4fa7c591fe547b8da9b2dc42e9993b1655a8527997bc52783e2e2db9003",
+        "files": 217
+      }
+    },
+    {
+      "name": "schemars",
+      "version": "1.2.3",
+      "features": [
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "249510ef39b831874dadddd8c780593f1814331acdc7345ac82e1a55b1c1b152",
+        "files": 262
+      }
+    },
+    {
+      "name": "serde",
+      "version": "1.0.229",
+      "features": [
+        "alloc",
+        "default",
+        "derive",
+        "rc",
+        "serde_derive",
+        "std"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "bad8743acb758995f0c5d9589b5aa81c4a37186ef8914de4887dab0d2bc72dc9",
+        "files": 34
+      }
+    },
+    {
+      "name": "serde_core",
+      "version": "1.0.229",
+      "features": [
+        "alloc",
+        "rc",
+        "result",
+        "std"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "8d36a184d6574ab34aed6ca1c5776ada9ee51cbb3dd81ed128ae43bae87b12f2",
+        "files": 28
+      }
+    },
+    {
+      "name": "serde_derive",
+      "version": "1.0.229",
+      "features": [
+        "default"
+      ],
+      "targets": [
+        {
+          "name": "serde_derive",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "d719937f4eb3a629fe75a882e4e9afcc8bc853699c840dbe7cf5e19c832b1044",
+        "files": 37
+      }
+    },
+    {
+      "name": "serde_json",
+      "version": "1.0.154",
+      "features": [
+        "alloc",
+        "default",
+        "indexmap",
+        "preserve_order",
+        "std"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "495293379ac78aabd987ec9de323830154928720ceeede1f1b1eb1aaf4579e6d",
+        "files": 91
+      }
+    },
+    {
+      "name": "serde_with",
+      "version": "3.24.0",
+      "features": [
+        "alloc",
+        "base64",
+        "default",
+        "hex",
+        "json",
+        "macros",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "393c42326182dd6dccebd965c817cd62181a63da908630fd9f6dc70b53fff4da",
+        "files": 170
+      }
+    },
+    {
+      "name": "serde_with_macros",
+      "version": "3.24.0",
+      "features": [],
+      "targets": [
+        {
+          "name": "serde_with_macros",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "465621ba978aec6b8785ddc81827b8de0f2f5c336603e62f5a6f92a8630ed2aa",
+        "files": 19
+      }
+    },
+    {
+      "name": "sha2",
+      "version": "0.11.1",
+      "features": [
+        "alloc",
+        "default",
+        "oid"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "83bf99b808829716d93f7df9bc9508a27ab96c64866d4d8973f5591b82bc104f",
+        "files": 48
+      }
+    },
+    {
+      "name": "sha3",
+      "version": "0.10.9",
+      "features": [
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "6d2da4f5f22e73e5206c209e5c66987196ec067c399c7b5435e08b76fb9b57e3",
+        "files": 32
+      }
+    },
+    {
+      "name": "sha3",
+      "version": "0.11.0",
+      "features": [
+        "alloc",
+        "default",
+        "oid"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "591f7620b1b2e19f3600ad3dd37d1152d0c8d3cc53d402588152bb9a71ecd202",
+        "files": 34
+      }
+    },
+    {
+      "name": "strsim",
+      "version": "0.11.1",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f0f138957438aebb43b0e273c3bf8b25c768b23366363be368c174f33ca9ea0b",
+        "files": 14
+      }
+    },
+    {
+      "name": "strum",
+      "version": "0.26.3",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "8a6a3b51404fee227afdaa3c0f8eb9680e781290d52189e602380c8c91a5c4c1",
+        "files": 8
+      }
+    },
+    {
+      "name": "strum_macros",
+      "version": "0.26.4",
+      "features": [],
+      "targets": [
+        {
+          "name": "strum_macros",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "acc0a41cd1c340c4e0a0f8bf95f4acd2d1d9a210fdf43cbd12f5e738c3d90150",
+        "files": 30
+      }
+    },
+    {
+      "name": "syn",
+      "version": "2.0.119",
+      "features": [
+        "clone-impls",
+        "default",
+        "derive",
+        "extra-traits",
+        "full",
+        "parsing",
+        "printing",
+        "proc-macro"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "0b3da493a9c75cc9117c70ffcc1c55d95298dc9d9a6a5d5035a9f3c98ad0128d",
+        "files": 106
+      }
+    },
+    {
+      "name": "syn",
+      "version": "3.0.9",
+      "features": [
+        "clone-impls",
+        "default",
+        "derive",
+        "extra-traits",
+        "fold",
+        "full",
+        "parsing",
+        "printing",
+        "proc-macro",
+        "visit",
+        "visit-mut"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "34126c9dfbdb8630dac8eda313ac196f3064ccbade792c7ccd6fd7fb965f25b4",
+        "files": 105
+      }
+    },
+    {
+      "name": "thiserror",
+      "version": "2.0.21",
+      "features": [
+        "default",
+        "std"
+      ],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "a157f93bc23c0284dbfcdb2ba0a5f552529c1746c10d48d1602996837b26de1b",
+        "files": 106
+      }
+    },
+    {
+      "name": "thiserror-impl",
+      "version": "2.0.21",
+      "features": [],
+      "targets": [
+        {
+          "name": "thiserror_impl",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "64d7a1233d8cbc5f0685b361d5d6282c470f2fdc5f1da61e64ff5982ae7d25e6",
+        "files": 18
+      }
+    },
+    {
+      "name": "time",
+      "version": "0.3.55",
+      "features": [
+        "alloc",
+        "formatting",
+        "parsing",
+        "serde",
+        "serde-well-known",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "2ea39fbcdf34495d4a40702194c25897e9ffa94e79f7590b90e1f80816be1d45",
+        "files": 179
+      }
+    },
+    {
+      "name": "time-core",
+      "version": "0.1.9",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "88f1718e8f7bb67af992339f341eefa0aeb8230c22b00d13eca1589bb1cdb77d",
+        "files": 11
+      }
+    },
+    {
+      "name": "time-macros",
+      "version": "0.2.32",
+      "features": [
+        "formatting",
+        "parsing",
+        "serde"
+      ],
+      "targets": [
+        {
+          "name": "time_macros",
+          "kind": [
+            "proc-macro"
+          ],
+          "path": "src/lib.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "5e38d2e02c356625c54c5ad0edf092b6a8627471cf52b006d0d245a310a2dcf8",
+        "files": 28
+      }
+    },
+    {
+      "name": "tinyvec",
+      "version": "1.13.3",
+      "features": [
+        "alloc",
+        "grab_spare_slice",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f6ac30d3af0aecaa7fc0b4d407edf7e32abcfb7ff8abd856c6a04f13044efc44",
+        "files": 39
+      }
+    },
+    {
+      "name": "toml_datetime",
+      "version": "1.1.2+spec-1.1.0",
+      "features": [
+        "alloc",
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "e164e29402f3f76cec4f9ba537baed1c33908f468bf8c765e53754b4a2348305",
+        "files": 12
+      }
+    },
+    {
+      "name": "toml_edit",
+      "version": "0.25.17+spec-1.1.0",
+      "features": [
+        "parse"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f56e213c44b1f7706c3041e254c2eeff29c5b318e18807657f60b0430d167be8",
+        "files": 46
+      }
+    },
+    {
+      "name": "toml_parser",
+      "version": "1.1.5+spec-1.1.0",
+      "features": [
+        "alloc",
+        "default",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "59efbe023e107c8e466bc0c3d990cc5a37179a12e4a9871d7c7e1ea016f24978",
+        "files": 23
+      }
+    },
+    {
+      "name": "typenum",
+      "version": "1.20.1",
+      "features": [
+        "const-generics"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "fd1ae89c844e73231cf3d9ef3df790be44b9c805533f68c119705edfd6cdb034",
+        "files": 27
+      }
+    },
+    {
+      "name": "unicode-ident",
+      "version": "1.0.27",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "00b87421b516e14b33af0e3ba12cd2e52a381acb16f60a78c68ffbb8647ad63d",
+        "files": 27
+      }
+    },
+    {
+      "name": "version_check",
+      "version": "0.9.5",
+      "features": [],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "9b09e2fee431feec2817fc6191556db71503635af13457148c9b176016e47ae5",
+        "files": 14
+      }
+    },
+    {
+      "name": "wee_alloc",
+      "version": "0.4.5",
+      "features": [],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "5ce2100f0946fe6a5e6c6e2e1c2901f9273905e50caea9937989c5af8d3c4e2b",
+        "files": 15
+      }
+    },
+    {
+      "name": "winnow",
+      "version": "1.0.4",
+      "features": [
+        "alloc",
+        "ascii",
+        "binary",
+        "default",
+        "parser",
+        "std"
+      ],
+      "targets": [],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "357a243ad3e358c4702d114c3e5f11e2e43e1860841d9ba2b5cfd2103c084568",
+        "files": 108
+      }
+    },
+    {
+      "name": "zmij",
+      "version": "1.0.23",
+      "features": [],
+      "targets": [
+        {
+          "name": "build-script-build",
+          "kind": [
+            "custom-build"
+          ],
+          "path": "build.rs"
+        }
+      ],
+      "source_fingerprint": {
+        "algorithm": "sha256-path-nul-content-nul-sorted",
+        "sha256": "f8e1f9495baa29ea54387be147fbf563326ef86c78275fb4aa8f1dabcf0dabdd",
+        "files": 18
+      }
+    }
+  ]
+}

@@ -38,3 +38,13 @@ Final local suite run: **22 tests passed, 0 failed, 0 skipped** using `node --te
 ## Rules verification update
 
 Read the live https://nearhackathon.com/HACKATHON.md on 2026-11-03. Confirmed submission dates, testnet eligibility, optional integrations, track IDs, repository and X-demo requirements, the exact API field set, and response/retry rules. The web reader could not handle the Markdown content type; a read-only HTTPS fetch retrieved the source. No submission endpoint was called. Owner confirmed tracks agents and business in one entry. Testnet account IDs are still pending. Account setup blocks deployment, not dependency inspection or local contract verification.
+
+## Re-do, 2026-11-11
+
+The real offline release Wasm build now passes; see wasm-build.json and the latest build-progress.md section. The complete available JavaScript suite passes 28/28 and the direct production Rust policy suite passes 5/5 after compilation. No NEAR runtime/sandbox tests ran. No accounts, deployment, or lifecycle transactions exist for this run. The requested near-cli is absent and execution is uncleared under the inspect-before-execution rule. The public RPC chain ID and private repository visibility were verified live. See README and redo-verification.json for the current status; earlier uncompiled/pending test statements above are historical.
+
+## Bidding and deployment follow-up, 2026-11-11
+
+Current evidence supersedes earlier compile/deployment blockers. The exact locked source fingerprints remain unchanged. The bidding contract compiled with zero warnings. All 55 Node tests and 12 production Rust policy tests passed, with zero failures or skips. Of the Node tests, 19 execute actual Wasm through the inspected in-memory host and 8 specifically exercise the new model/planner bidding lifecycle. The host creates no credentials and does not claim nearcore gas/consensus coverage.
+
+The official inspected near-cli created four free faucet-funded testnet accounts, deployed and initialized the contract, and sent separate post, bid, escrow, deliver and release transactions. Every final transaction succeeded; code hash, final Paid state and exact 0.04 test NEAR worker payout were verified. A separate credential-free process re-read all six transactions and final contract state. See README.md, followup-verification.json, testnet-lifecycle.json and testnet-independent-check.json. Refund and transfer-failure paths have local Wasm coverage; they were not separately exercised on public testnet in this run. No remaining deployment/lifecycle blocker is recorded.

@@ -1,34 +1,32 @@
 //! Testnet NEAR escrow. No admin withdrawals, upgrades, or mainnet path.
 use near_sdk::collections::LookupMap;
 use near_sdk::json_types::{U128, U64};
-use near_sdk::{env, near, AccountId, Gas, NearToken, PanicOnDefault, Promise, PromiseResult};
+use near_sdk::{env, near, AccountId, Gas, NearToken, PanicOnDefault, Promise, PromiseOrValue};
 
 const STORAGE_FEE: u128 = 100_000_000_000_000_000_000_000; // 0.1 NEAR, retained
 const CALLBACK_GAS: Gas = Gas::from_tgas(15);
-const MIN_PAYOUT_GAS: Gas = Gas::from_tgas(35);
+mod policy;
+pub use policy::Status;
 
 #[near(serializers = [borsh, json])]
-#[derive(Clone, Debug, PartialEq)]
-pub enum Status {
-    Open,
-    Delivered,
-    Approved,
-    PayingWorker,
-    Paid,
-    Refundable,
-    Refunding,
-    Refunded,
+#[derive(Clone)]
+pub struct Bid {
+    pub worker: AccountId,
+    pub amount: U128,
 }
 
 #[near(serializers = [borsh, json])]
 #[derive(Clone)]
 pub struct Task {
     pub client: AccountId,
-    pub worker: AccountId,
+    pub worker: Option<AccountId>,
     pub verifier: AccountId,
     pub title: String,
     pub criteria: String,
+    /// Immutable ceiling. The accepted bid determines escrow_amount.
     pub budget: U128,
+    pub escrow_amount: U128,
+    pub bids: Vec<Bid>,
     pub deadline_ns: U64,
     pub evidence_sha256: Option<String>,
     pub status: Status,
@@ -52,11 +50,11 @@ impl Escrow {
         }
     }
 
-    /// Attach exactly budget + storage_fee(). Deadline is in nanoseconds.
+    /// Publish immutable terms. Attach exactly storage_fee(), not the budget.
+    /// This retained fee reserves storage for all eight bids and later evidence.
     #[payable]
-    pub fn create_task(
+    pub fn post(
         &mut self,
-        worker: AccountId,
         verifier: AccountId,
         title: String,
         criteria: String,
@@ -64,33 +62,30 @@ impl Escrow {
         deadline_ns: U64,
     ) -> U64 {
         let client = env::predecessor_account_id();
-        for id in [&client, &worker, &verifier] {
-            Self::testnet(id);
-        }
+        Self::testnet(&client);
+        Self::testnet(&verifier);
         assert!(
-            client != worker && client != verifier && worker != verifier,
-            "Distinct roles required"
+            policy::valid_post_roles(
+                client.as_str(),
+                verifier.as_str(),
+                env::current_account_id().as_str()
+            ),
+            "Distinct roles and contract required"
         );
         assert!(
-            !title.trim().is_empty() && title.len() <= 160,
-            "Invalid title"
+            policy::valid_post_terms(
+                &title,
+                &criteria,
+                budget.0,
+                env::block_timestamp(),
+                deadline_ns.0
+            ),
+            "Invalid task terms"
         );
-        assert!(
-            !criteria.trim().is_empty() && criteria.len() <= 2048,
-            "Invalid criteria"
-        );
-        assert!(budget.0 > 0, "Zero budget");
-        let now = env::block_timestamp();
-        assert!(
-            deadline_ns.0 > now
-                && deadline_ns.0 <= now.checked_add(30 * 24 * 3600 * 1_000_000_000).unwrap(),
-            "Deadline outside next 30 days"
-        );
-        let total = budget.0.checked_add(STORAGE_FEE).expect("Amount overflow");
         assert_eq!(
             env::attached_deposit().as_yoctonear(),
-            total,
-            "Attach budget + storage fee exactly"
+            STORAGE_FEE,
+            "Attach storage fee exactly"
         );
         let id = self.next_id;
         self.next_id = id.checked_add(1).expect("ID overflow");
@@ -99,30 +94,95 @@ impl Escrow {
             &id,
             &Task {
                 client,
-                worker,
+                worker: None,
                 verifier,
                 title,
                 criteria,
                 budget,
+                escrow_amount: U128(0),
+                bids: vec![],
                 deadline_ns,
                 evidence_sha256: None,
-                status: Status::Open,
+                status: Status::Posted,
             },
         );
-        // Fee includes headroom for evidence and the longest status representation.
-        let storage = u128::from(env::storage_usage().saturating_sub(before) + 256)
+        // Each future bid needs at most 4 + 64 + 16 bytes. The extra 256
+        // reserves the selected worker, evidence, and serialized-state growth.
+        let reserve = policy::MAX_BIDS as u64 * 84 + 256;
+        let storage = u128::from(env::storage_usage().saturating_sub(before) + reserve)
             .checked_mul(env::storage_byte_cost().as_yoctonear())
             .unwrap();
         assert!(STORAGE_FEE >= storage, "Storage fee insufficient");
-        Self::event(id, "created");
+        Self::event(id, "posted");
         U64(id)
+    }
+
+    /// One immutable bid per worker, at most eight per task, paid by post storage.
+    pub fn bid(&mut self, task_id: U64, amount: U128) {
+        let mut t = self.load(task_id.0);
+        let worker = env::predecessor_account_id();
+        Self::testnet(&worker);
+        assert!(
+            policy::can_bid(
+                worker.as_str(),
+                t.client.as_str(),
+                t.verifier.as_str(),
+                env::current_account_id().as_str(),
+                &t.status,
+                env::block_timestamp(),
+                t.deadline_ns.0,
+                amount.0,
+                t.budget.0,
+                t.bids.iter().any(|b| b.worker == worker),
+                t.bids.len()
+            ),
+            "Bid denied"
+        );
+        t.bids.push(Bid { worker, amount });
+        self.tasks.insert(&task_id.0, &t);
+        Self::event(task_id.0, "bid");
+    }
+
+    /// Only the posting client may select an existing bid and fund it once.
+    #[payable]
+    pub fn escrow(&mut self, task_id: U64, worker: AccountId) {
+        let mut t = self.load(task_id.0);
+        let amount = t
+            .bids
+            .iter()
+            .find(|b| b.worker == worker)
+            .map(|b| b.amount.0);
+        assert!(
+            policy::can_escrow(
+                env::predecessor_account_id().as_str(),
+                t.client.as_str(),
+                &t.status,
+                env::block_timestamp(),
+                t.deadline_ns.0,
+                amount,
+                env::attached_deposit().as_yoctonear()
+            ),
+            "Escrow denied"
+        );
+        t.worker = Some(worker);
+        t.escrow_amount = U128(amount.expect("Existing bid required"));
+        t.status = Status::Open;
+        self.tasks.insert(&task_id.0, &t);
+        Self::event(task_id.0, "escrowed");
     }
 
     pub fn deliver(&mut self, task_id: U64, evidence_sha256: String) {
         let mut t = self.load(task_id.0);
-        assert_eq!(env::predecessor_account_id(), t.worker, "Worker only");
-        assert!(matches!(t.status, Status::Open), "Task not open");
-        assert!(env::block_timestamp() < t.deadline_ns.0, "Expired");
+        assert!(
+            policy::can_deliver(
+                env::predecessor_account_id().as_str(),
+                t.worker.as_ref().map(|worker| worker.as_str()),
+                &t.status,
+                env::block_timestamp(),
+                t.deadline_ns.0
+            ),
+            "Delivery denied"
+        );
         assert!(
             evidence_sha256.len() == 64
                 && evidence_sha256
@@ -136,42 +196,55 @@ impl Escrow {
         Self::event(task_id.0, "delivered");
     }
 
-    /// Approval is final. A failed transfer remains payable to the worker.
-    pub fn approve(&mut self, task_id: U64) -> Promise {
+    /// Named verifier approval is final. Failed transfers preserve the worker claim.
+    pub fn release(&mut self, task_id: U64) -> Promise {
         Self::payout_gas();
         let mut t = self.load(task_id.0);
-        assert_eq!(env::predecessor_account_id(), t.verifier, "Verifier only");
-        assert!(matches!(t.status, Status::Delivered), "Not delivered");
-        assert!(env::block_timestamp() < t.deadline_ns.0, "Expired");
+        assert!(
+            policy::can_release(
+                env::predecessor_account_id().as_str(),
+                t.verifier.as_str(),
+                &t.status,
+                env::block_timestamp(),
+                t.deadline_ns.0
+            ),
+            "Release denied"
+        );
         t.status = Status::Approved;
         self.tasks.insert(&task_id.0, &t);
         Self::event(task_id.0, "approved");
         self.pay(task_id)
     }
 
-    /// Anyone may trigger expiry; funds always return to the original client.
-    pub fn expire(&mut self, task_id: U64) -> Promise {
-        Self::payout_gas();
+    /// Anyone may refund expired unfunded or unapproved work. Funded budgets
+    /// always return to the posting client; the retained storage fee is excluded.
+    pub fn refund(&mut self, task_id: U64) -> PromiseOrValue<bool> {
         let mut t = self.load(task_id.0);
         assert!(
-            matches!(t.status, Status::Open | Status::Delivered),
-            "Not expirable"
+            policy::can_refund(&t.status, env::block_timestamp(), t.deadline_ns.0),
+            "Refund denied"
         );
-        assert!(env::block_timestamp() >= t.deadline_ns.0, "Not expired");
+        if t.status == Status::Posted {
+            t.status = Status::Cancelled;
+            self.tasks.insert(&task_id.0, &t);
+            Self::event(task_id.0, "cancelled");
+            return PromiseOrValue::Value(true);
+        }
+        Self::payout_gas();
         t.status = Status::Refundable;
         self.tasks.insert(&task_id.0, &t);
         Self::event(task_id.0, "expired");
-        self.pay(task_id)
+        PromiseOrValue::Promise(self.pay(task_id))
     }
 
-    /// Permissionless retry. No caller can change the beneficiary.
+    /// Permissionless retry. No caller can change the beneficiary or amount.
     pub fn pay(&mut self, task_id: U64) -> Promise {
         Self::payout_gas();
         let mut t = self.load(task_id.0);
         let recipient = match t.status {
             Status::Approved => {
                 t.status = Status::PayingWorker;
-                t.worker.clone()
+                t.worker.clone().expect("No selected worker")
             }
             Status::Refundable => {
                 t.status = Status::Refunding;
@@ -182,7 +255,7 @@ impl Escrow {
         self.tasks.insert(&task_id.0, &t);
         Self::event(task_id.0, "transfer_started");
         Promise::new(recipient)
-            .transfer(NearToken::from_yoctonear(t.budget.0))
+            .transfer(NearToken::from_yoctonear(t.escrow_amount.0))
             .then(
                 Self::ext(env::current_account_id())
                     .with_static_gas(CALLBACK_GAS)
@@ -194,14 +267,9 @@ impl Escrow {
     pub fn on_paid(&mut self, task_id: U64) -> bool {
         assert_eq!(env::promise_results_count(), 1, "One result required");
         let mut t = self.load(task_id.0);
-        let ok = matches!(env::promise_result(0), PromiseResult::Successful(_));
-        t.status = match (&t.status, ok) {
-            (Status::PayingWorker, true) => Status::Paid,
-            (Status::PayingWorker, false) => Status::Approved,
-            (Status::Refunding, true) => Status::Refunded,
-            (Status::Refunding, false) => Status::Refundable,
-            _ => env::panic_str("No transfer pending"),
-        };
+        // A native transfer has an empty result. Bound result reads to zero bytes.
+        let ok = env::promise_result_checked(0, 0).is_ok();
+        t.status = policy::receipt_status(&t.status, ok).expect("No transfer pending");
         self.tasks.insert(&task_id.0, &t);
         Self::event(
             task_id.0,
@@ -223,6 +291,9 @@ impl Escrow {
     pub fn storage_fee(&self) -> U128 {
         U128(STORAGE_FEE)
     }
+    pub fn max_bids(&self) -> u32 {
+        policy::MAX_BIDS as u32
+    }
 }
 
 impl Escrow {
@@ -237,10 +308,7 @@ impl Escrow {
     }
     fn payout_gas() {
         assert!(
-            env::prepaid_gas()
-                .as_gas()
-                .saturating_sub(env::used_gas().as_gas())
-                >= MIN_PAYOUT_GAS.as_gas(),
+            policy::payout_gas(env::prepaid_gas().as_gas(), env::used_gas().as_gas()),
             "Insufficient payout gas"
         );
     }
