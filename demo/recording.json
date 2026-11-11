@@ -1,0 +1,15 @@
+{
+  "file": "demo/testnet-lifecycle.mp4",
+  "duration_seconds": 131.743533,
+  "bytes": 462837,
+  "sha256": "292bfb5fcc2401346f79878bfc63c48c097fb5fb1c4e24dbd88d6844f1f9906e",
+  "format": "mp4",
+  "dimensions": "1440x1000",
+  "audio": "none; exact owner voiceover script in demo/script.md",
+  "capture": "Continuous browser screen recording of live first-party read-only evidence monitor during testnet execution",
+  "playback_review": "Browser metadata verified; opening and final frames visually inspected; all five explorer links and Paid balance delta visible",
+  "contract": "ae-261111-d2e093-contract.testnet",
+  "evidence": "docs/demo-testnet-lifecycle.json",
+  "final_status": "Paid",
+  "worker_release_delta_yoctoNEAR": "40000000000000000000000"
+}

@@ -77,6 +77,8 @@ node scripts/agents.mjs --refund --fail-transfer
 node scripts/serve.mjs
 ```
 
+The build runner currently requires macOS with sandbox-exec, the already-installed Rust 1.95.0 stable toolchain and wasm32-unknown-unknown target, and the exact cached Cargo sources listed in docs/build-inventory.json. It does not install missing tooling or fetch missing sources. A fresh clone on an unprovisioned machine needs a separate source-review and toolchain setup step.
+
 The Wasm artifact must exist before the full Node suite runs. The build runner pins the installed compiler, rejects unexpected Cargo configuration, checks 107 dependency fingerprints, strips inherited environment inputs, and builds offline under OS network/write restrictions. See [dependency review](docs/dependency-review.md).
 
 Open `http://127.0.0.1:4173` for the offline interactive demo. Its creation adapter automatically posts, bids, and escrows; the deterministic CLI demo records all stages separately. Both use local models and simulated receipt callbacks. The displayed verifier approval is a human attestation. No LLM or autonomous on-chain agent is claimed. The CLI verifier accepts only its predefined JSON task. Stablecoins and Intents are not integrated.
@@ -103,3 +105,7 @@ These commands verify the fixed public RPC reports testnet and read task state. 
 ## Owner review package
 
 See [demo narration and commands](demo/script.md) and [X post draft](x-post-draft.txt). The contact-bearing `submission-payload-draft.json` is saved locally and ignored by Git to preserve the no-personal-information rule. It is an incomplete review draft, with demo URL and mainnet payout address left TBD. No consent or submission request ID has been asserted.
+
+Fresh-clone verification on the provisioned macOS host passed the offline build, all 67 local checks, both CLI model demos, the local server, and public read-only testnet verification. The clean rebuild produced 215,659 bytes with SHA-256 `f002abe5cbe064d7a4caf790e070dbd0fe8f11d98f63583d14d244cd4aec87e5`, differing from the historical deployed artifact above. This establishes functional reproduction, not byte-identical reproduction or a deployment of the fresh build. The cause of that artifact difference has not been established.
+
+The [recorded testnet run](demo/testnet-lifecycle.mp4) is a silent 131.74-second MP4 showing all five real transactions, explorer URLs, final Paid state, and the exact 0.04 test NEAR release balance increase. [Recorded-run receipts](docs/demo-testnet-lifecycle.json), [recording metadata](demo/recording.json), and [fresh-clone results](docs/reproducibility.json) are included. The original deployment above remains unchanged.

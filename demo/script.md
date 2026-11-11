@@ -19,6 +19,14 @@ deploy
 
 The controller creates four fresh faucet-funded testnet accounts and deploys the compiled Wasm. It keeps credentials only in its environment and memory. Leave it running. Never repeat a transaction after an unknown result. Use `reconcile` and review evidence first.
 
+In a second terminal, run the read-only first-party evidence monitor with the same filename:
+
+```sh
+AGENT_ESCROW_EVIDENCE_FILE=docs/recorded-run.json node scripts/demo-evidence-server.mjs
+```
+
+Open `http://127.0.0.1:4174` and capture that tab. The monitor reads only the selected JSON evidence file and binds loopback.
+
 ## Record the complete lifecycle
 
 Start capture with all five stages still waiting. Enter this single controller command:
@@ -61,3 +69,21 @@ AGENT_ESCROW_EVIDENCE_FILE=docs/another-run.json node scripts/testnet-lifecycle.
 ```
 
 Do not reuse a filename or overwrite evidence. Enter `exit` when finished to destroy the controller's ephemeral credentials.
+
+## Captured run, 2026-11-11
+
+[Screen recording](testnet-lifecycle.mp4), 131.74 seconds, silent MP4. Contract `ae-261111-d2e093-contract.testnet`.
+
+| Step | Exact explorer URL |
+| --- | --- |
+| post | https://testnet.nearblocks.io/txns/DU6xjEfSYsQYn4p9Yxg9F9Hd6FW3rpUUnacgaZmf8mfC |
+| bid | https://testnet.nearblocks.io/txns/9oVAAstArJy4EEdX5cjwkYadAdzZteoiww12ZMtvdnzQ |
+| escrow | https://testnet.nearblocks.io/txns/4MvuYzPE2KWFZQju6vWr91mTKGbv8eyP86bXhwad2LQH |
+| deliver | https://testnet.nearblocks.io/txns/12oC7oZLGHfC1Fpf8XTr2npg8nPrB1q44yTehsHHyYty |
+| release | https://testnet.nearblocks.io/txns/3vZYYBXDi9Tb1sH6Hongd1F5xy9VZsdRoBBjyQXTeeC9 |
+
+Read this recorded task without signing:
+
+```sh
+node scripts/read-task.mjs ae-261111-d2e093-contract.testnet 0
+```

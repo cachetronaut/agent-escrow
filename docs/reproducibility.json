@@ -1,0 +1,52 @@
+{
+  "date": "2026-11-11",
+  "source_commit": "220cad7",
+  "clone_source": "https://github.com/cachetronaut/agent-escrow.git",
+  "remote_visibility": "PRIVATE",
+  "environment": "Provisioned macOS host; existing trusted Node and Rust toolchains; exact cached, previously inspected Cargo sources",
+  "installations": 0,
+  "commands": [
+    {
+      "command": "AGENT_ESCROW_BUILD_REVIEWED=yes node scripts/build-contract.mjs",
+      "result": "passed; 107 dependency fingerprints verified; offline locked release build; zero compiler warnings"
+    },
+    {
+      "command": "node scripts/test-policy.mjs",
+      "result": "12 passed"
+    },
+    {
+      "command": "node --test tests/*.test.mjs",
+      "result": "55 passed, zero failed, zero skipped, using newly built Wasm"
+    },
+    {
+      "command": "node scripts/agents.mjs",
+      "result": "offline release simulation succeeded"
+    },
+    {
+      "command": "node scripts/agents.mjs --refund --fail-transfer",
+      "result": "offline refund and transfer retry simulation succeeded"
+    },
+    {
+      "command": "node scripts/serve.mjs",
+      "result": "served first-party HTML over loopback with HTTP 200"
+    },
+    {
+      "command": "node scripts/read-task.mjs ae-261111-ce0de7-contract.testnet 0",
+      "result": "testnet confirmed; task Paid"
+    }
+  ],
+  "artifact": {
+    "bytes": 215659,
+    "sha256": "f002abe5cbe064d7a4caf790e070dbd0fe8f11d98f63583d14d244cd4aec87e5"
+  },
+  "historical_deployed_sha256": "527d5ba554624e32e7dfbc7becf77a71088b4856c205537ed827b1c249f7faec",
+  "byte_identical": false,
+  "artifact_difference_cause": "not established",
+  "scope": "Functional fresh-clone reproduction on a provisioned host. Not a clean-machine bootstrap, byte-identical build, nearcore sandbox test, or deployment of the fresh build.",
+  "readme_fixes": [
+    "Document pinned macOS/Rust/target/cache prerequisites",
+    "Remove stale claim that no commit or push occurred",
+    "Clarify ephemeral controller credential lifetime",
+    "Record fresh-build artifact difference"
+  ]
+}
