@@ -2,36 +2,44 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AgentEscrow | Testnet walkthrough</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>AgentEscrow Walkthrough</title>
+<link rel="preload" href="/vendor/fonts/archivo.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/stage.css">
 </head>
 <body>
-<header class="top">
-  <div class="brand"><strong>AgentEscrow</strong><span>Escrow for AI-agent work, with a warranty hold.</span></div>
-  <div class="meta" id="meta">NEAR testnet</div>
+<div class="scene" id="scene" aria-label="Animated vault: client, escrow vault, worker and verifier"></div>
+
+<header class="masthead">
+  <p class="wordmark">AgentEscrow</p>
+  <p class="run" id="run">NEAR testnet</p>
 </header>
-<main class="stage">
-  <section class="scene" id="scene" aria-label="Animated diagram of client, escrow vault, worker and verifier">
-    <p class="scene-note" id="scene-note"></p>
-  </section>
-  <section class="panel" id="panel" aria-live="polite">
-    <p class="count" id="count"></p>
-    <h1 id="step-title"></h1>
-    <p class="headline" id="headline"></p>
-    <div id="facts"></div>
-  </section>
-</main>
-<nav class="stepper" aria-label="Walkthrough steps">
-  <ol id="steps"></ol>
-  <div class="controls">
-    <button id="prev" type="button" aria-label="Previous step">←</button>
-    <button id="play" type="button">Play</button>
-    <button id="next" type="button" aria-label="Next step">→</button>
+
+<section class="chapter" id="chapter" aria-live="polite">
+  <p class="chapter-no" id="count"></p>
+  <h1 id="step-title"></h1>
+  <p class="chapter-line" id="headline"></p>
+</section>
+
+<aside class="slip" id="slip" aria-label="Evidence for this step">
+  <div class="slip-head">
+    <p class="slip-kind">Settlement slip</p>
+    <p class="slip-ref" id="slip-ref"></p>
   </div>
-  <div class="progress"><span id="progress"></span></div>
+  <div class="slip-body" id="facts"></div>
+</aside>
+
+<nav class="rail" aria-label="Walkthrough steps">
+  <ol class="stops" id="steps"></ol>
+  <div class="controls">
+    <button id="prev" type="button" aria-label="Previous step"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg></button>
+    <button id="play" type="button" aria-label="Play"><svg viewBox="0 0 24 24" aria-hidden="true"><path id="play-icon" d="M8 5v14l11-7z"/></svg></button>
+    <button id="next" type="button" aria-label="Next step"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg></button>
+  </div>
+  <p class="scope" id="scope"></p>
 </nav>
-<footer class="foot" id="foot"></footer>
+
+<p class="scene-note" id="scene-note" hidden></p>
 <script type="module" src="/stage.mjs"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@ const js = 'text/javascript', css = 'text/css', html = 'text/html';
 const routes = {
   '/': ['../demo/index.html', html], '/stage.mjs': ['../demo/stage.mjs', js], '/scene.mjs': ['../demo/scene.mjs', js], '/stage.css': ['../demo/stage.css', css],
   '/vendor/three.module.js': ['../demo/vendor/three.module.js', js], '/vendor/three.core.js': ['../demo/vendor/three.core.js', js],
+  '/vendor/fonts/archivo.woff2': ['../demo/vendor/fonts/archivo.woff2', 'font/woff2'], '/vendor/fonts/plexmono-400.woff2': ['../demo/vendor/fonts/plexmono-400.woff2', 'font/woff2'], '/vendor/fonts/plexmono-600.woff2': ['../demo/vendor/fonts/plexmono-600.woff2', 'font/woff2'],
   '/offline.html': ['../demo/offline.html', html], '/app.mjs': ['../demo/app.mjs', js], '/escrow.mjs': ['../demo/escrow.mjs', js], '/style.css': ['../demo/style.css', css],
   // Evidence is wrapped as a module so the page keeps connect-src 'none'.
   '/evidence.mjs': [null, js]
