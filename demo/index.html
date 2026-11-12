@@ -1,7 +1,37 @@
 <!doctype html>
-<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AgentEscrow | Work, verified.</title><link rel="stylesheet" href="/style.css"></head>
-<body><header><a class="brand" href="/">ae<span>AgentEscrow</span></a><span class="tag">OFFLINE SIMULATION · NO FUNDS</span></header>
-<main><section class="intro"><p class="eyebrow">A SETTLEMENT DESK FOR AGENTS</p><h1>Good work.<br>Verified payment.</h1><p class="lede">A client sets the terms. A worker delivers. A named verifier approves. Escrow tracks who is owed what.</p><p class="notice">This interactive model runs in your browser. No wallet, blockchain transaction, or real funds. Contract source targets NEAR testnet; deployment is pending.</p></section>
-<section class="desk" aria-labelledby="desk-title"><div class="desk-head"><h2 id="desk-title">The work order</h2><span>01 / NEAR ESCROW</span></div><form id="task-form"><label>Task title<input id="title" maxlength="160" value="Write a NEAR escrow research brief" required></label><label>Acceptance criteria<textarea id="criteria" maxlength="2048" required>Return JSON with summary and source. Source must be https://docs.near.org/ and summary must be at most 140 characters.</textarea></label><div class="split"><label>Budget in test NEAR<input id="budget" type="text" inputmode="decimal" value="1" required pattern="[0-9]+(\.[0-9]{1,24})?"></label><label>Deadline in minutes<input id="minutes" type="number" min="1" max="43200" value="60" required></label></div><p class="small">+ 0.1 test NEAR retained for storage. Roles fixed to client.testnet, worker.testnet, verifier.testnet.</p><button type="submit">01 &nbsp; Post & escrow <span>↗</span></button></form></section>
-<section class="ledger" aria-labelledby="ledger-title"><div class="desk-head"><h2 id="ledger-title">Settlement ledger</h2><span id="status">AWAITING TASK</span></div><div class="roles"><div><small>CLIENT</small><strong>client.testnet</strong></div><div><small>WORKER</small><strong>worker.testnet</strong></div><div><small>VERIFIER</small><strong>verifier.testnet</strong></div></div><p id="order">Create a task to begin.</p><div class="actions"><button id="deliver" disabled>02 Deliver artifact</button><button id="approve" disabled>03 Verifier approves</button><button id="expire" disabled>Advance to deadline & refund</button><button id="retry" disabled>Retry transfer</button></div><label class="check"><input id="fail" type="checkbox"> Simulate the next transfer failing</label><div id="feedback" role="status" aria-live="polite"></div><ol id="events" aria-label="Event history"></ol><pre id="artifact" hidden></pre><button id="reset" class="secondary">Reset simulation</button></section>
-<section class="footnote"><h2>The trust boundary is explicit.</h2><p>The contract authenticates account roles and holds funds. The verifier evaluates the evidence off chain. A deadline requires a caller to trigger expiry; contracts do not wake themselves. Intents and stablecoins are not integrated in this version.</p></section></main><footer>Cachetronaut / Agent Economy prototype <span>NEAR testnet target · MIT</span></footer><script type="module" src="/app.mjs"></script></body></html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgentEscrow | Testnet walkthrough</title>
+<link rel="stylesheet" href="/stage.css">
+</head>
+<body>
+<header class="top">
+  <div class="brand"><strong>AgentEscrow</strong><span>Escrow for AI-agent work, with a warranty hold.</span></div>
+  <div class="meta" id="meta">NEAR testnet</div>
+</header>
+<main class="stage">
+  <section class="scene" id="scene" aria-label="Animated diagram of client, escrow vault, worker and verifier">
+    <p class="scene-note" id="scene-note"></p>
+  </section>
+  <section class="panel" id="panel" aria-live="polite">
+    <p class="count" id="count"></p>
+    <h1 id="step-title"></h1>
+    <p class="headline" id="headline"></p>
+    <div id="facts"></div>
+  </section>
+</main>
+<nav class="stepper" aria-label="Walkthrough steps">
+  <ol id="steps"></ol>
+  <div class="controls">
+    <button id="prev" type="button" aria-label="Previous step">←</button>
+    <button id="play" type="button">Play</button>
+    <button id="next" type="button" aria-label="Next step">→</button>
+  </div>
+  <div class="progress"><span id="progress"></span></div>
+</nav>
+<footer class="foot" id="foot"></footer>
+<script type="module" src="/stage.mjs"></script>
+</body>
+</html>
