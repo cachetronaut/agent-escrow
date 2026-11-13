@@ -1,0 +1,125 @@
+{
+  "checked_at_utc": "2026-11-13T05:16:16.118Z",
+  "network": "testnet",
+  "status": "blocked",
+  "account_id": "ae-261113-4178f2-recovery.testnet",
+  "credential_path": "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+  "credential_mode": "0600",
+  "new_keys_created": false,
+  "secrets_logged": false,
+  "attempts": [
+    {
+      "order": 1,
+      "source": "https://docs.near.org/getting-started/faucet",
+      "endpoint": "https://helper.testnet.near.org/account",
+      "method": "POST",
+      "transport": "curl",
+      "requests": 1,
+      "http_status": 429,
+      "response": "Rate limit exceeded, retry in 47 minutes.",
+      "page_sha256": "83233b8c693e951bcd9e95111eff1001313307c40f27b5ca0fc857c2159655c1",
+      "inspection": "Built-in component creates a temporary account via helper.testnet.near.org/account, then signs a transfer to the beneficiary. Called its account-creation endpoint directly for the approved saved recovery public key; no fetched code executed.",
+      "fresh_account_attempted": false,
+      "fresh_account_reason": "Service rate limit; changing the account ID does not provide a justified recovery from HTTP 429."
+    },
+    {
+      "order": 2,
+      "source": "https://explorer.testnet.near.org",
+      "status": "unavailable",
+      "requests": 0,
+      "inspection": "Current HTML and page bundle contain an explorer selector with Near Rocks and Nearblocks links; no built-in faucet or funding API is present.",
+      "page_sha256": "4b31d348c69dc90a39539e8416ae5a292fedd177db7cbbde31c39686be3dd4ce",
+      "bundle_sha256": "6a9066c17045c47848c5e02536722d98123d7fa1b92575a82494f0e3830ff8eb"
+    },
+    {
+      "order": 3,
+      "service": "near-cli faucet",
+      "endpoint": "https://helper.nearprotocol.com/account",
+      "method": "POST",
+      "transport": "curl",
+      "requests": 1,
+      "http_status": 429,
+      "response": "Rate limit exceeded, retry in 46 minutes.",
+      "inspection": "Inspected pinned near-cli 0.31.1 sponsor_by_faucet_service source and repository adapter. Replayed the same JSON HTTP request directly; no CLI binary executed."
+    },
+    {
+      "order": 4,
+      "source": "https://near-faucet.io/",
+      "official_reference": "https://docs.near.org/getting-started/faucet",
+      "method": "POST",
+      "transport": "curl",
+      "requests": 1,
+      "http_status": 200,
+      "server_action": "6d7e3b6e9794a0361cd2decc8f2f1e1e88971970",
+      "inspection": "Inspected current page bundle, matching server action and 2 NEAR allowance; no fetched JavaScript executed.",
+      "bundle_sha256": "7bf77134e49a8fc3d30647dcfd2430e6399900b88984d3fceff48ffdd1367c07",
+      "transaction_hash": "71V5WRdRVCno6tsGKxavoQ6sASDYYQMfvHCXp5rwATEA",
+      "funding_succeeded": false
+    }
+  ],
+  "funding_transaction": {
+    "transaction_hash": "71V5WRdRVCno6tsGKxavoQ6sASDYYQMfvHCXp5rwATEA",
+    "signer": "caller.nonofficial.testnet",
+    "receiver": "v2d.faucet.nonofficial.testnet",
+    "top_level_status": "success",
+    "funding_succeeded": false,
+    "receipts": [
+      {
+        "id": "4vGAr94VZ5RMDYAgsBjohe4zHdgPVvQ1BFNn3ZiGVYYC",
+        "executor_id": "v2d.faucet.nonofficial.testnet",
+        "block_hash": "HiRPRPJewUr43Tgjjg99rU5536kvjfX6mmvrF4yqU2DG",
+        "status": "success"
+      },
+      {
+        "id": "BetPYDw2Ykdz7LRRqmbCNYUWhiZgJkJYffRnU67PCKVc",
+        "executor_id": "ae-261113-4178f2-recovery.testnet",
+        "block_hash": "6ZQMc6UvLqaC7DqozSJn8uLsJuNx4eQ4RzwP4F6f7u9e",
+        "status": "failure",
+        "failure": {
+          "ActionError": {
+            "index": 0,
+            "kind": {
+              "AccountDoesNotExist": {
+                "account_id": "ae-261113-4178f2-recovery.testnet"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "BTEvETeWVSTXJuo8qSYEG2rnPMdgqY3a6dtCCqQnCo3g",
+        "executor_id": "v2d.faucet.nonofficial.testnet",
+        "block_hash": "4FRY4RXEkbF4LdHyqAwkZN3vbdQxvcZKZujH1Ut2T7FE",
+        "status": "success"
+      },
+      {
+        "id": "75nXNFoXMAWZ4VMPcFECWtT5jBWk5CxyeK7xg1uo1XUx",
+        "executor_id": "caller.nonofficial.testnet",
+        "block_hash": "4FRY4RXEkbF4LdHyqAwkZN3vbdQxvcZKZujH1Ut2T7FE",
+        "status": "success"
+      },
+      {
+        "id": "9hmCC4WvFPvWPGuCUpNffBK3QQXUDcpKAJHjtxfiMQRy",
+        "executor_id": "caller.nonofficial.testnet",
+        "block_hash": "6ZQMc6UvLqaC7DqozSJn8uLsJuNx4eQ4RzwP4F6f7u9e",
+        "status": "success"
+      }
+    ]
+  },
+  "account_check": {
+    "exists": false,
+    "error": "UNKNOWN_ACCOUNT",
+    "block_hash": "HqsSgfgLYbtNGRZPu8ipSFuM3ZVQd7buPLNH6bkYn8U2",
+    "block_height": 277466045
+  },
+  "remaining_unverified": [
+    "warranty claim filed and decided",
+    "short-deadline refund",
+    "complete corrected-source live lifecycle"
+  ],
+  "warranty_expiry": "Passed previously; not repeated",
+  "intents_quote": "Passed previously; not repeated",
+  "contract_transactions_attempted": false,
+  "committed": false,
+  "pushed": false
+}

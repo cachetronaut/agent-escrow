@@ -1,0 +1,6 @@
+{
+  "network": "testnet",
+  "status": "interrupted",
+  "reason": "Controller stopped during read-only resume preflight to strengthen reused receipt checks; no transaction steps reached",
+  "contract_transactions_attempted": false
+}

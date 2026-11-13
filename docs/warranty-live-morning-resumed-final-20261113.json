@@ -1,0 +1,6 @@
+{
+  "network": "testnet",
+  "status": "blocked",
+  "reason": "Legacy testnet RPC returned HTTP429 on preflight after one 60-second read retry; no transactions attempted",
+  "contract_transactions_attempted": false
+}

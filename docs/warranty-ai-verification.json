@@ -1,0 +1,74 @@
+{
+  "status": "blocked",
+  "reason": "NEAR_AI_API_KEY present but endpoint rejected authentication with HTTP 401 for all three models",
+  "positive": {
+    "contractVersion": "1.0",
+    "componentId": "FUN-003",
+    "requestId": "05ea317c-0e88-4eb4-bea2-d5cd4639f334",
+    "runId": "05ea317c-0e88-4eb4-bea2-d5cd4639f334",
+    "status": "failed",
+    "result": {
+      "approved": false,
+      "score": null,
+      "delivery_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+      "criteria_sha256": "a0cb17f0e44677676881609505128f972bf1454c0d19aaec229bfa4816d6faeb",
+      "judges": [
+        {
+          "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+          "status": "failed",
+          "approved": false,
+          "error": {
+            "code": "JUDGE_HTTP_ERROR",
+            "http_status": 401
+          }
+        },
+        {
+          "model": "z-ai/glm-5.3-flash",
+          "status": "failed",
+          "approved": false,
+          "error": {
+            "code": "JUDGE_HTTP_ERROR",
+            "http_status": 401
+          }
+        },
+        {
+          "model": "Qwen/Qwen3.8-27B",
+          "status": "failed",
+          "approved": false,
+          "error": {
+            "code": "JUDGE_HTTP_ERROR",
+            "http_status": 401
+          }
+        }
+      ],
+      "authority": "named on-chain attester; model votes are off-chain evidence",
+      "attestation_verified": false
+    },
+    "errors": [
+      {
+        "code": "JUDGE_HTTP_ERROR",
+        "message": "Judge deepseek-ai/DeepSeek-V4.1-Flash-1017 did not produce a valid judgment",
+        "retryable": false
+      },
+      {
+        "code": "JUDGE_HTTP_ERROR",
+        "message": "Judge z-ai/glm-5.3-flash did not produce a valid judgment",
+        "retryable": false
+      },
+      {
+        "code": "JUDGE_HTTP_ERROR",
+        "message": "Judge Qwen/Qwen3.8-27B did not produce a valid judgment",
+        "retryable": false
+      }
+    ],
+    "trace": {
+      "startedAtUtc": "2026-11-12T18:03:16.038Z",
+      "completedAtUtc": "2026-11-12T18:03:16.397Z",
+      "policyVersions": {
+        "grading": "1.0"
+      },
+      "steps": []
+    }
+  },
+  "injection": null
+}

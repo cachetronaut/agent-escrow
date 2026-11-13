@@ -1,0 +1,304 @@
+{
+  "contractVersion": "1.0",
+  "componentId": "FUN-002",
+  "status": "partial",
+  "network": "testnet",
+  "owner": "Cachetronaut",
+  "cli_version": "0.31.1",
+  "accounts": {
+    "contract": "ae-261112-68b193-contract.testnet",
+    "client": "ae-261112-68b193-client.testnet",
+    "worker": "ae-261112-68b193-worker.testnet",
+    "verifier": "ae-261112-68b193-verifier.testnet"
+  },
+  "account_creation": {
+    "contract": {
+      "cli_exit": 0,
+      "transaction_hash": "3HybWgY1hhFAzasxmb5MK8W1XohL34uYRFxzJPreTCBX",
+      "verified": true,
+      "balance": "10000000000000000000000000"
+    },
+    "client": {
+      "cli_exit": 0,
+      "transaction_hash": "FcK6HTEhhGHvuM74ezFEpocC4CFA89AvJx7WKi6AkxG4",
+      "verified": true,
+      "balance": "10000000000000000000000000"
+    },
+    "worker": {
+      "cli_exit": 0,
+      "transaction_hash": "EWi3akkYQSbw1gVZFgLYnAEZ2xGHB63sWBg4tFRGcbwd",
+      "verified": true,
+      "balance": "10000000000000000000000000"
+    },
+    "verifier": {
+      "cli_exit": 0,
+      "transaction_hash": "6gKdALf9pPkdack7GHtxrGJabngLUNxCXdHBkU1D6paQ",
+      "verified": true,
+      "balance": "10000000000000000000000000"
+    }
+  },
+  "transactions": {
+    "deploy": {
+      "transaction_hash": "57amTkggqhPe3JfeotdBY2RmHRwciX3S9o4QjZksNY26",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "57amTkggqhPe3JfeotdBY2RmHRwciX3S9o4QjZksNY26",
+          "block_hash": "35hRbURNN5gsBZgKVCLsr4gW2tr3r7o9kiqjFX4V1Nbs",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "2119801029867",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "gesC3D43cEURHeWcGTTC4tfLPn1cwpHfutgn4rJuStu",
+          "block_hash": "35hRbURNN5gsBZgKVCLsr4gW2tr3r7o9kiqjFX4V1Nbs",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "16921946654527",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "2gQiSU4PqiHdGpDZZibZsVVr86tp1q79yJRgkCgK3VfU",
+          "block_hash": "93Z9ZD2p3kt9hDkxPonx2gL8gvXJD9E6bVtsPtW54VPs",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "contract",
+      "explorer": "https://testnet.nearblocks.io/txns/57amTkggqhPe3JfeotdBY2RmHRwciX3S9o4QjZksNY26"
+    },
+    "post_0": {
+      "transaction_hash": "D7FRCBYVQfgcHtZwpiKsqAFseHVQmgzcrnyM8mbin8VY",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "D7FRCBYVQfgcHtZwpiKsqAFseHVQmgzcrnyM8mbin8VY",
+          "block_hash": "4qAvggzmjVZtufoJuiktjcmRZV64eyWUhQUbJkppjcjA",
+          "executor_id": "ae-261112-68b193-client.testnet",
+          "gas_burnt": "330899999485",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "3EmejKjw4GNfibuBapXxxTDQP1ET191eKqi4xX1Jktvw",
+          "block_hash": "9tAdydX2YTrwucLomyenv6dEbzUoyX95nYuYbSzZLVFm",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "1580445617191",
+          "status": "success",
+          "events": [
+            {
+              "event": "posted",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "8Fqv91QrrXTv6zgMsk9EJ5m3tzyJkFP39J4BTZtmnAtx",
+          "block_hash": "9Hx2rPBiWejPy2arVpuGsAsXDvM6nAiQ3NSEaKwg3Hzh",
+          "executor_id": "ae-261112-68b193-client.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/D7FRCBYVQfgcHtZwpiKsqAFseHVQmgzcrnyM8mbin8VY"
+    },
+    "bid_0": {
+      "transaction_hash": "5UjyzyHHbSLgYVzQVJStdGjCUbZ8jmAySG8KN5JhbjfT",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "5UjyzyHHbSLgYVzQVJStdGjCUbZ8jmAySG8KN5JhbjfT",
+          "block_hash": "2AaKbytAoZMN1oxUq1WwyruEApuY229CXnTvWiMecHrz",
+          "executor_id": "ae-261112-68b193-worker.testnet",
+          "gas_burnt": "310586736895",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "9vaC32Xjh9enjezsCsnJXH3rjELDkbdexzvaeHuD5o2a",
+          "block_hash": "BnSvdjzqeQrGiPo8mEo1ryMeTXGGW8XxDsmmEASbkfmC",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "1683095745668",
+          "status": "success",
+          "events": [
+            {
+              "event": "bid",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "Eiyypf179TAFkMDUEEZK7ZQtpLovVxBtFEzEW84ccj4A",
+          "block_hash": "8imTEo8953XGh9w9stQJa2UEPcXLVEQ2LVxUofGGrMkt",
+          "executor_id": "ae-261112-68b193-worker.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/5UjyzyHHbSLgYVzQVJStdGjCUbZ8jmAySG8KN5JhbjfT"
+    },
+    "escrow_0": {
+      "transaction_hash": "2xv9UKF6tDoV5WzagPC6DU4tg3bAHF55piLWKyMLJ2fa",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "2xv9UKF6tDoV5WzagPC6DU4tg3bAHF55piLWKyMLJ2fa",
+          "block_hash": "8m1yCBcnrc6fMmAZW1mf1dnEJaxiqHET8sYQ5QuJjgXW",
+          "executor_id": "ae-261112-68b193-client.testnet",
+          "gas_burnt": "311111257760",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "G6jKChWFBSfAQc43JhpEw69fqgGqf2Myb7Qtxgg2VaKh",
+          "block_hash": "AZp3WguVKS1xqM9nyj1GCUZpuPcyUdJH57asKSKavnEC",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "1683190800694",
+          "status": "success",
+          "events": [
+            {
+              "event": "escrowed",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "H1fj7vW8jQW111AfneSn6yw6BACtofqsnJuBo2eKmWDk",
+          "block_hash": "A2GGRFtofRvLEhjT8q2Utck87BMWyFxuKcB4wzD7LWrY",
+          "executor_id": "ae-261112-68b193-client.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/2xv9UKF6tDoV5WzagPC6DU4tg3bAHF55piLWKyMLJ2fa"
+    },
+    "deliver_0": {
+      "transaction_hash": "5zZrkgLKNtrpcQaYPmTqSscKbDTXcm6FsqDMaHPyc3LQ",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "5zZrkgLKNtrpcQaYPmTqSscKbDTXcm6FsqDMaHPyc3LQ",
+          "block_hash": "8rLpJVrBTRU4mDpu82B6qPXP4xdRWaZdRZYxFkwA5mCW",
+          "executor_id": "ae-261112-68b193-worker.testnet",
+          "gas_burnt": "313161657505",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "5o1H682rzmWkJTu4uKtg8DRbdGoLU4ZWBpJgT4cWL5mZ",
+          "block_hash": "5QZ7htYHHdjwqneW63Lqi5giY9hVtsbZi5HZhtE1RakC",
+          "executor_id": "ae-261112-68b193-contract.testnet",
+          "gas_burnt": "1695140788080",
+          "status": "success",
+          "events": [
+            {
+              "event": "delivered",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "2i61m43weggM8y16bjAW9FmANjAFYCgV8rRGMQn7k8Q7",
+          "block_hash": "EkjSThhViYopDT8TncX267YKaakVggoo1TCDE93eaSqv",
+          "executor_id": "ae-261112-68b193-worker.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/5zZrkgLKNtrpcQaYPmTqSscKbDTXcm6FsqDMaHPyc3LQ"
+    }
+  },
+  "checks": {
+    "credential_files_written": false,
+    "deployed_code_hash_matches": true,
+    "delivery_0": true,
+    "ai_task_0": {
+      "contractVersion": "1.0",
+      "componentId": "FUN-003",
+      "requestId": "05ea317c-0e88-4eb4-bea2-d5cd4639f334",
+      "runId": "05ea317c-0e88-4eb4-bea2-d5cd4639f334",
+      "status": "failed",
+      "result": {
+        "approved": false,
+        "score": null,
+        "delivery_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+        "criteria_sha256": "a0cb17f0e44677676881609505128f972bf1454c0d19aaec229bfa4816d6faeb",
+        "judges": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            "status": "failed",
+            "approved": false,
+            "error": {
+              "code": "JUDGE_HTTP_ERROR",
+              "http_status": 401
+            }
+          },
+          {
+            "model": "z-ai/glm-5.3-flash",
+            "status": "failed",
+            "approved": false,
+            "error": {
+              "code": "JUDGE_HTTP_ERROR",
+              "http_status": 401
+            }
+          },
+          {
+            "model": "Qwen/Qwen3.8-27B",
+            "status": "failed",
+            "approved": false,
+            "error": {
+              "code": "JUDGE_HTTP_ERROR",
+              "http_status": 401
+            }
+          }
+        ],
+        "authority": "named on-chain attester; model votes are off-chain evidence",
+        "attestation_verified": false
+      },
+      "errors": [
+        {
+          "code": "JUDGE_HTTP_ERROR",
+          "message": "Judge deepseek-ai/DeepSeek-V4.1-Flash-1017 did not produce a valid judgment",
+          "retryable": false
+        },
+        {
+          "code": "JUDGE_HTTP_ERROR",
+          "message": "Judge z-ai/glm-5.3-flash did not produce a valid judgment",
+          "retryable": false
+        },
+        {
+          "code": "JUDGE_HTTP_ERROR",
+          "message": "Judge Qwen/Qwen3.8-27B did not produce a valid judgment",
+          "retryable": false
+        }
+      ],
+      "trace": {
+        "startedAtUtc": "2026-11-12T18:03:16.038Z",
+        "completedAtUtc": "2026-11-12T18:03:16.397Z",
+        "policyVersions": {
+          "grading": "1.0"
+        },
+        "steps": []
+      }
+    }
+  },
+  "errors": [
+    {
+      "code": "lifecycle",
+      "message": "AI quorum denied release",
+      "diagnostic": "\n├  Unsigned transaction:\n│    signer_id:    ae-261112-68b193-worker.testnet\n│    receiver_id:  ae-261112-68b193-contract.testnet\n│    actions:\n│       -- function call:      \n│                       method name:  deliver\n│                       args:         {\n│                                       \"evidence_sha256\": \"1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad\",\n│                                       \"task_id\": \"0\"\n│                                     }\n│                       gas:          100.0 Tgas\n│                       deposit:      0 NEAR\n│     \n├  Your transaction was signed successfully.\n│    Public key: [key redacted]\n│    Signature:  [key redacted]\n│     \n├  Transaction Execution Info:\n│    Gas used: 2.3 Tgas\n│    Transaction fee: 0.0002008302445585 NEAR\n│    Transaction ID: 5zZrkgLKNtrpcQaYPmTqSscKbDTXcm6FsqDMaHPyc3LQ\n│    To see the transaction in the transaction explorer, please open this url in your browser:\n│    https://testnet.nearblocks.io/txns/5zZrkgLKNtrpcQaYPmTqSscKbDTXcm6FsqDMaHPyc3LQ\n│     \n├  Function execution logs:\n│    Logs [ae-261112-68b193-contract.testnet]:\n│      EVENT_JSON:{\"standard\":\"agent_escrow\",\"version\":\"1.0.0\",\"event\":\"delivered\",\"data\":[{\"task_id\":\"0\"}]}\n│    Logs [ae-261112-68b193-worker.testnet]:   No logs\n│     \n├  Function execution return value:\n│    Empty return value\n│     \n\n\nThe \"deliver\" call to <ae-261112-68b193-contract.testnet> on behalf of <ae-261112-68b193-worker.testnet> succeeded.\n\n\n\n\nHere is your console command if you need to script it or re-run:\n    [local path] contract call-function as-transaction ae-261112-68b193-contract.testnet deliver json-args '{\"task_id\":\"0\",\"evidence_sha256\":\"1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad\"}' prepaid-gas '100.0 Tgas' attached-deposit '0 NEAR' sign-as ae-261112-68b193-worker.testnet network-config testnet sign-with-plaintext-private-key [credential redacted] send --wait-until final\n\n",
+      "retryable": false
+    }
+  ]
+}

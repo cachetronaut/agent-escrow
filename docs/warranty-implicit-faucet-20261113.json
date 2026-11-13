@@ -1,0 +1,11 @@
+{
+  "account_id": "3f61e8a78f4620c29ee9b4e12d88c1deb821600839b378f72f60f0cdfae9c8bc",
+  "credential_path": "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+  "http_status": 200,
+  "result": {
+    "error": "Smart contract panicked: Invalid receiver_id!",
+    "txh": "279Q2yrJLmedakruGGvZNb597fvaShy4pokNMjA5jAKg",
+    "status": 400
+  },
+  "at": "2026-11-13T05:08:58.302Z"
+}

@@ -1,0 +1,94 @@
+{
+  "transaction": {
+    "transaction_hash": "7Sd23rTgvMZHss9CSmdy4JGV29hZfCX5nvk47fBVPFUQ",
+    "status": "success",
+    "receipts": [
+      {
+        "id": "7Sd23rTgvMZHss9CSmdy4JGV29hZfCX5nvk47fBVPFUQ",
+        "block_hash": "33EiUiuuN3U4Tt9VxqLdQHKGtxwu4pLptbsyLdA36z49",
+        "executor_id": "caller.nonofficial.testnet",
+        "gas_burnt": "313209341220",
+        "status": "receipt_pending",
+        "events": []
+      },
+      {
+        "id": "8bJowQhSipW9y1YKn2mxn9JTGrq9u139GjjQuxFReBbH",
+        "block_hash": "At86AaoLDAbgF3waq7wp6mRVrygP2ogFEErbpJkXcfPy",
+        "executor_id": "v2d.faucet.nonofficial.testnet",
+        "gas_burnt": "7781481755556",
+        "status": "success",
+        "events": []
+      },
+      {
+        "id": "9hekkAFJKMfzYmGyk58gKJARmiMCPgjQoJ3TwLyVHvx6",
+        "block_hash": "3gv4Zyfshw76XZQdMjZSMuVHr9ygaabwvUQ1HBzwWpVP",
+        "executor_id": "ae-261113-4178f2-recovery.testnet",
+        "gas_burnt": "223182562500",
+        "status": "failure",
+        "events": []
+      },
+      {
+        "id": "65L1XFUjA4JbxJQC5JiJpkrKCZxKivjYEWGw2kMJKyV",
+        "block_hash": "52NUcxi9bkW9HhBqEr7MkF3MmxEQkrGzQcAXqnoBszfH",
+        "executor_id": "v2d.faucet.nonofficial.testnet",
+        "gas_burnt": "223182562500",
+        "status": "success",
+        "events": []
+      },
+      {
+        "id": "FGf3g8PUKT97YuVoY294ECtkXQJjDhCiHjrUZLFMjPjp",
+        "block_hash": "52NUcxi9bkW9HhBqEr7MkF3MmxEQkrGzQcAXqnoBszfH",
+        "executor_id": "caller.nonofficial.testnet",
+        "gas_burnt": "223182562500",
+        "status": "success",
+        "events": []
+      },
+      {
+        "id": "4ySTQ3DuP286ga16UY4DCLo6WjN4cicoPjShL62ymNRW",
+        "block_hash": "3gv4Zyfshw76XZQdMjZSMuVHr9ygaabwvUQ1HBzwWpVP",
+        "executor_id": "caller.nonofficial.testnet",
+        "gas_burnt": "223182562500",
+        "status": "success",
+        "events": []
+      }
+    ]
+  },
+  "signer": "caller.nonofficial.testnet",
+  "receiver": "v2d.faucet.nonofficial.testnet",
+  "logs": [],
+  "account_id": "ae-261113-4178f2-recovery.testnet",
+  "account_query_error": "UNKNOWN_ACCOUNT",
+  "account_exists": false,
+  "implicit_funding_transaction": {
+    "transaction_hash": "279Q2yrJLmedakruGGvZNb597fvaShy4pokNMjA5jAKg",
+    "status": "failure",
+    "receipts": [
+      {
+        "id": "279Q2yrJLmedakruGGvZNb597fvaShy4pokNMjA5jAKg",
+        "block_hash": "G4JfXxCvzwwyNzEk9yxPhcNShysg9QVfTcU6Rcv1cTZh",
+        "executor_id": "caller.nonofficial.testnet",
+        "gas_burnt": "314687536385",
+        "status": "receipt_pending",
+        "events": []
+      },
+      {
+        "id": "PAViDPwpqbAyDwyNxdrDf9o7twcutcKTeuDpFdLsUhf",
+        "block_hash": "Ddt6fpqRd1BYnYeC71juFkzX9dPYTWeYtD9EACcopwsC",
+        "executor_id": "v2d.faucet.nonofficial.testnet",
+        "gas_burnt": "7262119325296",
+        "status": "failure",
+        "events": []
+      },
+      {
+        "id": "FZxJQW7ng2Yqj5XkwhjcJEKpEqkjoqemUEUVi1qtNcqj",
+        "block_hash": "D9ApQvURNa6BpVPaiopmsT4SSJjMU7MqRnQcMZkgEW2X",
+        "executor_id": "caller.nonofficial.testnet",
+        "gas_burnt": "223182562500",
+        "status": "success",
+        "events": []
+      }
+    ]
+  },
+  "implicit_funding_error": "Smart contract panicked: Invalid receiver_id!",
+  "checked_at_utc": "2026-11-13T05:10:11.224Z"
+}

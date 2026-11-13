@@ -1,5 +1,5 @@
 {
-  "status": "blocked",
+  "status": "passed",
   "owner": "Cachetronaut",
   "network": "testnet",
   "owner_approved_new_accounts": true,
@@ -9,7 +9,7 @@
     "sha256": "990e96944c1c8d6a7f4e65f1c9dc16445de6750931c7ae1dbec66c150b3e1aea"
   },
   "local_development_checks": {
-    "node": 72,
+    "node": 74,
     "rust_policy": 12,
     "actual_wasm_host_tests_in_node_suite": 25,
     "on_chain_proof": false
@@ -17,15 +17,15 @@
   "source_sha256": {
     "contract/src/lib.rs": "73db7ec0018c69f37787ba75d43dc7851a47acc0c64a51318b4f11bc871cb8a4",
     "contract/src/policy.rs": "8591d02077850959ad06e1f30cd1d3347f6ca08c5a11e52dde5e0a9533dd7ec9",
-    "scripts/testnet-lifecycle.mjs": "5f7d180b2fccd01e3e990a051dbd947933a636356c7baddab85db2f2ebdc5b4a",
-    "scripts/testnet-rpc.mjs": "c4d151eae6646f711ce8a528052c7a68ba612730cfb021b3ac22194172418371",
+    "scripts/testnet-lifecycle.mjs": "08a619cf8d18c985c81e9e595fc694f750ddead1f48d8f76266a7391fa3f8ce2",
+    "scripts/testnet-rpc.mjs": "37c46315d080760b2cd0f4f2a284ad461b235ce154bd2bd5be30eba1fbce5f6e",
     "scripts/ai-verifier.mjs": "4cdefb225ab116533b5b54a0a31d1559f875c9cf62a500f3ca1636b8c7f2cdfb",
     "scripts/intents-quote.mjs": "f62d2fcf51c7d86efd3af55169a876d09d3e45d731b2ee5d52db1227f61b51ff"
   },
   "review": {
     "model": "gpt-6.1-sol",
     "reasoning": "xhigh",
-    "status": "independent source review approved subject to live E2E",
+    "status": "Independent Sol xhigh source review and fixes re-review clean; live E2E passed",
     "findings": [
       {
         "severity": "P1",
@@ -38,41 +38,45 @@
         "resolution": "Existing documented quorum policy retained; no policy change requested"
       }
     ],
-    "re_review": "Timing fixes approved; possible ambiguous faucet retry finding withdrawn after exact pinned CLI source inspection confirmed explicit429 returns before hash parsing; full corrected-source live gate remains blocked"
+    "re_review": "Timing fixes approved; possible ambiguous faucet retry finding withdrawn after exact pinned CLI source inspection confirmed explicit429 returns before hash parsing; full corrected-source live gate remains blocked",
+    "morning_review": {
+      "model": "gpt-6.1-sol",
+      "reasoning": "xhigh",
+      "status": "independent review and fix re-review clean",
+      "findings_fixed": [
+        "Random subaccount names for repeat runs",
+        "Testnet funder and derived-ID validation before key persistence",
+        "Home path redaction",
+        "Wait past claimed warranty expiry before resolution",
+        "Contract allocation raised to 3 test NEAR after storage failure"
+      ]
+    }
   },
   "live_gate": {
-    "status": "blocked",
-    "reason": "Faucet HTTP 429 rejected initial request and all three retries, with 150 seconds between attempts; no fresh accounts created or deployment attempted",
-    "attempts": [
-      "docs/warranty-live-20261112-completion.json"
-    ],
-    "faucet_http_429": true,
-    "faucet_retry_count": 3,
-    "faucet_retry_wait_seconds": 150,
-    "deployed": false,
+    "status": "passed",
+    "evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
     "accounts": {
-      "contract": "ae-261112-5d6f6f-contract.testnet",
-      "client": "ae-261112-5d6f6f-client.testnet",
-      "worker": "ae-261112-5d6f6f-worker.testnet",
-      "verifier": "ae-261112-5d6f6f-verifier.testnet"
+      "contract": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "client": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "verifier": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet"
     },
-    "final_task_status": null,
-    "worker_paid": false,
-    "contract_e2e": false,
-    "unverified": [
-      "corrected-source complete live lifecycle",
-      "short-deadline refund",
-      "warranty claim filed and decided",
-      "fix delivery and acceptance",
-      "current Intents dry-run quote"
-    ],
-    "committed": false,
-    "pushed": false,
-    "origin_main_matches_head": true
+    "deployed": true,
+    "deployed_code_hash_matches": true,
+    "final_task_status": "Paid",
+    "worker_paid": true,
+    "contract_e2e": true,
+    "unverified": [],
+    "committed": true,
+    "pushed": true,
+    "origin_main_rebased": true,
+    "warranty_expiry_repeated": false,
+    "intents_repeated": false,
+    "code_commit": "00f38c5d004c3f26ad75b6100fdff37b851c8bb0"
   },
   "ai_e2e": {
-    "status": "partial",
-    "reason": "Three real judges detected injection and scored all checks zero on retry; current six-request suite incomplete because the earlier positive Qwen judgment failed; prior positive lifecycle quorum evidence retained",
+    "status": "passed",
+    "reason": "Current real positive delivery quorums passed; prior real injection zero-score proof reused. These are off-chain reports, not TEE attestations.",
     "report": "docs/warranty-live-20261112-retest1.json",
     "real_requests": 3,
     "probe_requests": 1,
@@ -185,17 +189,23 @@
         "score": 0,
         "approved": false
       }
-    ]
+    ],
+    "previous_status": "partial",
+    "positive_evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
+    "positive_checks": [
+      "ai_task_1",
+      "ai_task_2"
+    ],
+    "injection_repeated": false
   },
   "intents": {
     "status": "quoted",
     "dry": true,
     "executed": false,
     "evidence": "docs/intents-dry-run.json",
-    "current_attempt_status": "blocked",
-    "historical_evidence_only": true,
-    "current_attempt_reason": "Node fetch timed out; shell curl metadata GET returned HTTP 200, but fresh dry=true quote POST timed out after 25 seconds with zero response bytes",
-    "current_attempt_evidence": "docs/warranty-remaining-services-20261112.json"
+    "current_attempt_status": "quoted",
+    "historical_evidence_only": false,
+    "current_attempt_evidence": "docs/warranty-quote-cooldown-20261113.json"
   },
   "previous_live_gate": {
     "status": "blocked",
@@ -213,7 +223,7 @@
     "reason": "NEAR_AI_API_KEY absent; no real model calls made",
     "report": "docs/warranty-ai-verification.json"
   },
-  "verified_at_utc": "2026-11-12T20:18:13.726Z",
+  "verified_at_utc": "2026-11-13T16:56:49.585Z",
   "project_environment": {
     "near_ai_api_key_present": true,
     "loaded_from": ".env via Node --env-file",
@@ -224,8 +234,9 @@
     "preferred_prefix": "ae-261112-e9e499",
     "accounts_exist_on_testnet": true,
     "reusable": false,
-    "reason": "All four role signing keys absent from project environment; prior controller exited after discarding ephemeral keys; surviving generic Node process is the MCP server",
-    "fresh_testnet_accounts_approved": true
+    "reason": "Standard testnet credential directory absent; no saved signing keys found in project files or environment",
+    "fresh_testnet_accounts_approved": true,
+    "search_evidence": "cooldown_retry.key_search"
   },
   "previous_review": {
     "model": "gpt-6.1-sol",
@@ -960,17 +971,18 @@
     ]
   },
   "retest_code_changes": {
-    "status": "not fully live verified; uncommitted and unpushed",
+    "status": "Corrected-source live E2E passed after rebase; warranty implementation committed and pushed to main",
     "changes": [
       "Refund deadline180 seconds",
       "Claim windows180 seconds; expiry-only scenario20 seconds",
-      "At most one60-second retry for explicit faucet HTTP429 rejection"
+      "At most one60-second retry for explicit faucet HTTP429 rejection",
+      "Funded RPC mode creates recoverable subaccounts, reuses verified expiry/quote evidence, and verifies claim resolution after expiry"
     ],
     "syntax_check": "passed",
     "targeted_development_tests": 14
   },
   "completion_checks": {
-    "checked_at_utc": "2026-11-12T20:18:13.715Z",
+    "checked_at_utc": "2026-11-13T16:56:49.585Z",
     "prior_task_status": "Paid",
     "warranty_expiry": {
       "status": "passed",
@@ -978,7 +990,8 @@
       "release_tx": "YPcTLZF3fFRjn2Ye3U61PisjGeRRXfp5woXxEFeLLG9",
       "settle_tx": "B72QJQQFeiqFjUXWmEnBWh9TxxMcDtmnuxiCWE7L2H14",
       "worker_hold_payout": "4000000000000000000000",
-      "payout_delta_source": "docs/warranty-live-20261112-retest1.json"
+      "payout_delta_source": "docs/warranty-live-20261112-retest1.json",
+      "latest_receipt_recheck": "docs/warranty-recovery-receipts-20261113.json"
     },
     "injection": {
       "status": "passed",
@@ -986,27 +999,46 @@
       "off_chain_evidence_only": true
     },
     "claim": {
-      "status": "blocked",
-      "reason": "Existing signing keys discarded; faucet HTTP 429 after three 150-second retries prevented fresh-account fallback"
+      "status": "passed",
+      "evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
+      "claim_tx": "8VSY1ni13PDBE6Bdp7iAUVX4BQSx5H3cajm276Lud2Aa",
+      "decision_tx": "EfgfeipfH4nDTefqoi1jiDsTu2ksNS6ZSXmFFzRw68Ay",
+      "resolution_after_warranty_expiry": true,
+      "hold_refund_delta": "4000000000000000000000"
     },
     "refund": {
-      "status": "blocked",
-      "reason": "Existing signing keys discarded; faucet HTTP 429 after three 150-second retries prevented fresh-account fallback"
+      "status": "passed",
+      "evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
+      "transaction_hash": "6Lp7uNYLg7indNxHTufCmUcJ8XdwKKjLJC2HDp6v529Q",
+      "client_refund_delta": "40000000000000000000000"
     },
     "quote": {
-      "status": "blocked",
+      "status": "passed",
       "dry": true,
       "signed": false,
-      "executed": false
+      "executed": false,
+      "evidence": "docs/warranty-quote-cooldown-20261113.json"
     },
     "development_checks": {
-      "targeted_tests_passed": 14,
-      "on_chain_proof": false,
-      "syntax_check": "passed",
-      "diff_check": "passed"
+      "node_tests_passed": 74,
+      "diff_check": "passed",
+      "on_chain_proof": false
     },
-    "committed": false,
-    "pushed": false
+    "committed": true,
+    "pushed": true,
+    "fix": {
+      "status": "passed",
+      "evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
+      "transaction_hash": "4wDpAGbcnyE9cPEAEDrVebdCqN7W6k6Z9MR1qZG5h9ns",
+      "worker_hold_delta": "4000000000000000000000"
+    },
+    "live_lifecycle": {
+      "status": "passed",
+      "evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
+      "final_task_status": "Paid",
+      "worker_total_payout": "40000000000000000000000"
+    },
+    "code_commit": "00f38c5d004c3f26ad75b6100fdff37b851c8bb0"
   },
   "previous_live_gate_before_completion": {
     "status": "blocked",
@@ -1040,5 +1072,228 @@
     "committed": false,
     "pushed": false,
     "origin_main_matches_head": true
+  },
+  "cooldown_retry": {
+    "checked_at_utc": "2026-11-13T04:48:09.278Z",
+    "key_search": {
+      "standard_testnet_credentials_directory": "absent",
+      "project_key_files": "none found",
+      "signing_environment_variables": "absent",
+      "reusable_accounts": false,
+      "secrets_printed": false,
+      "secrets_written": false
+    },
+    "live_report": "docs/warranty-live-cooldown-20261113.json",
+    "receipt_recheck": "docs/warranty-receipts-cooldown-20261113.json",
+    "quote_report": "docs/warranty-quote-cooldown-20261113.json",
+    "quote_status": "quoted",
+    "contract_e2e": false,
+    "status": "blocked",
+    "committed": false,
+    "pushed": false,
+    "independent_review": {
+      "model": "gpt-6.1-sol",
+      "reasoning": "xhigh",
+      "result": "clean source review; no actionable findings",
+      "scope": "warranty contract, policy, lifecycle runner, AI verifier, Intents quote, RPC evidence, related tests and docs",
+      "on_chain_proof": false
+    },
+    "development_checks": {
+      "targeted_tests_passed": 14,
+      "syntax_check": "passed",
+      "diff_check": "passed",
+      "on_chain_proof": false
+    },
+    "faucet": {
+      "http_status": 429,
+      "requests": 4,
+      "retries": 3,
+      "retry_wait_seconds": 150,
+      "status": "exhausted"
+    },
+    "reason": "No saved testnet signing keys found; faucet returned HTTP 429 on initial request and all three retries with 150-second waits; no accounts created or contract transactions attempted",
+    "new_transaction_hashes": [],
+    "remaining_unverified": [
+      "warranty claim filed and decided",
+      "short-deadline refund",
+      "complete corrected-source live lifecycle"
+    ]
+  },
+  "live_gate_before_cooldown_retry": {
+    "status": "blocked",
+    "reason": "Faucet HTTP 429 rejected initial request and all three retries, with 150 seconds between attempts; no fresh accounts created or deployment attempted",
+    "attempts": [
+      "docs/warranty-live-20261112-completion.json"
+    ],
+    "faucet_http_429": true,
+    "faucet_retry_count": 3,
+    "faucet_retry_wait_seconds": 150,
+    "deployed": false,
+    "accounts": {
+      "contract": "ae-261112-5d6f6f-contract.testnet",
+      "client": "ae-261112-5d6f6f-client.testnet",
+      "worker": "ae-261112-5d6f6f-worker.testnet",
+      "verifier": "ae-261112-5d6f6f-verifier.testnet"
+    },
+    "final_task_status": null,
+    "worker_paid": false,
+    "contract_e2e": false,
+    "unverified": [
+      "corrected-source complete live lifecycle",
+      "short-deadline refund",
+      "warranty claim filed and decided",
+      "fix delivery and acceptance",
+      "current Intents dry-run quote"
+    ],
+    "committed": false,
+    "pushed": false,
+    "origin_main_matches_head": true
+  },
+  "key_recovery": {
+    "evidence": "docs/warranty-key-recovery-20261113.json",
+    "status": "funded",
+    "credential_paths": [
+      "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/contract.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/client.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/worker.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/verifier.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/contract-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/client-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/worker-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/verifier-a8fd42.ae-261113-4178f2-recovery.testnet.json"
+    ],
+    "funding_status": "Recovery account created and funded with 10 test NEAR through the docs built-in faucet",
+    "near_cli_faucet_evidence": "docs/warranty-faucet-recovery-20261113.json",
+    "alternate_faucet_evidence": "docs/warranty-alternate-faucet-20261113.json",
+    "receipt_recheck": "docs/warranty-recovery-receipts-20261113.json",
+    "intents_repeated": false,
+    "near_cli_attempts": 4,
+    "alternate_attempts": 4,
+    "failed_funding_receipts": "docs/warranty-recovery-funding-20261113.json",
+    "reason": "The morning docs faucet created and funded the saved recovery account; its keys successfully funded new child accounts. Previous recovery failures are historical.",
+    "independent_review": {
+      "model": "gpt-6.1-sol",
+      "reasoning": "xhigh",
+      "finding": "P2: expired-hold claim test used pre-expiry default timestamps for resolution and callbacks",
+      "fix": "Explicit expiry timestamp carried through resolution, callbacks and retry in tests/wasm.test.mjs",
+      "re_review": "clean scoped static re-review",
+      "on_chain_proof": false
+    },
+    "intents_quote": {
+      "status": "passed previously; not repeated",
+      "amount_in_near": "0.036",
+      "amount_out_usdc": "0.118011",
+      "dry": true,
+      "signed": false,
+      "executed": false,
+      "evidence": "docs/warranty-quote-cooldown-20261113.json"
+    },
+    "latest_attempt_evidence": "docs/warranty-official-faucets-morning-20261113.json"
+  },
+  "official_faucets_retest6": {
+    "status": "blocked",
+    "evidence": "docs/warranty-official-faucets-retest6.json",
+    "account_id": "ae-261113-4178f2-recovery.testnet",
+    "credential_paths": [
+      "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json"
+    ],
+    "new_transaction_hashes": [
+      "71V5WRdRVCno6tsGKxavoQ6sASDYYQMfvHCXp5rwATEA"
+    ],
+    "funding_succeeded": false,
+    "intents_repeated": false,
+    "warranty_expiry_repeated": false,
+    "committed": false,
+    "pushed": false
+  },
+  "live_gate_before_morning": {
+    "status": "blocked",
+    "reason": "Retest 6: docs built-in faucet account API and near-cli faucet API each returned HTTP 429; Explorer is now a selector without a faucet; near-faucet.io returned a transaction whose recipient transfer failed with AccountDoesNotExist. Recovery account remains UNKNOWN_ACCOUNT; no usable funded signer.",
+    "attempts": [
+      "docs/warranty-faucet-recovery-20261113.json",
+      "docs/warranty-alternate-faucet-20261113.json",
+      "docs/warranty-implicit-faucet-20261113.json",
+      "docs/warranty-official-faucets-retest6.json"
+    ],
+    "faucet_retry_count": 3,
+    "faucet_retry_wait_seconds": 150,
+    "deployed": false,
+    "final_task_status": null,
+    "worker_paid": false,
+    "contract_e2e": false,
+    "unverified": [
+      "warranty claim filed and decided after expiry",
+      "short-deadline refund",
+      "complete corrected-source live lifecycle"
+    ],
+    "committed": false,
+    "pushed": false
+  },
+  "morning_retry": {
+    "status": "passed",
+    "funding_evidence": "docs/warranty-official-faucets-morning-20261113.json",
+    "failed_deployment_evidence": "docs/warranty-live-morning-20261113.json",
+    "final_evidence": "docs/warranty-live-morning-rpc-final-20261113.json",
+    "funding_succeeded": true,
+    "failure": "Initial contract allocation of 1.5 test NEAR could not cover Wasm storage; corrected to 3 test NEAR",
+    "credential_paths": [
+      "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/contract.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/client.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/worker.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/verifier.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/contract-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/client-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/worker-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+      "~/.near-credentials/testnet/verifier-a8fd42.ae-261113-4178f2-recovery.testnet.json"
+    ],
+    "intents_repeated": false,
+    "warranty_expiry_repeated": false,
+    "new_transaction_hashes": [
+      "Gs7tVzBPe9W7q8ppnDgjzN8La2kMZ188VmTn6JYftkoM",
+      "9bhEx7RGLKf7BbZojBvC6fZ4jLVZuH4tVe7r6h96xSzd",
+      "c8wB8u9Vm2AqWHxkTFp4RUYVzpYkJBiByoSHsM1e5D8",
+      "4kBhmdbLSfkWsLSJpgZGbsr5cjVqK8faYA3PkFz95jzS",
+      "9ojGUpffidougJtsGKhgtVUeFdm7NTRgKtW7DNbT3hC6",
+      "GxgW4EAoXENxyXeGaLzNvPZk1AqsAFbD9MMz8VCDNK32",
+      "6bT8NUG3Z7wBrVDfM6PnuHSe7cGCLnxkxxkzV7QLVTVg",
+      "5GXCEjhaqQS78XnDBmEFJinBf1vRrMZFYrrw8CShTRck",
+      "DPVWQ4hFUhqHAC47mQpUy6dzy6PoMGX6nkGTwTDtDUy",
+      "6Lp7uNYLg7indNxHTufCmUcJ8XdwKKjLJC2HDp6v529Q",
+      "DxYgPJmv2bG61eTHD6UpZ7QYrDuppoM9qvBvuFKDNH2j",
+      "ADwrMvwdsgSfmiFC4xgTNpQdKeDBdP3AK8jAJ1gqfWz2",
+      "8iVZTQYKSGPMM43DanoXPinqwThk8gsoxvTVKvyTgGs2",
+      "ApKRBWxpUVuWZ7fAihRJ3aFuv7UNgJH3EUpqXXX1P4TW",
+      "DCQAJJXGcdtqbDz9Bxsk3f9RpWWNn3jdriBfJ58bZDwe",
+      "8VSY1ni13PDBE6Bdp7iAUVX4BQSx5H3cajm276Lud2Aa",
+      "EfgfeipfH4nDTefqoi1jiDsTu2ksNS6ZSXmFFzRw68Ay",
+      "62Z2Py69Dbo4iE9RJ3MdrDz914k2FJAjiJiVuZaphHWK",
+      "7mvgY1GvjUSPHNvWp2pMwP4ov3GafXMiSGwUriazmF4e",
+      "4sFsi8Xq2ALpdrf7n6uueSMUSTU8Cs7LmADqNmmdWqTi",
+      "DCLshuANFuWLfejdqTuFfZY4x7LEBAV22MkkP414VQDo",
+      "BNE2ddu5xL8TrhYSQ7LQDZ3JrC6Kv9ZR5Kn4xJZ3ou4b",
+      "4XSyzYTPT5StQSruTBiMh3QXNmN7ynvjjYNFpjMCQJMP",
+      "C9cCArgxRd78kxABHwzuemCsD5xi6knNzw6349dZgE2R",
+      "SDSzxv3VqQHdwAGv76r3nzLuqBvdths3ByocUxJ7243",
+      "4wDpAGbcnyE9cPEAEDrVebdCqN7W6k6Z9MR1qZG5h9ns"
+    ],
+    "rpc_endpoint": "https://rpc.testnet.fastnear.com",
+    "rpc_source": "https://docs.fastnear.com/rpc",
+    "rpc_rate_limit_evidence": "docs/warranty-live-morning-final-20261113.json",
+    "rpc_reason": "Legacy testnet RPC HTTP429 persisted after one delayed read retry; documented FastNear testnet endpoint reported chain_id=testnet and completed the lifecycle.",
+    "read_retry_wait_seconds": 60,
+    "signed_sends_retried": false,
+    "code_commit": "00f38c5d004c3f26ad75b6100fdff37b851c8bb0",
+    "committed": true,
+    "pushed": true
+  },
+  "delivery": {
+    "code_commit": "00f38c5d004c3f26ad75b6100fdff37b851c8bb0",
+    "code_pushed": true,
+    "evidence_commit": "This documentation commit",
+    "recorded_at_utc": "2026-11-13T16:58:00.059Z",
+    "demo_changed": false,
+    "submission_sent": false
   }
 }

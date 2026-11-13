@@ -1,0 +1,15 @@
+{
+  "status": "quoted",
+  "dry": true,
+  "signed": false,
+  "executed": false,
+  "pricingNetwork": "production indicative prices only; separate from NEAR testnet escrow",
+  "originAsset": "nep141:wrap.near",
+  "destinationAsset": "nep141:17208628f84f5d6ad33f0da3bbbeb27ffcb398eac501a31bd6ad2011e36133a1",
+  "amountIn": "36000000000000000000000",
+  "amountOut": "118011",
+  "minAmountOut": "116830",
+  "destinationDecimals": 6,
+  "destinationSymbol": "USDC",
+  "observedAt": "2026-11-13T04:38:06.883Z"
+}

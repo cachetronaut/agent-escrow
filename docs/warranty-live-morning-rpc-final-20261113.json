@@ -1,0 +1,1365 @@
+{
+  "contractVersion": "1.0",
+  "componentId": "FUN-002",
+  "status": "succeeded",
+  "network": "testnet",
+  "owner": "Cachetronaut",
+  "cli_version": "0.31.1",
+  "accounts": {
+    "contract": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+    "client": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+    "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+    "verifier": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet"
+  },
+  "account_creation": {
+    "contract": {
+      "transaction_hash": "9bhEx7RGLKf7BbZojBvC6fZ4jLVZuH4tVe7r6h96xSzd",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "9bhEx7RGLKf7BbZojBvC6fZ4jLVZuH4tVe7r6h96xSzd",
+          "block_hash": "3ZiRWYG7ykwi1HVKQK2DTkKnq6s1X75pvePsccwsPGYb",
+          "executor_id": "ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "824947687500",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "5wzMTE6efTwb4yccSpJegND24QMa6hcqPp16fxDFqUS1",
+          "block_hash": "AzPR3BDZjKYpB3KEZGtRwWPoVjGx7TxFjy7MqZs13GmR",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "7524947687500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "verified": true,
+      "balance": "3000000000000000000000000"
+    },
+    "client": {
+      "transaction_hash": "c8wB8u9Vm2AqWHxkTFp4RUYVzpYkJBiByoSHsM1e5D8",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "c8wB8u9Vm2AqWHxkTFp4RUYVzpYkJBiByoSHsM1e5D8",
+          "block_hash": "vpndaLnMYkcZEDNt12oyTHc7HLFn63MvrPUKHXqVjbD",
+          "executor_id": "ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "824947687500",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "FRKGYQnXAxqdRSGsx6tAoU3SvBoEs3QG5SX8qgmACL89",
+          "block_hash": "CUCW6PEobBgYdKhRHJibDzNJXzr2vfa1hA7BrW7AbzDN",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "7524947687500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "verified": true,
+      "balance": "500000000000000000000000"
+    },
+    "worker": {
+      "transaction_hash": "4kBhmdbLSfkWsLSJpgZGbsr5cjVqK8faYA3PkFz95jzS",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "4kBhmdbLSfkWsLSJpgZGbsr5cjVqK8faYA3PkFz95jzS",
+          "block_hash": "JBQ2uKgwyt9SujiuR42kgeMP4nQCRqmzB1K6xtbtQE4H",
+          "executor_id": "ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "824947687500",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "2RDrZMJm6BkGXiLu5Pc5AJZv38EKqtEcWTWpAb9CFWzR",
+          "block_hash": "GGf27se6cjkogGj4tzkiT6EDkrNHqZw7fqJoLZbgwnsD",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "7524947687500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "verified": true,
+      "balance": "500000000000000000000000"
+    },
+    "verifier": {
+      "transaction_hash": "9ojGUpffidougJtsGKhgtVUeFdm7NTRgKtW7DNbT3hC6",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "9ojGUpffidougJtsGKhgtVUeFdm7NTRgKtW7DNbT3hC6",
+          "block_hash": "9D8kbxnaeLm8SHJ6duR1jPvFovL9v57wNNaVSr5rXnAv",
+          "executor_id": "ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "824947687500",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "B3KJY6PAFjAmvzZEbqNz1QMZD9CPVCNyWGf8MTbr3atE",
+          "block_hash": "7sKusogDbpEAEPe1MLED31ChGSTsK1MoU6nbh6y2KhYP",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "7524947687500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "verified": true,
+      "balance": "500000000000000000000000"
+    }
+  },
+  "transactions": {
+    "deploy": {
+      "transaction_hash": "GxgW4EAoXENxyXeGaLzNvPZk1AqsAFbD9MMz8VCDNK32",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "GxgW4EAoXENxyXeGaLzNvPZk1AqsAFbD9MMz8VCDNK32",
+          "block_hash": "HHAtzVjsXaprQBurRwD7jyveghJ1WmxkxzkgdPjL4ZKT",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "2119801029867",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "34UJZijR4auuFwueLbUza2T2udwawYkykUjKepYUW6Z1",
+          "block_hash": "HHAtzVjsXaprQBurRwD7jyveghJ1WmxkxzkgdPjL4ZKT",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "16952449572415",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "B52ExtbtBdZjzVkwa6WYC6jkpN8j6QzZ3Eii2bJXLC23",
+          "block_hash": "Mu3z7BTRnhUR6aQ8V8cgZm7Bs4svk9nSGP2UcxQGHbJ",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "contract",
+      "explorer": "https://testnet.nearblocks.io/txns/GxgW4EAoXENxyXeGaLzNvPZk1AqsAFbD9MMz8VCDNK32"
+    },
+    "post_0": {
+      "transaction_hash": "6bT8NUG3Z7wBrVDfM6PnuHSe7cGCLnxkxxkzV7QLVTVg",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "6bT8NUG3Z7wBrVDfM6PnuHSe7cGCLnxkxxkzV7QLVTVg",
+          "block_hash": "EG2P1NXpUwcmi9uM8FRFyPSUdEdZwo1CpZ5B7dPTXGtY",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "331662938925",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "EMcnXiE26rnapZJiEYYYX1GY6Jdw1X7SF8rowXAvmv2N",
+          "block_hash": "J18LuE9SjHsX1MmjZpEKqceWk9a7RtaUJ6KVb5uZ3cuZ",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1638493062623",
+          "status": "success",
+          "events": [
+            {
+              "event": "posted",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "9bXvEmxdmJUurStGadAmfEPLqMYkiUHcrno1dF2YBqrk",
+          "block_hash": "92dgE2P5dt1epoxDPhfYtyUniMMQ7LTHLry3B5YJ4Cvo",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/6bT8NUG3Z7wBrVDfM6PnuHSe7cGCLnxkxxkzV7QLVTVg"
+    },
+    "bid_0": {
+      "transaction_hash": "5GXCEjhaqQS78XnDBmEFJinBf1vRrMZFYrrw8CShTRck",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "5GXCEjhaqQS78XnDBmEFJinBf1vRrMZFYrrw8CShTRck",
+          "block_hash": "CH1MDcsvkQa9SzNPnMzQQikQdtZYtPnA1FtbZK7uKTCj",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "310586736895",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "3AwYreXUP5PHuj11VMxPm8MPMVAcqzjSufhfMBQQDDXG",
+          "block_hash": "3zRK7Hop9tSrfZkMLUHwDUZJMxFokr1oPz68mRt8GEXe",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1745875203828",
+          "status": "success",
+          "events": [
+            {
+              "event": "bid",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "BCbRUoFRn8s7pLLZVuAGkHVBzTd2ZH3deVvz7jsGFnkb",
+          "block_hash": "ESQyoka3QHaCwGErzsiucbE3GQejKWaHPpiNV7KZC3Qk",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/5GXCEjhaqQS78XnDBmEFJinBf1vRrMZFYrrw8CShTRck"
+    },
+    "escrow_0": {
+      "transaction_hash": "DPVWQ4hFUhqHAC47mQpUy6dzy6PoMGX6nkGTwTDtDUy",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "DPVWQ4hFUhqHAC47mQpUy6dzy6PoMGX6nkGTwTDtDUy",
+          "block_hash": "D3GZNuFaQWNqaH6gyMyHRcnD7SDEGt3fsJxMMVKv9XUM",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "311874197200",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "9ugMYQwp795Q5WEpT6HJEWsn9FwdeWRPc6wQFKhjLiFm",
+          "block_hash": "C8ADXLH8TUfEfuMiDyPiThdjESWNskjudtpBLnV6rXLh",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1750097214206",
+          "status": "success",
+          "events": [
+            {
+              "event": "escrowed",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "7mjAawTKy4N1ZpgZUahUnD5dA7TZXDEAKNYzokeXLRXi",
+          "block_hash": "uWqiFUxPRAc1VFhh1PDF4Ti8iU6VUpMK9gboGGqydUD",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/DPVWQ4hFUhqHAC47mQpUy6dzy6PoMGX6nkGTwTDtDUy"
+    },
+    "timeout_refund": {
+      "transaction_hash": "6Lp7uNYLg7indNxHTufCmUcJ8XdwKKjLJC2HDp6v529Q",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "6Lp7uNYLg7indNxHTufCmUcJ8XdwKKjLJC2HDp6v529Q",
+          "block_hash": "9uhk8pHMGuJzKfLfcJXyipkrarwuHs3nG1gvuvLojhkW",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "309060858015",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "8idMFtGWJDzFxdPkbYk3voKsNjBUdm2pouWqtbVtNCT1",
+          "block_hash": "FTdCwrDLhnsqGBf8EsT79wnhELxJyggrgdRHvxqX2GMz",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "2732772913472",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "expired",
+              "task_id": "0"
+            },
+            {
+              "event": "transfer_started",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "72g1vaPCFzsaSMEiMijb2uJTKU1Cx41NSatnubNTdV6T",
+          "block_hash": "756DvhfkiHH8YZwvTJg5wKFPZEZKGYE5XWn8NZJes5Fq",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "BQKYn4XFt6bZwy4DkpKu2mj7BBcjBUwsUXCsqhirry8j",
+          "block_hash": "GSx5J6ZReGec4eVRkEhLHoLxi871HnANhNvm4269Pzzu",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "4XvH4XYikm9MTZhERNToD5PNuaURe1XmkCAR2QYBTMjs",
+          "block_hash": "GSx5J6ZReGec4eVRkEhLHoLxi871HnANhNvm4269Pzzu",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1783034910112",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "Ha7jeHsJ473q5yBvSc2xLB6WvEP7YwbsFwtgtMEnL8jP",
+          "block_hash": "H1JQsMcqjh4XBAi1TXQcAvgHLW2VJdMNnPksEWs2KvzT",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "2XXjrxL8TKEuYCxtXnck8VVfGjEcRkXGK3rCcTLZgrDf",
+          "block_hash": "756DvhfkiHH8YZwvTJg5wKFPZEZKGYE5XWn8NZJes5Fq",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "verifier",
+      "explorer": "https://testnet.nearblocks.io/txns/6Lp7uNYLg7indNxHTufCmUcJ8XdwKKjLJC2HDp6v529Q"
+    },
+    "post_1": {
+      "transaction_hash": "DxYgPJmv2bG61eTHD6UpZ7QYrDuppoM9qvBvuFKDNH2j",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "DxYgPJmv2bG61eTHD6UpZ7QYrDuppoM9qvBvuFKDNH2j",
+          "block_hash": "3mhgZSgFgqr5Cyo7H9NZkayDcThcvVkL9awgRnisZVj6",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "331710622640",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "3ZVs7c162XDee9JYB5zk7RYBHzeRqoV4wt2G5A4M56EU",
+          "block_hash": "9kbNgY1WJ1sTiAF2xiMBLj6piyHEK6Y5FxLtgZsUayxD",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1647696282711",
+          "status": "success",
+          "events": [
+            {
+              "event": "posted",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "8iCiYvSFbKcvoSdzLR91q3TnYELdcR5fgPVfnKt16kCb",
+          "block_hash": "F2WkdeGEuLakVAwskxyb4BL4s3Gq1Eq1i422nH1Txawu",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/DxYgPJmv2bG61eTHD6UpZ7QYrDuppoM9qvBvuFKDNH2j"
+    },
+    "bid_1": {
+      "transaction_hash": "ADwrMvwdsgSfmiFC4xgTNpQdKeDBdP3AK8jAJ1gqfWz2",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "ADwrMvwdsgSfmiFC4xgTNpQdKeDBdP3AK8jAJ1gqfWz2",
+          "block_hash": "BDupjjt7ZvwP5sioLocabTfPmcfK3S5z5q1hfpCth8F8",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "310586736895",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "FXB914bMMKq2NnM73e2zFiKhFPZMRPzybvrDQnYsmNGm",
+          "block_hash": "FRkr97is2XSQzY7vSeba7kuRZX65M8w8jQq9hTj7Snwq",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1750437672096",
+          "status": "success",
+          "events": [
+            {
+              "event": "bid",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "7Y5aMQRhjLYkBVhyNYhMWDDXtKjY5b312C3f2USkq4yB",
+          "block_hash": "FdhrvqQUJqKSf2RvCwt2MSWL9KCsFy8Hm9HA5MKYByEk",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/ADwrMvwdsgSfmiFC4xgTNpQdKeDBdP3AK8jAJ1gqfWz2"
+    },
+    "escrow_1": {
+      "transaction_hash": "8iVZTQYKSGPMM43DanoXPinqwThk8gsoxvTVKvyTgGs2",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "8iVZTQYKSGPMM43DanoXPinqwThk8gsoxvTVKvyTgGs2",
+          "block_hash": "AFqVajobZZH2yrBnbRTH9ryZpWVCn3R6FQvL8VVbCeFt",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "311874197200",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "BSUTdFtpL347rkpcpTZqUEnZSJHFV95KhD9v91Wkb9u3",
+          "block_hash": "7RMBeF6PFCnmPtW6Harp1SdZ2GoZELZRVGfPFdZRCtcT",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1754659682474",
+          "status": "success",
+          "events": [
+            {
+              "event": "escrowed",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "CAScZbs5ezjkVry8fW3r5yjpHrwoEjjqYHASb79f2saR",
+          "block_hash": "j94SNV31AEAijSqAH9pEfei8ZyZK46wvvK47AqwyA6t",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/8iVZTQYKSGPMM43DanoXPinqwThk8gsoxvTVKvyTgGs2"
+    },
+    "deliver_1": {
+      "transaction_hash": "ApKRBWxpUVuWZ7fAihRJ3aFuv7UNgJH3EUpqXXX1P4TW",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "ApKRBWxpUVuWZ7fAihRJ3aFuv7UNgJH3EUpqXXX1P4TW",
+          "block_hash": "5XXdCbGzJLNbWHdBPTCxpA7ok16XY8jgwFWHN5zbh5HQ",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "313161657505",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "GetRALnD7kjrdJnUpSLo9HWRHvSDyj2vnSsfsLo7d3YN",
+          "block_hash": "FwUmdLusECj7my2gScj3ixyH7D8KUe7Lp6KXe9pwccU2",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1768014901424",
+          "status": "success",
+          "events": [
+            {
+              "event": "delivered",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "3un1r6jZsmDXfT8mG33hA4AF9JsmPaEetFtDvY6kgyE8",
+          "block_hash": "HD2Xnzge4ekzsa3mtk6ENKj9187BcS14JUiyxcxKvebr",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/ApKRBWxpUVuWZ7fAihRJ3aFuv7UNgJH3EUpqXXX1P4TW"
+    },
+    "release_1": {
+      "transaction_hash": "DCQAJJXGcdtqbDz9Bxsk3f9RpWWNn3jdriBfJ58bZDwe",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "DCQAJJXGcdtqbDz9Bxsk3f9RpWWNn3jdriBfJ58bZDwe",
+          "block_hash": "GSVtEJ6JRY4hKuvAyTm7XdQpyiNikm4rz97utAbHxwTQ",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "309108541730",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "EFXuctTTg7pyNbuePQn8pNM4KKX1c9UYshEGvr4gn5nc",
+          "block_hash": "HX2RPawgm5nuhJBYD3qfJ8yhDWXY5t1ECjyW5zyHcaCD",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "2772161550293",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "approved",
+              "task_id": "1"
+            },
+            {
+              "event": "transfer_started",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "FnspSeMcTjiyE9JDiwrgc4wX8G2SpU6X8JWSNsz2LnaK",
+          "block_hash": "4AMF6RTEpzrkRGrdrzegS2AhjHQ3DxXdFVSL6rzUybtr",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "3Zpoqu2nuUw4pKpkU7gaJd8sFy2DphA7U5TivKGzWdyc",
+          "block_hash": "ExCnjVcFQ9ezXLjixuUYKNrPazcWrUYuW7MVp4k9tPR",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "7jqHg1FrWDLpjGEREHRqmmGoT4MSaMgzWc3z3pvrx2xZ",
+          "block_hash": "ExCnjVcFQ9ezXLjixuUYKNrPazcWrUYuW7MVp4k9tPR",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1797859418423",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "7hT4knKJ2Q6P9tvnC4U9E37HiVrmR6qmGsWk41VL8AJM",
+          "block_hash": "2JMWLedxxKYJz4d7ugkoP6rbpwxYPPPxga1VibvhV66P",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "8RQCfj2dBSgNf5ggP6JXuYdiefWqNazfEvcf2YjUMjQT",
+          "block_hash": "4AMF6RTEpzrkRGrdrzegS2AhjHQ3DxXdFVSL6rzUybtr",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "verifier",
+      "explorer": "https://testnet.nearblocks.io/txns/DCQAJJXGcdtqbDz9Bxsk3f9RpWWNn3jdriBfJ58bZDwe"
+    },
+    "warranty_claim": {
+      "transaction_hash": "8VSY1ni13PDBE6Bdp7iAUVX4BQSx5H3cajm276Lud2Aa",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "8VSY1ni13PDBE6Bdp7iAUVX4BQSx5H3cajm276Lud2Aa",
+          "block_hash": "8zvXEVSbj4Gr966G8qRKXk6TF2LU321czsYQiQdkKYZe",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "313066290075",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "APvmXNML231CZCJ7QMviA4MHmfNZiZnNakT7Uv7rGNeE",
+          "block_hash": "29p6dArVzTETLGpEytgrKsqKtEEqfPnvPGMFuDrzn84m",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1777316492242",
+          "status": "success",
+          "events": [
+            {
+              "event": "claimed",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "EVPiogajFBDT9RYxEx71o4tZ1amsFs4snqE1FzvJwbi1",
+          "block_hash": "EgsNPDegjNfDoNjKkvYbdYsCjj6zBzWyM5J6JMPVqrJc",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/8VSY1ni13PDBE6Bdp7iAUVX4BQSx5H3cajm276Lud2Aa"
+    },
+    "claim_refund": {
+      "transaction_hash": "EfgfeipfH4nDTefqoi1jiDsTu2ksNS6ZSXmFFzRw68Ay",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "EfgfeipfH4nDTefqoi1jiDsTu2ksNS6ZSXmFFzRw68Ay",
+          "block_hash": "GZTL7azoxNVy8iWAj2kaeCNAVx9Z1a6qoGoFX5a9epNR",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "310348318320",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "DWRMKsMNQAfSfmMRfq9nqCD8wfkP8PJNdU42WyxpYA71",
+          "block_hash": "G8LFPEDXRB7mvaCfFoiB9c6Hq9XopZrjyEiY9j9Cngxs",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "2796096109704",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "claim_resolved",
+              "task_id": "1"
+            },
+            {
+              "event": "transfer_started",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "9WFJ5YTytJPokyN32bJTgW6BxuyMfdT76qQcW7UbrSMb",
+          "block_hash": "682Xq6LuJ5GHnYiDfrpCDF66maa1SBTVNBay8pn72eAU",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "3ehb79m5ccS2Zrsk1GPijz2BWLbnwBMi4YsHQ4WjACZv",
+          "block_hash": "CiATHAtq2xGPT5RuVv9StMFKY82ugUVT8gU7J7xKsuvR",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "9ucTEZZGWkP4S9E7QDvQfSWyZP5n5tLqwDuWon6PKmfj",
+          "block_hash": "CiATHAtq2xGPT5RuVv9StMFKY82ugUVT8gU7J7xKsuvR",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1807405979388",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "1"
+            }
+          ]
+        },
+        {
+          "id": "2RFeUT26cf5DLY7N1Mg1GZff8C2mMrJ6TeksqMCBycLg",
+          "block_hash": "4cwoc6uEtrfB4Nd95wVMQyjaHxMeb48dsQyqb5Pin932",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "55BakChBsHd6nUKQJTYNF5qTfxYUz1MjiK93ms2hczrf",
+          "block_hash": "682Xq6LuJ5GHnYiDfrpCDF66maa1SBTVNBay8pn72eAU",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "verifier",
+      "explorer": "https://testnet.nearblocks.io/txns/EfgfeipfH4nDTefqoi1jiDsTu2ksNS6ZSXmFFzRw68Ay"
+    },
+    "post_2": {
+      "transaction_hash": "62Z2Py69Dbo4iE9RJ3MdrDz914k2FJAjiJiVuZaphHWK",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "62Z2Py69Dbo4iE9RJ3MdrDz914k2FJAjiJiVuZaphHWK",
+          "block_hash": "4VerS7qW2Z1JGedmmBVQJ3iUCTTZVSaBW91LgkwmLRVo",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "331710622640",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "Bis6rtwDskg7vs7g4WYRJNm84T3XvzgnNhuPJbf6TEbs",
+          "block_hash": "3QFqBmshXsMMRc5ZxaubcH8UL7oDhcSLcidqzXe3weKM",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1649976282711",
+          "status": "success",
+          "events": [
+            {
+              "event": "posted",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "8JzB9Ae61YYoKgSe3Kd7QYB6ZBspP5aYY5EjQVGqZxgs",
+          "block_hash": "DVBwDemvmDWGhXyFzGGomvD5eWj1R5ngVNF7wg2yQCD9",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/62Z2Py69Dbo4iE9RJ3MdrDz914k2FJAjiJiVuZaphHWK"
+    },
+    "bid_2": {
+      "transaction_hash": "7mvgY1GvjUSPHNvWp2pMwP4ov3GafXMiSGwUriazmF4e",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "7mvgY1GvjUSPHNvWp2pMwP4ov3GafXMiSGwUriazmF4e",
+          "block_hash": "84oqBQTfJvDCbESqviRY9zAvxhB78ppmXxsYUtqdAhWq",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "310586736895",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "6Eoeqxe9r944dBptzV21FEmygnLJVXXWPhYMyMkTDAYK",
+          "block_hash": "EqE4ADSGFmNChtPrR9uGXW4skYsnER67nz2AZ1RbKwMZ",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1750437672096",
+          "status": "success",
+          "events": [
+            {
+              "event": "bid",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "9uDua1P4ixVGT4LAEywW4iWTuUdHjXjXFCAzfXzZdft3",
+          "block_hash": "7MULT4ofBzMU9SNaLqmxSwy2jL9VQDUxFYgs5Tuc9F8t",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/7mvgY1GvjUSPHNvWp2pMwP4ov3GafXMiSGwUriazmF4e"
+    },
+    "escrow_2": {
+      "transaction_hash": "4sFsi8Xq2ALpdrf7n6uueSMUSTU8Cs7LmADqNmmdWqTi",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "4sFsi8Xq2ALpdrf7n6uueSMUSTU8Cs7LmADqNmmdWqTi",
+          "block_hash": "2ocUaoFYhAiqgrxzqs6hUsH2W6F9kvRWLcwXt5Vscskb",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "311874197200",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "8YDTBiQNRSU31LqgCseYcBc7sMKCvWGfgSM878mXKnaZ",
+          "block_hash": "BscZxVgyb2rc8BfCQvQVRPHSQD1GWPnf3ogS3aDK76fK",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1754659682474",
+          "status": "success",
+          "events": [
+            {
+              "event": "escrowed",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "14o4wuQysVrkUScoDUX3tixy34LkiSFmYhNnjG5sVt2a",
+          "block_hash": "7YarVkfDMF8FQELEP2pKf5jyKfbpRpAV6wf6KFUeVbGG",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/4sFsi8Xq2ALpdrf7n6uueSMUSTU8Cs7LmADqNmmdWqTi"
+    },
+    "deliver_2": {
+      "transaction_hash": "DCLshuANFuWLfejdqTuFfZY4x7LEBAV22MkkP414VQDo",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "DCLshuANFuWLfejdqTuFfZY4x7LEBAV22MkkP414VQDo",
+          "block_hash": "8xX1ntNLGN45SZnRrSum5WsRg4EUS1uUnx9VdrZkWKzm",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "313161657505",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "49HNq9UVKXYNJZXysjHKQfFVbdK8rdwitLpBhMSdnHnB",
+          "block_hash": "8AWcgy3zKBGikishMHpA2Dtzjw4pAjyHdqPRw3VXwiZU",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1768014901424",
+          "status": "success",
+          "events": [
+            {
+              "event": "delivered",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "H1uDQG6852ofRSP2TFx7Fyj489iCY6vG65TvgiLRuuhK",
+          "block_hash": "en8uJ3rggJC3BxAeHrPHc8s3KHaFMQnC3PLdnQDxLH1",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/DCLshuANFuWLfejdqTuFfZY4x7LEBAV22MkkP414VQDo"
+    },
+    "release_2": {
+      "transaction_hash": "BNE2ddu5xL8TrhYSQ7LQDZ3JrC6Kv9ZR5Kn4xJZ3ou4b",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "BNE2ddu5xL8TrhYSQ7LQDZ3JrC6Kv9ZR5Kn4xJZ3ou4b",
+          "block_hash": "CkXHMUKcG6Cprt3RNgAfxg3JmkHpWm8dh9F1Z59uEzJa",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "309108541730",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "3pGNfXFhmmUwqGTCkH5EEg46KoB4ARPhwxHFHHu2F7En",
+          "block_hash": "pqe49RhtjpAzpBoLCpGdUPRWDuzf2weHNZNC1fRUwcZ",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "2772161550293",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "approved",
+              "task_id": "2"
+            },
+            {
+              "event": "transfer_started",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "D1JWHkgVwdm9uhafJpYwAXgRkF38M7SfkWoJ6qTn3ort",
+          "block_hash": "8M9fDUtwDrfWvPHXaQWKDp3EVP8PWaGayese4BNwfatV",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "EeKQ5v53ntni8DFT9ffs2x85MJ9cfBSqBQFy1HaCYiV1",
+          "block_hash": "Dcus2qenXhhExU8u1MZR3jjU4AZsvttfELpfxBP21srE",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "8ksF7fHoKJ8z4SYUyiPoeiW6mT1GeqNP1J7jatqQAQhq",
+          "block_hash": "Dcus2qenXhhExU8u1MZR3jjU4AZsvttfELpfxBP21srE",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1797859418423",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "A6svfLxSMmVgW5HgcXXMCnkHgpTpvU7p9rqAwsVj3DBR",
+          "block_hash": "365yvMMEj1BCURqQCA5apk3kEuAnr9zyxezAwovrMeqX",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "EorhXNvjJ8iXek3Y1HcDV6zs1RJ4UpPd3sAzkhttbgsd",
+          "block_hash": "8M9fDUtwDrfWvPHXaQWKDp3EVP8PWaGayese4BNwfatV",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "verifier",
+      "explorer": "https://testnet.nearblocks.io/txns/BNE2ddu5xL8TrhYSQ7LQDZ3JrC6Kv9ZR5Kn4xJZ3ou4b"
+    },
+    "fix_claim": {
+      "transaction_hash": "4XSyzYTPT5StQSruTBiMh3QXNmN7ynvjjYNFpjMCQJMP",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "4XSyzYTPT5StQSruTBiMh3QXNmN7ynvjjYNFpjMCQJMP",
+          "block_hash": "G2PtvhwfpE5AS6sDP4y1hx21WPBDPwgTkrEYNEyN2zbP",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "313066290075",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "BdhAJPuKexrPQ4uqVgLjMngexFfpYdPeuFvPTk4ineFS",
+          "block_hash": "2AT2XWtnF9RbhtXLqJLZoNzuzvEmREEqrhcS5RL7JhQt",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1777316492242",
+          "status": "success",
+          "events": [
+            {
+              "event": "claimed",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "8GLYcoPGUP2YV2RbUKgGM8ZahpcxirYY5xhBxSMtgEeS",
+          "block_hash": "EJNVnmJ8632YTEbRwQSAJDzrmYRoUs4iHrjpVFJbKrPN",
+          "executor_id": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "client",
+      "explorer": "https://testnet.nearblocks.io/txns/4XSyzYTPT5StQSruTBiMh3QXNmN7ynvjjYNFpjMCQJMP"
+    },
+    "fix_requested": {
+      "transaction_hash": "C9cCArgxRd78kxABHwzuemCsD5xi6knNzw6349dZgE2R",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "C9cCArgxRd78kxABHwzuemCsD5xi6knNzw6349dZgE2R",
+          "block_hash": "7FTYF4ycLmJPZLxQa9Yccb8vh2DVXstNE2mHM2n2UMGZ",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "310205267175",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "HMsnMkPrTZWbGVbtemRAhHaHfYvFWUwh5BTAn7qKf21h",
+          "block_hash": "GYNbiTz7HYggQHzNgRcxAn5DiU7H5ZrMEJV8MrdhkPC7",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1786400449667",
+          "status": "success",
+          "events": [
+            {
+              "event": "claim_resolved",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "5pNtkS7v1M5RALwquK2fCZNtGwkXyPqqgD8xu5MmfGym",
+          "block_hash": "7c8wFDGa2VgDqxL7XdmuXNhgE45GQP8xZ8Pa4BSL1qEK",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "verifier",
+      "explorer": "https://testnet.nearblocks.io/txns/C9cCArgxRd78kxABHwzuemCsD5xi6knNzw6349dZgE2R"
+    },
+    "fix_delivered": {
+      "transaction_hash": "SDSzxv3VqQHdwAGv76r3nzLuqBvdths3ByocUxJ7243",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "SDSzxv3VqQHdwAGv76r3nzLuqBvdths3ByocUxJ7243",
+          "block_hash": "9Zr24FKQuDkE2yeqEEscagdzxgbRwzCAZtVfzBghfouS",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "313352392365",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "GJnwWS4apybCmvsCtDmejd5SzoFmQi2fPA9feU23xzPY",
+          "block_hash": "6oX4ibTqBYyBboAPTjJgZrUykpQvhCwEKsiisziox9WC",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1788856302365",
+          "status": "success",
+          "events": [
+            {
+              "event": "fix_delivered",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "AEeBRtUnQBRZmYx5yBmp7SwucWPBMbSUwvAFAwsrPXTW",
+          "block_hash": "CL3k8DvXSVrfuUniWDgaeDJvRMySavYPQarM8FHWqES2",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "worker",
+      "explorer": "https://testnet.nearblocks.io/txns/SDSzxv3VqQHdwAGv76r3nzLuqBvdths3ByocUxJ7243"
+    },
+    "fix_accepted": {
+      "transaction_hash": "4wDpAGbcnyE9cPEAEDrVebdCqN7W6k6Z9MR1qZG5h9ns",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "4wDpAGbcnyE9cPEAEDrVebdCqN7W6k6Z9MR1qZG5h9ns",
+          "block_hash": "Fz7zp6gfc29HkqSL4GUfPQNhcMr7jn5JqR4FDUwmK5sD",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "310348318320",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "TXGvVCTahwNmy7HGgkKAf7gGeZpFYPksXNH3dpEJQ6Y",
+          "block_hash": "zHeGVaAxBxY7Z3LBr8gwg5PLi3AyDyJZgRB99ZHixuy",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "2816002618676",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "claim_resolved",
+              "task_id": "2"
+            },
+            {
+              "event": "transfer_started",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "B6ttEXQqr19fH1uTJRRwMxWLF1QrgYrcvjvnFpCF3neQ",
+          "block_hash": "1QuapdLowAdnEFRn6mLq63kaRHjD577ZtX8pvtUco6q",
+          "executor_id": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "F73MJkyA2BXqzr9wFBUAVXhNaWFH5c936jb1SS28x9P7",
+          "block_hash": "4GrtaNvNs3KDYKSf6L1yuyTQV52ZFjZKMMQRvNp1wMLm",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "8epT1y4ksYjTuqgopxioU3vnkyzs1cp6NJvP8wvEbuu7",
+          "block_hash": "4GrtaNvNs3KDYKSf6L1yuyTQV52ZFjZKMMQRvNp1wMLm",
+          "executor_id": "contract-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "1817429579512",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "2"
+            }
+          ]
+        },
+        {
+          "id": "5mh5fGDKpaShWSh2MSYi7LFssFCbakqKsBDcr9ssKeAB",
+          "block_hash": "8Mf7Y8GtC2AHsSGR9QBN4zkqwWbGJdithDVvobNjuuYF",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "2RowCfgejKkH7ZUP7dmuPrRJzJPi1Akg75obxdjiZakR",
+          "block_hash": "1QuapdLowAdnEFRn6mLq63kaRHjD577ZtX8pvtUco6q",
+          "executor_id": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ],
+      "signer_role": "verifier",
+      "explorer": "https://testnet.nearblocks.io/txns/4wDpAGbcnyE9cPEAEDrVebdCqN7W6k6Z9MR1qZG5h9ns"
+    }
+  },
+  "checks": {
+    "deployed_code_hash_matches": true,
+    "prior_warranty_expiry": {
+      "status": "passed",
+      "receipt_report": "docs/warranty-receipts-rechecked-20261112.json",
+      "release_tx": "YPcTLZF3fFRjn2Ye3U61PisjGeRRXfp5woXxEFeLLG9",
+      "settle_tx": "B72QJQQFeiqFjUXWmEnBWh9TxxMcDtmnuxiCWE7L2H14",
+      "worker_hold_payout": "4000000000000000000000",
+      "payout_delta_source": "docs/warranty-live-20261112-retest1.json",
+      "latest_receipt_recheck": "docs/warranty-recovery-receipts-20261113.json"
+    },
+    "prior_intents_quote": {
+      "status": "passed",
+      "dry": true,
+      "signed": false,
+      "executed": false,
+      "evidence": "docs/warranty-quote-cooldown-20261113.json"
+    },
+    "timeout_task": {
+      "client": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "verifier": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "title": "Warranty-backed JSON brief",
+      "criteria": "{\"checks\":[{\"id\":\"summary\",\"description\":\"The JSON has a summary explaining that escrow locks an accepted bid and pays after verifier approval.\",\"threshold\":80},{\"id\":\"source\",\"description\":\"The source is https://docs.near.org/.\",\"threshold\":100}]}",
+      "budget": "50000000000000000000000",
+      "escrow_amount": "40000000000000000000000",
+      "bids": [
+        {
+          "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "amount": "40000000000000000000000"
+        }
+      ],
+      "deadline_ns": "1794588381414000000",
+      "evidence_sha256": null,
+      "status": "Refunded",
+      "retention_percent": 10,
+      "warranty_window_ns": "20000000000",
+      "warranty_until_ns": "0",
+      "hold_amount": "0",
+      "claim_evidence_sha256": null,
+      "fix_evidence_sha256": null
+    },
+    "timeout_refund_delta": "40000000000000000000000",
+    "timeout_refunded": true,
+    "delivery_1": true,
+    "ai_task_1": {
+      "contractVersion": "1.0",
+      "componentId": "FUN-003",
+      "requestId": "a0568a48-167e-4c93-814b-f16acfc3f75e",
+      "runId": "a0568a48-167e-4c93-814b-f16acfc3f75e",
+      "status": "succeeded",
+      "result": {
+        "approved": true,
+        "score": 100,
+        "delivery_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+        "criteria_sha256": "a0cb17f0e44677676881609505128f972bf1454c0d19aaec229bfa4816d6faeb",
+        "judges": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "summary",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          },
+          {
+            "model": "z-ai/glm-5.3-flash",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "summary",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          },
+          {
+            "model": "Qwen/Qwen3.8-27B",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "summary",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          }
+        ],
+        "authority": "named on-chain attester; model votes are off-chain evidence",
+        "attestation_verified": false
+      },
+      "errors": [],
+      "trace": {
+        "startedAtUtc": "2026-11-13T16:52:07.139Z",
+        "completedAtUtc": "2026-11-13T16:52:27.302Z",
+        "policyVersions": {
+          "grading": "1.0"
+        },
+        "steps": []
+      }
+    },
+    "initial_payout_1": true,
+    "claim_task": {
+      "client": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "verifier": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "title": "Warranty-backed JSON brief",
+      "criteria": "{\"checks\":[{\"id\":\"summary\",\"description\":\"The JSON has a summary explaining that escrow locks an accepted bid and pays after verifier approval.\",\"threshold\":80},{\"id\":\"source\",\"description\":\"The source is https://docs.near.org/.\",\"threshold\":100}]}",
+      "budget": "50000000000000000000000",
+      "escrow_amount": "40000000000000000000000",
+      "bids": [
+        {
+          "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "amount": "40000000000000000000000"
+        }
+      ],
+      "deadline_ns": "1794592010400000000",
+      "evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+      "status": "HoldRefunded",
+      "retention_percent": 10,
+      "warranty_window_ns": "180000000000",
+      "warranty_until_ns": "1794588930071978474",
+      "hold_amount": "4000000000000000000000",
+      "claim_evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+      "fix_evidence_sha256": null
+    },
+    "claim_hold_refund_delta": "4000000000000000000000",
+    "claim_hold_refunded": true,
+    "delivery_2": true,
+    "ai_task_2": {
+      "contractVersion": "1.0",
+      "componentId": "FUN-003",
+      "requestId": "5ff48185-3d28-45ed-acfc-9a2a6296de09",
+      "runId": "5ff48185-3d28-45ed-acfc-9a2a6296de09",
+      "status": "succeeded",
+      "result": {
+        "approved": true,
+        "score": 100,
+        "delivery_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+        "criteria_sha256": "a0cb17f0e44677676881609505128f972bf1454c0d19aaec229bfa4816d6faeb",
+        "judges": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "summary",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          },
+          {
+            "model": "z-ai/glm-5.3-flash",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "summary",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          },
+          {
+            "model": "Qwen/Qwen3.8-27B",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "summary",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          }
+        ],
+        "authority": "named on-chain attester; model votes are off-chain evidence",
+        "attestation_verified": false
+      },
+      "errors": [],
+      "trace": {
+        "startedAtUtc": "2026-11-13T16:55:54.469Z",
+        "completedAtUtc": "2026-11-13T16:56:02.489Z",
+        "policyVersions": {
+          "grading": "1.0"
+        },
+        "steps": []
+      }
+    },
+    "initial_payout_2": true,
+    "final_task": {
+      "client": "client-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "verifier": "verifier-a8fd42.ae-261113-4178f2-recovery.testnet",
+      "title": "Warranty-backed JSON brief",
+      "criteria": "{\"checks\":[{\"id\":\"summary\",\"description\":\"The JSON has a summary explaining that escrow locks an accepted bid and pays after verifier approval.\",\"threshold\":80},{\"id\":\"source\",\"description\":\"The source is https://docs.near.org/.\",\"threshold\":100}]}",
+      "budget": "50000000000000000000000",
+      "escrow_amount": "40000000000000000000000",
+      "bids": [
+        {
+          "worker": "worker-a8fd42.ae-261113-4178f2-recovery.testnet",
+          "amount": "40000000000000000000000"
+        }
+      ],
+      "deadline_ns": "1794592536900000000",
+      "evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+      "status": "Paid",
+      "retention_percent": 10,
+      "warranty_window_ns": "180000000000",
+      "warranty_until_ns": "1794589145695579556",
+      "hold_amount": "4000000000000000000000",
+      "claim_evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+      "fix_evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad"
+    },
+    "fix_hold_delta": "4000000000000000000000",
+    "fix_paid": true,
+    "worker_total_payout": "40000000000000000000000",
+    "contract_e2e": true
+  },
+  "errors": [],
+  "credential_paths": [
+    "~/.near-credentials/testnet/contract-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+    "~/.near-credentials/testnet/client-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+    "~/.near-credentials/testnet/worker-a8fd42.ae-261113-4178f2-recovery.testnet.json",
+    "~/.near-credentials/testnet/verifier-a8fd42.ae-261113-4178f2-recovery.testnet.json"
+  ],
+  "resumed_from": "docs/warranty-live-morning-final-20261113.json",
+  "previous_errors": [
+    {
+      "code": "lifecycle",
+      "message": "Testnet RPC HTTP 429",
+      "diagnostic": "",
+      "retryable": false
+    }
+  ],
+  "rpc_endpoint": "https://rpc.testnet.fastnear.com"
+}

@@ -1,0 +1,179 @@
+{
+  "checkedAt": "2026-11-13T04:39:41.663Z",
+  "network": "testnet",
+  "contract": "ae-261112-e9e499-contract.testnet",
+  "task": {
+    "client": "ae-261112-e9e499-client.testnet",
+    "worker": "ae-261112-e9e499-worker.testnet",
+    "verifier": "ae-261112-e9e499-verifier.testnet",
+    "title": "Warranty-backed JSON brief",
+    "criteria": "{\"checks\":[{\"id\":\"summary\",\"description\":\"The JSON has a summary explaining that escrow locks an accepted bid and pays after verifier approval.\",\"threshold\":80},{\"id\":\"source\",\"description\":\"The source is https://docs.near.org/.\",\"threshold\":100}]}",
+    "budget": "50000000000000000000000",
+    "escrow_amount": "40000000000000000000000",
+    "bids": [
+      {
+        "worker": "ae-261112-e9e499-worker.testnet",
+        "amount": "40000000000000000000000"
+      }
+    ],
+    "deadline_ns": "1794516934396000000",
+    "evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+    "status": "Paid",
+    "retention_percent": 10,
+    "warranty_window_ns": "20000000000",
+    "warranty_until_ns": "1794513481779501345",
+    "hold_amount": "4000000000000000000000",
+    "claim_evidence_sha256": null,
+    "fix_evidence_sha256": null
+  },
+  "transactions": {
+    "release": {
+      "transaction_hash": "YPcTLZF3fFRjn2Ye3U61PisjGeRRXfp5woXxEFeLLG9",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "YPcTLZF3fFRjn2Ye3U61PisjGeRRXfp5woXxEFeLLG9",
+          "block_hash": "GaU9iaawiixmHHSuVKZd5oihv3ga3HmQ5PgiRq2jMrx9",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "309108541730",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "8Nu4DNVdFiPdv1KL3kw2wQutTVQisQrC4ZDtm2MXR5mH",
+          "block_hash": "3tTyQtUes7NbwpWcpfXC1s5xccBFFwZaXHWxYXqStMzV",
+          "executor_id": "ae-261112-e9e499-contract.testnet",
+          "gas_burnt": "2686262023441",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "approved",
+              "task_id": "0"
+            },
+            {
+              "event": "transfer_started",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "CvCS1njMJL6GCMD9wsAuxUsDq7YEUujn1Un8mYyDznCy",
+          "block_hash": "Cbb8QfsuKxUbgvGqBcrHfvPDzzwadrdKHmq5z5WsLB1E",
+          "executor_id": "ae-261112-e9e499-worker.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "295Y39qrcNDe8ohuQ465ZWhE3xGQveGZ7zKSEzMR1qPT",
+          "block_hash": "4v9P4LYSmir5Wm1r7eJ5fVnXUcRfxomYKPpjPrjQBdz6",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "9WTdSt2FGx2KuEK9sPi66KAfNHLBbVdKNizLMQ4f1Vyp",
+          "block_hash": "4v9P4LYSmir5Wm1r7eJ5fVnXUcRfxomYKPpjPrjQBdz6",
+          "executor_id": "ae-261112-e9e499-contract.testnet",
+          "gas_burnt": "1733542693131",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "xH85DMmU5uzpY6xwgaxJsehoS6rceXr8JobGu7bkmWp",
+          "block_hash": "5BXfdkiETXgyhgRjZhf7bHKhhJLK8FmJuBmDJJisxaeh",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "78r4wZkqmzfjRr1jE5sSK2preyjCKNANfNg5VW7c9iop",
+          "block_hash": "Cbb8QfsuKxUbgvGqBcrHfvPDzzwadrdKHmq5z5WsLB1E",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ]
+    },
+    "settle": {
+      "transaction_hash": "B72QJQQFeiqFjUXWmEnBWh9TxxMcDtmnuxiCWE7L2H14",
+      "status": "success",
+      "receipts": [
+        {
+          "id": "B72QJQQFeiqFjUXWmEnBWh9TxxMcDtmnuxiCWE7L2H14",
+          "block_hash": "5LnAhrqXUjGFsbMUE53AQnDNKS7odjPqYw6AsCgqRuFa",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "309490011450",
+          "status": "receipt_pending",
+          "events": []
+        },
+        {
+          "id": "3Udd3ZpV28tMdseyJreztPJi1qSqcaqGpB8WJDfxrRCF",
+          "block_hash": "GNireoA49L9GmYTA1dM3RzdUjr9Q4Gakvto8CYdzaNMC",
+          "executor_id": "ae-261112-e9e499-contract.testnet",
+          "gas_burnt": "2630612584851",
+          "status": "receipt_pending",
+          "events": [
+            {
+              "event": "transfer_started",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "E5ckjpJ8X4pkmQTmQbS2Mo6hp1CiUzwn7hCNSpETHGpN",
+          "block_hash": "2pqcVoYhhmWWaHuwF1jKQr4bdvbqMkJbGky6BvCP87bq",
+          "executor_id": "ae-261112-e9e499-worker.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "9EXiM8dB3RiLqp8CkuFhyQFTJ2u4cGwbnUDS1do9UEVs",
+          "block_hash": "FRqrbHeAe2Sk5VZLUBRoS1nybsCFuSNiLrGjaMU3Pwev",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "3iYaYdyC2iLWBb7y7pxBuDoCrMpBZfNXAgApWstxGZn9",
+          "block_hash": "FRqrbHeAe2Sk5VZLUBRoS1nybsCFuSNiLrGjaMU3Pwev",
+          "executor_id": "ae-261112-e9e499-contract.testnet",
+          "gas_burnt": "1733180017056",
+          "status": "success",
+          "events": [
+            {
+              "event": "transfer_succeeded",
+              "task_id": "0"
+            }
+          ]
+        },
+        {
+          "id": "HERKmyQZ57PmTqQ1RQNNb65Kw71QsTyU4cgb6pQsj21Y",
+          "block_hash": "4W28gCjFq1R3HAbHjJCrzEhVFirzZUgfRXHoQGJnyUA7",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        },
+        {
+          "id": "2CqLQGejj9MH8EYgiwWm3bxjVD8b33UFNUYgv8RxkS57",
+          "block_hash": "2pqcVoYhhmWWaHuwF1jKQr4bdvbqMkJbGky6BvCP87bq",
+          "executor_id": "ae-261112-e9e499-verifier.testnet",
+          "gas_burnt": "223182562500",
+          "status": "success",
+          "events": []
+        }
+      ]
+    }
+  }
+}

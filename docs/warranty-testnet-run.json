@@ -1,0 +1,44 @@
+{
+  "contractVersion": "1.0",
+  "componentId": "FUN-002",
+  "status": "partial",
+  "network": "testnet",
+  "owner": "Cachetronaut",
+  "cli_version": "0.31.1",
+  "accounts": {
+    "contract": "ae-261112-de803f-contract.testnet",
+    "client": "ae-261112-de803f-client.testnet",
+    "worker": "ae-261112-de803f-worker.testnet",
+    "verifier": "ae-261112-de803f-verifier.testnet"
+  },
+  "account_creation": {
+    "contract": {
+      "cli_exit": 0,
+      "transaction_hash": "YZZBmtQsnYfgiVQ4VTN18QG1ec3ikueMU3nzTUue5wR",
+      "verified": true,
+      "balance": "10000000000000000000000000"
+    },
+    "client": {
+      "cli_exit": 0,
+      "transaction_hash": "8kpubYahKRvSHZ8FeJA1p9dnt9MtXSYdNrmHuZy3jCdD",
+      "verified": true,
+      "balance": "10000000000000000000000000"
+    },
+    "worker": {
+      "cli_exit": 1,
+      "transaction_hash": null,
+      "verified": false
+    }
+  },
+  "transactions": {},
+  "checks": {
+    "credential_files_written": false
+  },
+  "errors": [
+    {
+      "code": "create",
+      "message": "Faucet account creation failed for worker; see redacted diagnostic",
+      "retryable": false
+    }
+  ]
+}

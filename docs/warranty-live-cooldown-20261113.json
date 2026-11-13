@@ -1,0 +1,39 @@
+{
+  "contractVersion": "1.0",
+  "componentId": "FUN-002",
+  "status": "blocked",
+  "network": "testnet",
+  "owner": "Cachetronaut",
+  "cli_version": "0.31.1",
+  "accounts": {
+    "contract": "ae-261113-3384b6-contract.testnet",
+    "client": "ae-261113-3384b6-client.testnet",
+    "worker": "ae-261113-3384b6-worker.testnet",
+    "verifier": "ae-261113-3384b6-verifier.testnet"
+  },
+  "account_creation": {
+    "contract": {
+      "cli_exit": 1,
+      "transaction_hash": null,
+      "verified": false
+    }
+  },
+  "transactions": {},
+  "checks": {},
+  "errors": [
+    {
+      "code": "create",
+      "message": "Faucet account creation failed for contract; see redacted diagnostic",
+      "diagnostic": "\n├  Your transaction:\n│    signer_id:    testnet\n│    actions:\n│       -- create account:      ae-261113-3384b6-contract.testnet\n│       -- add access key:     \n│                       public key:   [key redacted]\n│                       permission:   FullAccess\n│     \n├  Warning: \n│    The new account <ae-261113-3384b6-contract.testnet> could not be created successfully.\n\n│     \n\nHere is your console command if you need to script it or re-run:\n    [local path] account create-account sponsor-by-faucet-service ae-261113-3384b6-contract.testnet use-manually-provided-public-key [key redacted] network-config testnet create\n\nError: \n   0: The faucet (helper service) server failed with status code <429 Too Many Requests>\n\nLocation:\n   src/commands/account/create_account/sponsor_by_faucet_service/mod.rs:148\n",
+      "retryable": false
+    }
+  ],
+  "faucet_http_429": true,
+  "faucet_retry_count": 3,
+  "completed_at_utc": "2026-11-13T04:48:09.278Z",
+  "faucet_request_count": 4,
+  "faucet_retry_wait_seconds": 150,
+  "contract_e2e": false,
+  "committed": false,
+  "pushed": false
+}

@@ -1,0 +1,53 @@
+{
+  "checked_at_utc": "2026-11-13T05:10:05.845Z",
+  "network": "testnet",
+  "target_account_prefixes": [
+    "ae-261111-ce0de7",
+    "ae-261112-e9e499"
+  ],
+  "status": "no_old_keys_found",
+  "files_enumerated": 1608848,
+  "directories_enumerated": 233953,
+  "standard_credentials_directory_before_search": "absent",
+  "project_including_ignored": "no signing keys found",
+  "whole_home_filename_and_near_path_search": "no old keys found",
+  "shell_history": {
+    "zsh": "no matching account or near account commands",
+    "bash": "absent"
+  },
+  "environment": {
+    "near_cli_variables": "absent",
+    "signing_variables": "absent",
+    "env_files_checked": 48,
+    "custom_credentials_directories": 0
+  },
+  "temporary_near_files": "no saved signing keys found",
+  "keychain": {
+    "metadata_dump_exit": 0,
+    "matching_items": 0,
+    "private_material_requested": false
+  },
+  "coverage_errors": [
+    {
+      "location": "~/Library/CloudStorage/Box-Box/.Trash",
+      "code": "ETIMEDOUT"
+    },
+    {
+      "location": "~/Library/CloudStorage/Box-Box/macbook_pro_abraham/Visual Studio Code.app/Contents/Frameworks/{Mantle,ReactiveObjC,Squirrel}.framework",
+      "code": "ETIMEDOUT",
+      "count": 3
+    }
+  ],
+  "exhaustive_readable_local_search": true,
+  "complete_cloud_coverage": false,
+  "cause": "Original lifecycle controller generated signing keys only in process environment, blocked CLI credential-file writes, and deleted signing variables on exit.",
+  "new_recovery_credential": {
+    "account_id": "ae-261113-4178f2-recovery.testnet",
+    "path": "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+    "file_mode": "0600",
+    "directory_mode": "0700",
+    "funded": false
+  },
+  "secrets_printed": false,
+  "credentials_committed": false
+}

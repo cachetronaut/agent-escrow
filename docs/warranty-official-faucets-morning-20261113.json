@@ -1,0 +1,73 @@
+{
+  "checked_at_utc": "2026-11-13T16:37:27.098Z",
+  "network": "testnet",
+  "account_id": "ae-261113-4178f2-recovery.testnet",
+  "credential_path": "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+  "credential_mode": "600",
+  "new_keys_created": false,
+  "secrets_logged": false,
+  "attempts": [
+    {
+      "source": "docs built-in faucet",
+      "endpoint": "https://helper.testnet.near.org/account",
+      "at_utc": "2026-11-13T16:37:30.594Z",
+      "requests": 1,
+      "inspection": "Inspected current docs component account creation POST. Requested the saved recovery public key directly; no fetched code executed.",
+      "http_status": 200,
+      "account_check": {
+        "exists": true,
+        "amount": "10000000000000000000000000",
+        "block_hash": "FrPmz3pr5aXkGUvsCbxupr63LfwNGtgzaYEEHH6nppue",
+        "block_height": 277535530,
+        "code_hash": "11111111111111111111111111111111",
+        "locked": "0",
+        "storage_paid_at": 0,
+        "storage_usage": 182
+      },
+      "transaction_hash": "Gs7tVzBPe9W7q8ppnDgjzN8La2kMZ188VmTn6JYftkoM",
+      "transaction_evidence": {
+        "status": {
+          "SuccessValue": ""
+        },
+        "receipts": [
+          {
+            "id": "9cUnr3vySuSMwWropmJ8q8qKVyx4AkQkdVyEW64yCTuk",
+            "block_hash": "4KSC69Vq9BRUoyYrL2jCzgTSixx3UkaKV4Jo7o2fiKer",
+            "executor_id": "ae-261113-4178f2-recovery.testnet",
+            "status": {
+              "SuccessValue": ""
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "funding_succeeded": true,
+  "intents_repeated": false,
+  "warranty_expiry_repeated": false,
+  "contract_transactions_attempted": false,
+  "committed": false,
+  "pushed": false,
+  "initial_account_check": {
+    "exists": false,
+    "error": "UNKNOWN_ACCOUNT",
+    "details": {
+      "block_hash": "a2YLctzKWgXS6JPcQS7ceVvAetfDNUroPBXSwEzFZCe",
+      "block_height": 277535520,
+      "requested_account_id": "ae-261113-4178f2-recovery.testnet"
+    }
+  },
+  "final_account_check": {
+    "exists": true,
+    "amount": "10000000000000000000000000",
+    "block_hash": "GZWZjve4gAJwG2n5xKNjRUqM76g3y1E2YD3mrntMErk5",
+    "block_height": 277535535,
+    "code_hash": "11111111111111111111111111111111",
+    "locked": "0",
+    "storage_paid_at": 0,
+    "storage_usage": 182
+  },
+  "status": "funded",
+  "completed_at_utc": "2026-11-13T16:37:39.724Z",
+  "docs_page_sha256": "54846be2870f64c8f893f851868d11f6f48d363f4bd75f997ff18cb529d60c9d"
+}

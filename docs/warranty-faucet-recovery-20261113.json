@@ -1,0 +1,35 @@
+{
+  "account_id": "ae-261113-4178f2-recovery.testnet",
+  "credential_path": "~/.near-credentials/testnet/ae-261113-4178f2-recovery.testnet.json",
+  "attempts": [
+    {
+      "attempt": 1,
+      "at": "2026-11-13T04:59:34.779Z",
+      "exit": 1,
+      "http_status": 429,
+      "transaction_hash": null
+    },
+    {
+      "attempt": 2,
+      "at": "2026-11-13T05:02:06.463Z",
+      "exit": 1,
+      "http_status": 429,
+      "transaction_hash": null
+    },
+    {
+      "attempt": 3,
+      "at": "2026-11-13T05:04:37.899Z",
+      "exit": 1,
+      "http_status": 429,
+      "transaction_hash": null
+    },
+    {
+      "attempt": 4,
+      "at": "2026-11-13T05:07:09.272Z",
+      "exit": 1,
+      "http_status": 429,
+      "transaction_hash": null
+    }
+  ],
+  "status": "rate_limited"
+}

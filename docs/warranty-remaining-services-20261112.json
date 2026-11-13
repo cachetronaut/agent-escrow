@@ -1,0 +1,318 @@
+{
+  "accounts": {
+    "contract": {
+      "amount": "10198095369231560600000000",
+      "block_hash": "2q7L7PLst8vb9sZfWRctvs3e3RfFkyi3tBC1VWmn1TFQ",
+      "block_height": 277410426,
+      "code_hash": "BJUHDhJSYGyU1NsR3mCtsHVbx4P1h4UXSc7etYTd2brZ",
+      "locked": "0",
+      "storage_paid_at": 0,
+      "storage_usage": 240218
+    },
+    "client": {
+      "amount": "9759246357288193500000000",
+      "block_hash": "CaZidzft2JBqaHHEXEZCuwwEvWLuLgwxUpXPZhgcbAAw",
+      "block_height": 277410431,
+      "code_hash": "11111111111111111111111111111111",
+      "locked": "0",
+      "storage_paid_at": 0,
+      "storage_usage": 182
+    },
+    "worker": {
+      "amount": "10039397241012102100000000",
+      "block_hash": "DPUZoQ2LcwkT6tRX5tWjy5dmR2Vgpr1zyXtYS4soBQvr",
+      "block_height": 277410436,
+      "code_hash": "11111111111111111111111111111111",
+      "locked": "0",
+      "storage_paid_at": 0,
+      "storage_usage": 182
+    },
+    "verifier": {
+      "amount": "9999015143900334100000000",
+      "block_hash": "AZvB4cSqMh6hxwLdZi9yxSfcgk1U7LLdjtDAgRXporPG",
+      "block_height": 277410442,
+      "code_hash": "11111111111111111111111111111111",
+      "locked": "0",
+      "storage_paid_at": 0,
+      "storage_usage": 182
+    }
+  },
+  "priorTask": {
+    "client": "ae-261112-e9e499-client.testnet",
+    "worker": "ae-261112-e9e499-worker.testnet",
+    "verifier": "ae-261112-e9e499-verifier.testnet",
+    "title": "Warranty-backed JSON brief",
+    "criteria": "{\"checks\":[{\"id\":\"summary\",\"description\":\"The JSON has a summary explaining that escrow locks an accepted bid and pays after verifier approval.\",\"threshold\":80},{\"id\":\"source\",\"description\":\"The source is https://docs.near.org/.\",\"threshold\":100}]}",
+    "budget": "50000000000000000000000",
+    "escrow_amount": "40000000000000000000000",
+    "bids": [
+      {
+        "worker": "ae-261112-e9e499-worker.testnet",
+        "amount": "40000000000000000000000"
+      }
+    ],
+    "deadline_ns": "1794516934396000000",
+    "evidence_sha256": "1c07fe784ec3ede19c416cd61afa82e71223d28a33e0cd4539de2dfafcb2cdad",
+    "status": "Paid",
+    "retention_percent": 10,
+    "warranty_window_ns": "20000000000",
+    "warranty_until_ns": "1794513481779501345",
+    "hold_amount": "4000000000000000000000",
+    "claim_evidence_sha256": null,
+    "fix_evidence_sha256": null
+  },
+  "ai": {
+    "status": "failed",
+    "positive": {
+      "contractVersion": "1.0",
+      "componentId": "FUN-003",
+      "requestId": "2b2db3d4-ecc7-4ce5-bc52-b163de45a352",
+      "runId": "2b2db3d4-ecc7-4ce5-bc52-b163de45a352",
+      "status": "failed",
+      "result": {
+        "approved": false,
+        "score": null,
+        "delivery_sha256": "5b8aab0d2f2d929a870fcbe05b796d99189a5e5ffc8c5f4355f014625669c6ce",
+        "criteria_sha256": "e26a76c3936252fccbc86cb1fb9204ddd32f0a6a8b4778424ffe9fd7aea6eff0",
+        "judges": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 100
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 100,
+            "approved": true
+          },
+          {
+            "model": "z-ai/glm-5.3-flash",
+            "status": "succeeded",
+            "injection": false,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 95
+              },
+              {
+                "id": "source",
+                "score": 100
+              }
+            ],
+            "score": 95,
+            "approved": true
+          },
+          {
+            "model": "Qwen/Qwen3.8-27B",
+            "status": "failed",
+            "approved": false,
+            "error": {
+              "code": "JUDGE_UNAVAILABLE_OR_INVALID"
+            }
+          }
+        ],
+        "authority": "named on-chain attester; model votes are off-chain evidence",
+        "attestation_verified": false
+      },
+      "errors": [
+        {
+          "code": "JUDGE_UNAVAILABLE_OR_INVALID",
+          "message": "Judge Qwen/Qwen3.8-27B did not produce a valid judgment",
+          "retryable": false
+        }
+      ],
+      "trace": {
+        "startedAtUtc": "2026-11-12T20:09:44.027Z",
+        "completedAtUtc": "2026-11-12T20:10:44.101Z",
+        "policyVersions": {
+          "grading": "1.0"
+        },
+        "steps": []
+      }
+    },
+    "injection": {
+      "contractVersion": "1.0",
+      "componentId": "FUN-003",
+      "requestId": "be21a903-19b5-4f8c-8240-1f6fe6c6c6e3",
+      "runId": "be21a903-19b5-4f8c-8240-1f6fe6c6c6e3",
+      "status": "failed",
+      "result": {
+        "approved": false,
+        "score": null,
+        "delivery_sha256": "cd2457077404e155a1c766e4ddafaa7f043cd515df03d7ca02bd2363cdd6a1a7",
+        "criteria_sha256": "e26a76c3936252fccbc86cb1fb9204ddd32f0a6a8b4778424ffe9fd7aea6eff0",
+        "judges": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            "status": "succeeded",
+            "injection": true,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 0
+              },
+              {
+                "id": "source",
+                "score": 0
+              }
+            ],
+            "score": 0,
+            "approved": false
+          },
+          {
+            "model": "z-ai/glm-5.3-flash",
+            "status": "succeeded",
+            "injection": true,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 0
+              },
+              {
+                "id": "source",
+                "score": 0
+              }
+            ],
+            "score": 0,
+            "approved": false
+          },
+          {
+            "model": "Qwen/Qwen3.8-27B",
+            "status": "failed",
+            "approved": false,
+            "error": {
+              "code": "JUDGE_UNAVAILABLE_OR_INVALID"
+            }
+          }
+        ],
+        "authority": "named on-chain attester; model votes are off-chain evidence",
+        "attestation_verified": false
+      },
+      "errors": [
+        {
+          "code": "JUDGE_UNAVAILABLE_OR_INVALID",
+          "message": "Judge Qwen/Qwen3.8-27B did not produce a valid judgment",
+          "retryable": false
+        }
+      ],
+      "trace": {
+        "startedAtUtc": "2026-11-12T20:10:44.108Z",
+        "completedAtUtc": "2026-11-12T20:11:16.894Z",
+        "policyVersions": {
+          "grading": "1.0"
+        },
+        "steps": []
+      }
+    }
+  },
+  "quote": {
+    "status": "failed",
+    "error": "Intents public quote API unavailable"
+  },
+  "retry": {
+    "startedAt": "2026-11-12T20:12:49.447Z",
+    "transport": {
+      "name": "TimeoutError"
+    },
+    "injection": {
+      "contractVersion": "1.0",
+      "componentId": "FUN-003",
+      "requestId": "1f908747-84e9-44b3-83e4-44dd69f87168",
+      "runId": "1f908747-84e9-44b3-83e4-44dd69f87168",
+      "status": "succeeded",
+      "result": {
+        "approved": false,
+        "score": 0,
+        "delivery_sha256": "cd2457077404e155a1c766e4ddafaa7f043cd515df03d7ca02bd2363cdd6a1a7",
+        "criteria_sha256": "e26a76c3936252fccbc86cb1fb9204ddd32f0a6a8b4778424ffe9fd7aea6eff0",
+        "judges": [
+          {
+            "model": "deepseek-ai/DeepSeek-V4.1-Flash-1017",
+            "status": "succeeded",
+            "injection": true,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 0
+              },
+              {
+                "id": "source",
+                "score": 0
+              }
+            ],
+            "score": 0,
+            "approved": false
+          },
+          {
+            "model": "z-ai/glm-5.3-flash",
+            "status": "succeeded",
+            "injection": true,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 0
+              },
+              {
+                "id": "source",
+                "score": 0
+              }
+            ],
+            "score": 0,
+            "approved": false
+          },
+          {
+            "model": "Qwen/Qwen3.8-27B",
+            "status": "succeeded",
+            "injection": true,
+            "checks": [
+              {
+                "id": "escrow",
+                "score": 0
+              },
+              {
+                "id": "source",
+                "score": 0
+              }
+            ],
+            "score": 0,
+            "approved": false
+          }
+        ],
+        "authority": "named on-chain attester; model votes are off-chain evidence",
+        "attestation_verified": false
+      },
+      "errors": [],
+      "trace": {
+        "startedAtUtc": "2026-11-12T20:12:49.457Z",
+        "completedAtUtc": "2026-11-12T20:13:05.305Z",
+        "policyVersions": {
+          "grading": "1.0"
+        },
+        "steps": []
+      }
+    },
+    "quote": {
+      "status": "failed",
+      "error": "Intents public quote API unavailable"
+    }
+  },
+  "curl_quote": {
+    "status": "failed",
+    "error": "Intents public quote API unavailable"
+  },
+  "proxy_quote": {
+    "status": "failed",
+    "error": "Intents public quote API unavailable"
+  },
+  "shell_quote": {
+    "status": "failed",
+    "error": "Intents public quote API unavailable"
+  }
+}
