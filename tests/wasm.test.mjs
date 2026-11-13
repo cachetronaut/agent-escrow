@@ -7,7 +7,7 @@ import { WasmHost } from '../scripts/wasm-host.mjs';
 const FEE = 10n ** 23n, budget = 10n ** 24n, amount = 8n * 10n ** 23n;
 const client = 'client.testnet', worker = 'worker.testnet', verifier = 'verifier.testnet';
 const hash = 'a'.repeat(64), deadline = '10000';
-const terms = () => ({ verifier, title: 'Verified JSON brief', criteria: 'Return a JSON summary', budget: String(budget), deadline_ns: deadline });
+const terms = () => ({ verifier, title: 'Verified JSON brief', criteria: 'Return a JSON summary', budget: String(budget), deadline_ns: deadline, retention_percent: 0 });
 async function setup() { const h = await WasmHost.load(); h.call('new'); return h; }
 function post(h, args = terms()) { return h.call('post', args, { caller: client, deposit: FEE }).result; }
 function bid(h, task_id, bidder = worker, offer = amount) { return h.call('bid', { task_id, amount: String(offer) }, { caller: bidder }); }
@@ -18,7 +18,7 @@ function get(h, task_id) { return h.call('get_task', { task_id }).result; }
 async function funded() { const h = await setup(), id = post(h); bid(h, id); escrow(h, id); return { h, id }; }
 function deliver(h, id) { h.call('deliver', { task_id: id, evidence_sha256: hash }, { caller: worker }); }
 function release(h, id) { return h.call('release', { task_id: id }, { caller: verifier }); }
-function callback(h, id, success) { return h.call('on_paid', { task_id: id }, { caller: h.contract, results: [success] }); }
+function callback(h, id, success, now = 1000n) { return h.call('on_paid', { task_id: id }, { caller: h.contract, results: [success], now }); }
 function transfer(outcome) { return outcome.promises.flatMap(p => p.actions.filter(a => a.type === 'transfer').map(a => ({ receiver: p.receiver, amount: a.amount }))); }
 function unchanged(h, id, fn) { const before = get(h, id); assert.throws(fn); assert.deepEqual(get(h, id), before); }
 
@@ -185,4 +185,65 @@ test('Wasm independent task payouts preserve each selected offer and original be
   callback(h, second, false); callback(h, first, true);
   assert.equal(get(h, first).status, 'Paid'); assert.equal(get(h, second).status, 'Refundable');
   assert.deepEqual(transfer(h.call('pay', { task_id: second })), [{ receiver: client, amount: String(amount / 2n) }]);
+});
+
+// Actual Wasm under a local host, not on-chain verification.
+async function warranty(percent) {
+  const h = await setup(), id = post(h, {...terms(), retention_percent: percent, warranty_window_ns: '100'});
+  bid(h,id); escrow(h,id); deliver(h,id); const out=release(h,id); callback(h,id,true); return {h,id,out};
+}
+test('Wasm warranty defaults to ten percent and keeper pays an unclaimed expired hold exactly once', async()=>{
+  const {h,id,out}=await warranty();
+  assert.deepEqual(transfer(out),[{receiver:worker,amount:String(amount*9n/10n)}]);
+  const t=get(h,id); assert.equal(t.status,'Warranty'); assert.equal(t.hold_amount,String(amount/10n));
+  unchanged(h,id,()=>h.call('settle_warranty',{task_id:id},{now:BigInt(t.warranty_until_ns)-1n}));
+  const settled=h.call('settle_warranty',{task_id:id},{now:BigInt(t.warranty_until_ns)});
+  assert.deepEqual(transfer(settled),[{receiver:worker,amount:String(amount/10n)}]);
+  callback(h,id,false); assert.equal(get(h,id).status,'HoldApproved');
+  assert.deepEqual(transfer(h.call('pay',{task_id:id})),transfer(settled)); callback(h,id,true);
+  assert.equal(get(h,id).status,'Paid'); unchanged(h,id,()=>h.call('pay',{task_id:id}));
+});
+test('Wasm client claim locks expired hold until verifier refunds original client, with retry',async()=>{
+  const {h,id}=await warranty(); const t=get(h,id);
+  unchanged(h,id,()=>h.call('claim',{task_id:id,evidence_sha256:hash},{caller:worker}));
+  unchanged(h,id,()=>h.call('claim',{task_id:id,evidence_sha256:hash},{caller:client,now:BigInt(t.warranty_until_ns)}));
+  h.call('claim',{task_id:id,evidence_sha256:hash},{caller:client});
+  const now=BigInt(t.warranty_until_ns);
+  unchanged(h,id,()=>h.call('settle_warranty',{task_id:id},{now}));
+  unchanged(h,id,()=>h.call('resolve_claim',{task_id:id,decision:'refund'},{caller:client,now}));
+  const out=h.call('resolve_claim',{task_id:id,decision:'refund'},{caller:verifier,now});
+  assert.deepEqual(transfer(out),[{receiver:client,amount:String(amount/10n)}]);
+  callback(h,id,false,now); assert.equal(get(h,id).status,'HoldRefundable'); h.call('pay',{task_id:id},{now}); callback(h,id,true,now);
+  assert.equal(get(h,id).status,'HoldRefunded'); unchanged(h,id,()=>h.call('pay',{task_id:id},{now}));
+});
+test('Wasm verifier fix decision requires selected worker redelivery before hold approval',async()=>{
+  const {h,id}=await warranty(); h.call('claim',{task_id:id,evidence_sha256:hash},{caller:client});
+  unchanged(h,id,()=>h.call('resolve_claim',{task_id:id,decision:'accept'},{caller:verifier}));
+  h.call('resolve_claim',{task_id:id,decision:'fix'},{caller:verifier});
+  unchanged(h,id,()=>h.call('deliver_fix',{task_id:id,evidence_sha256:hash},{caller:client}));
+  h.call('deliver_fix',{task_id:id,evidence_sha256:hash},{caller:worker});
+  const out=h.call('resolve_claim',{task_id:id,decision:'accept'},{caller:verifier});
+  assert.deepEqual(transfer(out),[{receiver:worker,amount:String(amount/10n)}]); callback(h,id,true); assert.equal(get(h,id).status,'Paid');
+});
+test('Wasm initial payout failure cannot start warranty or pay twice',async()=>{
+  const h=await setup(),id=post(h,{...terms(),retention_percent:10,warranty_window_ns:'100'});
+  bid(h,id);escrow(h,id);deliver(h,id);release(h,id);callback(h,id,false);
+  assert.equal(get(h,id).warranty_until_ns,'0'); unchanged(h,id,()=>h.call('claim',{task_id:id,evidence_sha256:hash},{caller:client}));
+  h.call('pay',{task_id:id}); callback(h,id,true); assert.equal(get(h,id).status,'Warranty');
+  unchanged(h,id,()=>h.call('refund',{task_id:id},{now:BigInt(deadline)}));
+});
+test('Wasm warranty rejects invalid terms and rounds hold without u128 overflow',async()=>{
+  const h=await setup();
+  for(const patch of [{retention_percent:101},{warranty_window_ns:'0'},{warranty_window_ns:'2592000000000001'}]){
+    assert.throws(()=>post(h,{...terms(),...patch}));assert.equal(h.call('task_count').result,'0');
+  }
+  const large=2n**128n-1n;
+  const id=post(h,{...terms(),budget:String(large),retention_percent:99});bid(h,id,worker,large);escrow(h,id,worker,large);deliver(h,id);
+  const out=release(h,id),retained=large/100n*99n+large%100n*99n/100n;
+  assert.equal(get(h,id).hold_amount,String(retained));assert.deepEqual(transfer(out),[{receiver:worker,amount:String(large-retained)}]);
+});
+test('Wasm full retention pays only the hold after warranty',async()=>{
+  const {h,id,out}=await warranty(100);assert.deepEqual(transfer(out),[{receiver:worker,amount:'0'}]);
+  const t=get(h,id);const paid=h.call('settle_warranty',{task_id:id},{now:BigInt(t.warranty_until_ns)});
+  assert.deepEqual(transfer(paid),[{receiver:worker,amount:String(amount)}]);callback(h,id,true);assert.equal(get(h,id).status,'Paid');
 });

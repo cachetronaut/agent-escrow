@@ -1,4 +1,4 @@
-// First-party RPC adapter. No credential storage, account creation, or implicit retries.
+// First-party RPC adapter. One delayed retry for HTTP 429 reads; signed sends never retry.
 import { base58, signedTransaction } from './near-transaction.mjs';
 
 const endpoint = 'https://rpc.testnet.near.org';
@@ -8,13 +8,15 @@ export function requireTestnetId(id) {
 }
 
 export class TestnetRpc {
-  constructor(transport = globalThis.fetch) { this.transport = transport; }
+  constructor(transport = globalThis.fetch, rpcEndpoint = endpoint) { if(![endpoint,'https://rpc.testnet.fastnear.com'].includes(rpcEndpoint))throw Error('Unapproved testnet RPC endpoint'); this.transport = transport; this.endpoint=rpcEndpoint; }
   async request(method, params) {
-    const response = await this.transport(endpoint, {
+    const options = {
       method: 'POST', redirect: 'error', signal: AbortSignal.timeout(30_000),
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ jsonrpc: '2.0', id: 'agent-escrow', method, params }),
-    });
+    };
+    let response = await this.transport(this.endpoint, options);
+    if(response.status===429&&['status','query','tx'].includes(method)){await response.body?.cancel();await new Promise(r=>setTimeout(r,60000));response=await this.transport(this.endpoint,{...options,signal:AbortSignal.timeout(30000)});}
     if (!response.ok) throw Error(`Testnet RPC HTTP ${response.status}`);
     const body = await response.json();
     // Never print remote errors: they may echo signed bytes or public keys.
@@ -61,7 +63,7 @@ export function transactionEvidence(hash, outcome) {
       events: (item.logs || []).filter(line => /^EVENT_JSON:/.test(line)).flatMap(line => {
         try {
           const event = JSON.parse(line.slice(11));
-          if (event.standard !== 'agent_escrow' || event.version !== '1.0.0' || !['created', 'posted', 'bid', 'escrowed', 'cancelled', 'delivered', 'approved', 'expired', 'transfer_started', 'transfer_succeeded', 'transfer_failed'].includes(event.event)) return [];
+          if (event.standard !== 'agent_escrow' || event.version !== '1.0.0' || !['created', 'posted', 'bid', 'escrowed', 'cancelled', 'delivered', 'approved', 'expired', 'transfer_started', 'transfer_succeeded', 'transfer_failed', 'claimed', 'claim_resolved', 'fix_delivered'].includes(event.event)) return [];
           if (!Array.isArray(event.data) || event.data.length !== 1 || !/^\d+$/.test(event.data[0].task_id)) return [];
           return [{ event: event.event, task_id: event.data[0].task_id }];
         } catch { return []; }

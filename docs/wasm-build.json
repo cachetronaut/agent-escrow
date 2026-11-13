@@ -1,7 +1,7 @@
 {
   "artifact": "contract/target/wasm32-unknown-unknown/release/agent_escrow.wasm",
-  "bytes": 216747,
-  "sha256": "527d5ba554624e32e7dfbc7becf77a71088b4856c205537ed827b1c249f7faec",
+  "bytes": 238803,
+  "sha256": "990e96944c1c8d6a7f4e65f1c9dc16445de6750931c7ae1dbec66c150b3e1aea",
   "imports": [
     {
       "module": "env",
@@ -194,11 +194,19 @@
       "kind": "function"
     },
     {
+      "name": "claim",
+      "kind": "function"
+    },
+    {
       "name": "contract_source_metadata",
       "kind": "function"
     },
     {
       "name": "deliver",
+      "kind": "function"
+    },
+    {
+      "name": "deliver_fix",
       "kind": "function"
     },
     {
@@ -235,6 +243,14 @@
     },
     {
       "name": "release",
+      "kind": "function"
+    },
+    {
+      "name": "resolve_claim",
+      "kind": "function"
+    },
+    {
+      "name": "settle_warranty",
       "kind": "function"
     },
     {

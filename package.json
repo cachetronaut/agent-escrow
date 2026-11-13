@@ -8,7 +8,10 @@
     "test": "node --test tests/*.test.mjs",
     "demo": "node scripts/agents.mjs",
     "serve": "node scripts/serve.mjs",
-    "plan": "node scripts/plan.mjs"
+    "plan": "node scripts/plan.mjs",
+    "e2e": "node scripts/testnet-lifecycle.mjs --run"
   },
-  "engines": { "node": ">=22" }
+  "engines": {
+    "node": ">=22"
+  }
 }

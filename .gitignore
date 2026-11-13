@@ -9,3 +9,5 @@ contract/target/
 credentials/
 # Contact-bearing owner-review draft stays local.
 /submission-payload-draft.json
+
+/x-post-draft.txt

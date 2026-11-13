@@ -15,6 +15,15 @@ pub enum Status {
     Refunding,
     Refunded,
     Cancelled,
+    Warranty,
+    Claimed,
+    FixRequired,
+    FixDelivered,
+    HoldApproved,
+    PayingHold,
+    HoldRefundable,
+    RefundingHold,
+    HoldRefunded,
 }
 
 pub fn valid_post_roles(client: &str, verifier: &str, contract: &str) -> bool {
@@ -98,6 +107,10 @@ pub fn receipt_status(status: &Status, ok: bool) -> Option<Status> {
         (Status::PayingWorker, false) => Some(Status::Approved),
         (Status::Refunding, true) => Some(Status::Refunded),
         (Status::Refunding, false) => Some(Status::Refundable),
+        (Status::PayingHold, true) => Some(Status::Paid),
+        (Status::PayingHold, false) => Some(Status::HoldApproved),
+        (Status::RefundingHold, true) => Some(Status::HoldRefunded),
+        (Status::RefundingHold, false) => Some(Status::HoldRefundable),
         _ => None,
     }
 }

@@ -30,6 +30,12 @@ pub struct Task {
     pub deadline_ns: U64,
     pub evidence_sha256: Option<String>,
     pub status: Status,
+    pub retention_percent: u8,
+    pub warranty_window_ns: U64,
+    pub warranty_until_ns: U64,
+    pub hold_amount: U128,
+    pub claim_evidence_sha256: Option<String>,
+    pub fix_evidence_sha256: Option<String>,
 }
 
 #[near(contract_state)]
@@ -60,7 +66,17 @@ impl Escrow {
         criteria: String,
         budget: U128,
         deadline_ns: U64,
+        retention_percent: Option<u8>,
+        warranty_window_ns: Option<U64>,
     ) -> U64 {
+        let retention_percent = retention_percent.unwrap_or(10);
+        let warranty_window_ns = warranty_window_ns.unwrap_or(U64(7 * 24 * 3600 * 1_000_000_000));
+        assert!(
+            retention_percent <= 100
+                && warranty_window_ns.0 > 0
+                && warranty_window_ns.0 <= policy::MAX_DEADLINE_DISTANCE,
+            "Invalid warranty terms"
+        );
         let client = env::predecessor_account_id();
         Self::testnet(&client);
         Self::testnet(&verifier);
@@ -104,11 +120,17 @@ impl Escrow {
                 deadline_ns,
                 evidence_sha256: None,
                 status: Status::Posted,
+                retention_percent,
+                warranty_window_ns,
+                warranty_until_ns: U64(0),
+                hold_amount: U128(0),
+                claim_evidence_sha256: None,
+                fix_evidence_sha256: None,
             },
         );
         // Each future bid needs at most 4 + 64 + 16 bytes. The extra 256
         // reserves the selected worker, evidence, and serialized-state growth.
-        let reserve = policy::MAX_BIDS as u64 * 84 + 256;
+        let reserve = policy::MAX_BIDS as u64 * 84 + 512;
         let storage = u128::from(env::storage_usage().saturating_sub(before) + reserve)
             .checked_mul(env::storage_byte_cost().as_yoctonear())
             .unwrap();
@@ -210,6 +232,10 @@ impl Escrow {
             ),
             "Release denied"
         );
+        t.hold_amount = U128(
+            t.escrow_amount.0 / 100 * u128::from(t.retention_percent)
+                + t.escrow_amount.0 % 100 * u128::from(t.retention_percent) / 100,
+        );
         t.status = Status::Approved;
         self.tasks.insert(&task_id.0, &t);
         Self::event(task_id.0, "approved");
@@ -241,8 +267,10 @@ impl Escrow {
     pub fn pay(&mut self, task_id: U64) -> Promise {
         Self::payout_gas();
         let mut t = self.load(task_id.0);
+        let mut amount = t.escrow_amount.0;
         let recipient = match t.status {
             Status::Approved => {
+                amount -= t.hold_amount.0;
                 t.status = Status::PayingWorker;
                 t.worker.clone().expect("No selected worker")
             }
@@ -250,12 +278,22 @@ impl Escrow {
                 t.status = Status::Refunding;
                 t.client.clone()
             }
+            Status::HoldApproved => {
+                amount = t.hold_amount.0;
+                t.status = Status::PayingHold;
+                t.worker.clone().expect("No selected worker")
+            }
+            Status::HoldRefundable => {
+                amount = t.hold_amount.0;
+                t.status = Status::RefundingHold;
+                t.client.clone()
+            }
             _ => env::panic_str("No payable balance"),
         };
         self.tasks.insert(&task_id.0, &t);
         Self::event(task_id.0, "transfer_started");
         Promise::new(recipient)
-            .transfer(NearToken::from_yoctonear(t.escrow_amount.0))
+            .transfer(NearToken::from_yoctonear(amount))
             .then(
                 Self::ext(env::current_account_id())
                     .with_static_gas(CALLBACK_GAS)
@@ -269,7 +307,14 @@ impl Escrow {
         let mut t = self.load(task_id.0);
         // A native transfer has an empty result. Bound result reads to zero bytes.
         let ok = env::promise_result_checked(0, 0).is_ok();
+        let initial = t.status == Status::PayingWorker;
         t.status = policy::receipt_status(&t.status, ok).expect("No transfer pending");
+        if initial && ok && t.hold_amount.0 > 0 {
+            t.status = Status::Warranty;
+            t.warranty_until_ns = U64(env::block_timestamp()
+                .checked_add(t.warranty_window_ns.0)
+                .expect("Warranty overflow"));
+        }
         self.tasks.insert(&task_id.0, &t);
         Self::event(
             task_id.0,
@@ -280,6 +325,85 @@ impl Escrow {
             },
         );
         ok
+    }
+
+    /// Client evidence locks the hold before expiry. Only a digest is stored.
+    pub fn claim(&mut self, task_id: U64, evidence_sha256: String) {
+        let mut t = self.load(task_id.0);
+        assert!(
+            env::predecessor_account_id() == t.client
+                && t.status == Status::Warranty
+                && env::block_timestamp() < t.warranty_until_ns.0,
+            "Claim denied"
+        );
+        Self::digest(&evidence_sha256);
+        t.claim_evidence_sha256 = Some(evidence_sha256);
+        t.status = Status::Claimed;
+        self.tasks.insert(&task_id.0, &t);
+        Self::event(task_id.0, "claimed");
+    }
+
+    /// Named verifier may request a fix or refund the hold; acceptance needs a fix delivery.
+    pub fn resolve_claim(&mut self, task_id: U64, decision: String) -> PromiseOrValue<bool> {
+        let mut t = self.load(task_id.0);
+        assert!(
+            env::predecessor_account_id() == t.verifier
+                && matches!(
+                    t.status,
+                    Status::Claimed | Status::FixRequired | Status::FixDelivered
+                ),
+            "Resolution denied"
+        );
+        match decision.as_str() {
+            "fix" => {
+                assert!(t.status == Status::Claimed, "Fix already requested");
+                t.status = Status::FixRequired;
+            }
+            "refund" => {
+                Self::payout_gas();
+                t.status = Status::HoldRefundable;
+            }
+            "accept" => {
+                Self::payout_gas();
+                assert!(t.status == Status::FixDelivered, "Fix delivery required");
+                t.status = Status::HoldApproved;
+            }
+            _ => env::panic_str("Expected fix, refund, or accept"),
+        }
+        self.tasks.insert(&task_id.0, &t);
+        Self::event(task_id.0, "claim_resolved");
+        if decision == "fix" {
+            PromiseOrValue::Value(true)
+        } else {
+            PromiseOrValue::Promise(self.pay(task_id))
+        }
+    }
+
+    pub fn deliver_fix(&mut self, task_id: U64, evidence_sha256: String) {
+        let mut t = self.load(task_id.0);
+        assert!(
+            t.worker.as_ref() == Some(&env::predecessor_account_id())
+                && t.status == Status::FixRequired,
+            "Fix denied"
+        );
+        Self::digest(&evidence_sha256);
+        t.fix_evidence_sha256 = Some(evidence_sha256);
+        t.status = Status::FixDelivered;
+        self.tasks.insert(&task_id.0, &t);
+        Self::event(task_id.0, "fix_delivered");
+    }
+
+    /// Keepers must call this; the blockchain does not schedule automatic transfers.
+    pub fn settle_warranty(&mut self, task_id: U64) -> Promise {
+        Self::payout_gas();
+        let mut t = self.load(task_id.0);
+        assert!(
+            t.status == Status::Warranty && env::block_timestamp() >= t.warranty_until_ns.0,
+            "Warranty settlement denied"
+        );
+        t.status = Status::HoldApproved;
+        self.tasks.insert(&task_id.0, &t);
+        self.pay(task_id)
     }
 
     pub fn get_task(&self, task_id: U64) -> Option<Task> {
@@ -297,6 +421,15 @@ impl Escrow {
 }
 
 impl Escrow {
+    fn digest(value: &str) {
+        assert!(
+            value.len() == 64
+                && value
+                    .bytes()
+                    .all(|b| b.is_ascii_hexdigit() && !b.is_ascii_uppercase()),
+            "Expected lowercase SHA-256"
+        );
+    }
     fn load(&self, id: u64) -> Task {
         self.tasks.get(&id).expect("Unknown task")
     }
