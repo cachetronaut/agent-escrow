@@ -78,15 +78,19 @@ function matrix() {
   return [t, p];
 }
 
+const verificationChecks = [['Warranty claim and refund of the hold', 'completion_checks.claim'], ['Deadline refund to the client', 'completion_checks.refund'], ['Intents dry-run quote', 'completion_checks.quote']];
+const unverifiedChecks = verificationChecks.filter(([, path]) => get(`${path}.status`) !== 'passed');
+
 function notVerified() {
+  if (!unverifiedChecks.length) return el('span', 'stamp pass', 'All completion checks passed');
   const box = el('div', 'unverified');
   box.append(el('span', 'stamp block', 'Not yet verified on testnet'));
   const ul = el('ul');
-  for (const [name, path] of [['Warranty claim and refund of the hold', 'completion_checks.claim'], ['Deadline refund to the client', 'completion_checks.refund'], ['Intents dry-run quote', 'completion_checks.quote']]) {
+  for (const [name, path] of unverifiedChecks) {
     const li = el('li'); li.append(el('strong', '', name), el('span', '', get(`${path}.status`) ?? 'not in evidence')); ul.append(li);
   }
   box.append(ul);
-  if (get('completion_checks.claim.reason')) { const p = el('p', 'reason'); p.append('Claim and refund blocker on record: ', fact('completion_checks.claim.reason', 'text')); box.append(p); }
+  if (unverifiedChecks.some(([, path]) => path === 'completion_checks.claim') && get('completion_checks.claim.reason')) { const p = el('p', 'reason'); p.append('Claim and refund blocker on record: ', fact('completion_checks.claim.reason', 'text')); box.append(p); }
   return box;
 }
 
@@ -175,7 +179,7 @@ addEventListener('keydown', e => {
 const run = get(`${R}.ai_positive.trace.startedAtUtc`), taskId = get(`${X}.post_0.receipts.1.events.0.task_id`);
 $('run').textContent = ['NEAR testnet', run ? `run of ${String(run).slice(0, 10)}` : null, 'by Cachetronaut'].filter(Boolean).join(' · ');
 $('slip-ref').textContent = [taskId === undefined ? null : `Task ${taskId}`, get(`${R}.accounts.contract`)].filter(Boolean).join(' · ');
-$('scope').textContent = `Task ${taskId ?? ''} of one recorded testnet run, read from docs/warranty-verification.json. AI judge votes are off-chain evidence. Not yet verified: warranty claim, deadline refund, Intents quote.`;
+$('scope').textContent = `Task ${taskId ?? ''} of one recorded testnet run, read from docs/warranty-verification.json. AI judge votes are off-chain evidence. ${unverifiedChecks.length ? `Not yet verified: ${unverifiedChecks.map(([name]) => name).join(', ')}.` : 'All shown contract steps verified on NEAR testnet. Intents dry-run quote passed; unsigned and unexecuted.'}`;
 
 const params = new URLSearchParams(location.search);
 go(Number(params.get('step') || 1) - 1);
